@@ -1,10 +1,13 @@
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/FalconController.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/JoyStickController.dir
+/home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/JoyStickControllerWithSonar.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/KeyBoardController.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/ROSBUILD_genmsg_cpp.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/ROSBUILD_genmsg_lisp.dir
+/home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/ROSBUILD_genmsg_py.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/ROSBUILD_gensrv_cpp.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/ROSBUILD_gensrv_lisp.dir
+/home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/Sonar.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/clean-test-results.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/rosbuild_precompile.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/rosbuild_premsgsrvgen.dir

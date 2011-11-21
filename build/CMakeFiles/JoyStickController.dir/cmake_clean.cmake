@@ -1,4 +1,7 @@
 FILE(REMOVE_RECURSE
+  "../src/hcr_vip/msg"
+  "../msg_gen"
+  "../msg_gen"
   "CMakeFiles/JoyStickController.dir/src/JoyStickController.o"
   "../bin/JoyStickController.pdb"
   "../bin/JoyStickController"

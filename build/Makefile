@@ -125,6 +125,19 @@ JoyStickController/fast:
 .PHONY : JoyStickController/fast
 
 #=============================================================================
+# Target rules for targets named JoyStickControllerWithSonar
+
+# Build rule for target.
+JoyStickControllerWithSonar: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 JoyStickControllerWithSonar
+.PHONY : JoyStickControllerWithSonar
+
+# fast build rule for target.
+JoyStickControllerWithSonar/fast:
+	$(MAKE) -f CMakeFiles/JoyStickControllerWithSonar.dir/build.make CMakeFiles/JoyStickControllerWithSonar.dir/build
+.PHONY : JoyStickControllerWithSonar/fast
+
+#=============================================================================
 # Target rules for targets named KeyBoardController
 
 # Build rule for target.
@@ -164,6 +177,19 @@ ROSBUILD_genmsg_lisp/fast:
 .PHONY : ROSBUILD_genmsg_lisp/fast
 
 #=============================================================================
+# Target rules for targets named ROSBUILD_genmsg_py
+
+# Build rule for target.
+ROSBUILD_genmsg_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ROSBUILD_genmsg_py
+.PHONY : ROSBUILD_genmsg_py
+
+# fast build rule for target.
+ROSBUILD_genmsg_py/fast:
+	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_py.dir/build.make CMakeFiles/ROSBUILD_genmsg_py.dir/build
+.PHONY : ROSBUILD_genmsg_py/fast
+
+#=============================================================================
 # Target rules for targets named ROSBUILD_gensrv_cpp
 
 # Build rule for target.
@@ -188,6 +214,19 @@ ROSBUILD_gensrv_lisp: cmake_check_build_system
 ROSBUILD_gensrv_lisp/fast:
 	$(MAKE) -f CMakeFiles/ROSBUILD_gensrv_lisp.dir/build.make CMakeFiles/ROSBUILD_gensrv_lisp.dir/build
 .PHONY : ROSBUILD_gensrv_lisp/fast
+
+#=============================================================================
+# Target rules for targets named Sonar
+
+# Build rule for target.
+Sonar: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Sonar
+.PHONY : Sonar
+
+# fast build rule for target.
+Sonar/fast:
+	$(MAKE) -f CMakeFiles/Sonar.dir/build.make CMakeFiles/Sonar.dir/build
+.PHONY : Sonar/fast
 
 #=============================================================================
 # Target rules for targets named clean-test-results
@@ -389,6 +428,21 @@ src/JoyStickController.s:
 .PHONY : src/JoyStickController.s
 
 # target to build an object file
+src/JoyStickControllerWithSonar.o:
+	$(MAKE) -f CMakeFiles/JoyStickControllerWithSonar.dir/build.make CMakeFiles/JoyStickControllerWithSonar.dir/src/JoyStickControllerWithSonar.o
+.PHONY : src/JoyStickControllerWithSonar.o
+
+# target to preprocess a source file
+src/JoyStickControllerWithSonar.i:
+	$(MAKE) -f CMakeFiles/JoyStickControllerWithSonar.dir/build.make CMakeFiles/JoyStickControllerWithSonar.dir/src/JoyStickControllerWithSonar.i
+.PHONY : src/JoyStickControllerWithSonar.i
+
+# target to generate assembly for a file
+src/JoyStickControllerWithSonar.s:
+	$(MAKE) -f CMakeFiles/JoyStickControllerWithSonar.dir/build.make CMakeFiles/JoyStickControllerWithSonar.dir/src/JoyStickControllerWithSonar.s
+.PHONY : src/JoyStickControllerWithSonar.s
+
+# target to build an object file
 src/KeyBoardController.o:
 	$(MAKE) -f CMakeFiles/KeyBoardController.dir/build.make CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o
 .PHONY : src/KeyBoardController.o
@@ -403,6 +457,21 @@ src/KeyBoardController.s:
 	$(MAKE) -f CMakeFiles/KeyBoardController.dir/build.make CMakeFiles/KeyBoardController.dir/src/KeyBoardController.s
 .PHONY : src/KeyBoardController.s
 
+# target to build an object file
+src/Sonar.o:
+	$(MAKE) -f CMakeFiles/Sonar.dir/build.make CMakeFiles/Sonar.dir/src/Sonar.o
+.PHONY : src/Sonar.o
+
+# target to preprocess a source file
+src/Sonar.i:
+	$(MAKE) -f CMakeFiles/Sonar.dir/build.make CMakeFiles/Sonar.dir/src/Sonar.i
+.PHONY : src/Sonar.i
+
+# target to generate assembly for a file
+src/Sonar.s:
+	$(MAKE) -f CMakeFiles/Sonar.dir/build.make CMakeFiles/Sonar.dir/src/Sonar.s
+.PHONY : src/Sonar.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -411,11 +480,14 @@ help:
 	@echo "... depend"
 	@echo "... FalconController"
 	@echo "... JoyStickController"
+	@echo "... JoyStickControllerWithSonar"
 	@echo "... KeyBoardController"
 	@echo "... ROSBUILD_genmsg_cpp"
 	@echo "... ROSBUILD_genmsg_lisp"
+	@echo "... ROSBUILD_genmsg_py"
 	@echo "... ROSBUILD_gensrv_cpp"
 	@echo "... ROSBUILD_gensrv_lisp"
+	@echo "... Sonar"
 	@echo "... clean-test-results"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
@@ -437,9 +509,15 @@ help:
 	@echo "... src/JoyStickController.o"
 	@echo "... src/JoyStickController.i"
 	@echo "... src/JoyStickController.s"
+	@echo "... src/JoyStickControllerWithSonar.o"
+	@echo "... src/JoyStickControllerWithSonar.i"
+	@echo "... src/JoyStickControllerWithSonar.s"
 	@echo "... src/KeyBoardController.o"
 	@echo "... src/KeyBoardController.i"
 	@echo "... src/KeyBoardController.s"
+	@echo "... src/Sonar.o"
+	@echo "... src/Sonar.i"
+	@echo "... src/Sonar.s"
 .PHONY : help
 
 

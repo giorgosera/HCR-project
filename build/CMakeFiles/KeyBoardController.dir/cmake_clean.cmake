@@ -1,4 +1,7 @@
 FILE(REMOVE_RECURSE
+  "../src/hcr_vip/msg"
+  "../msg_gen"
+  "../msg_gen"
   "CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o"
   "../bin/KeyBoardController.pdb"
   "../bin/KeyBoardController"

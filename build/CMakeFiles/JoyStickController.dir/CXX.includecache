@@ -6,6 +6,28 @@
 
 #IncludeRegexTransform: 
 
+../msg_gen/cpp/include/hcr_vip/sonar_vip.h
+string
+-
+vector
+-
+map
+-
+ostream
+-
+ros/serialization.h
+../msg_gen/cpp/include/hcr_vip/ros/serialization.h
+ros/builtin_message_traits.h
+../msg_gen/cpp/include/hcr_vip/ros/builtin_message_traits.h
+ros/message_operations.h
+../msg_gen/cpp/include/hcr_vip/ros/message_operations.h
+ros/time.h
+../msg_gen/cpp/include/hcr_vip/ros/time.h
+ros/macros.h
+../msg_gen/cpp/include/hcr_vip/ros/macros.h
+ros/assert.h
+../msg_gen/cpp/include/hcr_vip/ros/assert.h
+
 /home/robofriend/ros_workspace/hcr_vip/src/JoyStickController.cpp
 ros/ros.h
 -
@@ -13,6 +35,8 @@ sensor_msgs/Joy.h
 -
 geometry_msgs/Twist.h
 /home/robofriend/ros_workspace/hcr_vip/src/geometry_msgs/Twist.h
+hcr_vip/sonar_vip.h
+/home/robofriend/ros_workspace/hcr_vip/src/hcr_vip/sonar_vip.h
 signal.h
 -
 termios.h

@@ -1,6 +1,7 @@
 #include <ros/ros.h>
 #include <sensor_msgs/Joy.h>
 #include "geometry_msgs/Twist.h"
+#include "hcr_vip/sonar_vip.h"
 #include <signal.h>
 #include <termios.h>
 using geometry_msgs::Twist;
@@ -13,15 +14,14 @@ public:
 
 private:
   void joyCallback(const sensor_msgs::Joy::ConstPtr& joy);
-  
   ros::NodeHandle nh_;
 
   int linear_, angular_;
   double l_scale_, a_scale_;
   ros::Publisher vel_pub_;
-  ros::Subscriber joy_sub_;
+  ros::Subscriber joy_sub_, sonar_sub_;
   Twist vel;
-
+  hcr_vip::sonar_vip sonar_values;
   
 };
 /*
@@ -47,9 +47,12 @@ TeleopThe0::TeleopThe0():
 
 
   joy_sub_ = nh_.subscribe<sensor_msgs::Joy>("joy", 10, &TeleopThe0::joyCallback, this);
+
+
 //signal(SIGINT,quit);
 
 }
+
 
 void TeleopThe0::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
 {
