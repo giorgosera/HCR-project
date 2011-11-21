@@ -1,0 +1,22 @@
+<package>
+  <description brief="HCR_VIP">
+
+     HCR_VIP
+
+  </description>
+  <author>HCR</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/HCR_VIP</url>
+  <depend package="ROSARIA"/>
+  <depend package="joy"/>
+  <depend package="tf"/>
+  <depend package="roscpp"/>
+  <depend package="rospy"/>
+  <depend package="nav_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="sensor_msgs"/>
+
+</package>
+
+
