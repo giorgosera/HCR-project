@@ -35,15 +35,15 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/robofriend/ros_workspace/HCR_VIP
+CMAKE_SOURCE_DIR = /home/robofriend/ros_workspace/hcr_vip
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/robofriend/ros_workspace/HCR_VIP/build
+CMAKE_BINARY_DIR = /home/robofriend/ros_workspace/hcr_vip/build
 
 # Utility rule file for test-results.
 
 CMakeFiles/test-results:
-	/opt/ros/electric/ros/tools/rosunit/scripts/summarize_results.py --nodeps HCR_VIP
+	/opt/ros/electric/ros/tools/rosunit/scripts/summarize_results.py --nodeps hcr_vip
 
 test-results: CMakeFiles/test-results
 test-results: CMakeFiles/test-results.dir/build.make
@@ -58,6 +58,6 @@ CMakeFiles/test-results.dir/clean:
 .PHONY : CMakeFiles/test-results.dir/clean
 
 CMakeFiles/test-results.dir/depend:
-	cd /home/robofriend/ros_workspace/HCR_VIP/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/robofriend/ros_workspace/HCR_VIP /home/robofriend/ros_workspace/HCR_VIP /home/robofriend/ros_workspace/HCR_VIP/build /home/robofriend/ros_workspace/HCR_VIP/build /home/robofriend/ros_workspace/HCR_VIP/build/CMakeFiles/test-results.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/robofriend/ros_workspace/hcr_vip/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/robofriend/ros_workspace/hcr_vip /home/robofriend/ros_workspace/hcr_vip /home/robofriend/ros_workspace/hcr_vip/build /home/robofriend/ros_workspace/hcr_vip/build /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/test-results.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/test-results.dir/depend
 

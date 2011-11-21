@@ -1,13 +1,13 @@
 <package>
-  <description brief="HCR_VIP">
+  <description brief="hcr_vip">
 
-     HCR_VIP
+     hcr_vip
 
   </description>
   <author>HCR</author>
   <license>BSD</license>
   <review status="unreviewed" notes=""/>
-  <url>http://ros.org/wiki/HCR_VIP</url>
+  <url>http://ros.org/wiki/hcr_vip</url>
   <depend package="ROSARIA"/>
   <depend package="joy"/>
   <depend package="tf"/>

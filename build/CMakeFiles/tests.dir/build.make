@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/robofriend/ros_workspace/HCR_VIP
+CMAKE_SOURCE_DIR = /home/robofriend/ros_workspace/hcr_vip
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/robofriend/ros_workspace/HCR_VIP/build
+CMAKE_BINARY_DIR = /home/robofriend/ros_workspace/hcr_vip/build
 
 # Utility rule file for tests.
 
@@ -57,6 +57,6 @@ CMakeFiles/tests.dir/clean:
 .PHONY : CMakeFiles/tests.dir/clean
 
 CMakeFiles/tests.dir/depend:
-	cd /home/robofriend/ros_workspace/HCR_VIP/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/robofriend/ros_workspace/HCR_VIP /home/robofriend/ros_workspace/HCR_VIP /home/robofriend/ros_workspace/HCR_VIP/build /home/robofriend/ros_workspace/HCR_VIP/build /home/robofriend/ros_workspace/HCR_VIP/build/CMakeFiles/tests.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/robofriend/ros_workspace/hcr_vip/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/robofriend/ros_workspace/hcr_vip /home/robofriend/ros_workspace/hcr_vip /home/robofriend/ros_workspace/hcr_vip/build /home/robofriend/ros_workspace/hcr_vip/build /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/tests.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/tests.dir/depend
 

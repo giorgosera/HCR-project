@@ -35,15 +35,15 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/robofriend/ros_workspace/HCR_VIP
+CMAKE_SOURCE_DIR = /home/robofriend/ros_workspace/hcr_vip
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/robofriend/ros_workspace/HCR_VIP/build
+CMAKE_BINARY_DIR = /home/robofriend/ros_workspace/hcr_vip/build
 
 # Utility rule file for clean-test-results.
 
 CMakeFiles/clean-test-results:
-	if ! rm -rf /home/robofriend/.ros/test_results/HCR_VIP; then echo WARNING:\ failed\ to\ remove\ test-results\ directory ; fi
+	if ! rm -rf /home/robofriend/.ros/test_results/hcr_vip; then echo WARNING:\ failed\ to\ remove\ test-results\ directory ; fi
 
 clean-test-results: CMakeFiles/clean-test-results
 clean-test-results: CMakeFiles/clean-test-results.dir/build.make
@@ -58,6 +58,6 @@ CMakeFiles/clean-test-results.dir/clean:
 .PHONY : CMakeFiles/clean-test-results.dir/clean
 
 CMakeFiles/clean-test-results.dir/depend:
-	cd /home/robofriend/ros_workspace/HCR_VIP/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/robofriend/ros_workspace/HCR_VIP /home/robofriend/ros_workspace/HCR_VIP /home/robofriend/ros_workspace/HCR_VIP/build /home/robofriend/ros_workspace/HCR_VIP/build /home/robofriend/ros_workspace/HCR_VIP/build/CMakeFiles/clean-test-results.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/robofriend/ros_workspace/hcr_vip/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/robofriend/ros_workspace/hcr_vip /home/robofriend/ros_workspace/hcr_vip /home/robofriend/ros_workspace/hcr_vip/build /home/robofriend/ros_workspace/hcr_vip/build /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/clean-test-results.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/clean-test-results.dir/depend
 

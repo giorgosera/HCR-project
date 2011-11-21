@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/robofriend/ros_workspace/HCR_VIP
+CMAKE_SOURCE_DIR = /home/robofriend/ros_workspace/hcr_vip
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/robofriend/ros_workspace/HCR_VIP/build
+CMAKE_BINARY_DIR = /home/robofriend/ros_workspace/hcr_vip/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,9 +69,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/robofriend/ros_workspace/HCR_VIP/build/CMakeFiles /home/robofriend/ros_workspace/HCR_VIP/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/robofriend/ros_workspace/HCR_VIP/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -97,6 +97,45 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+#=============================================================================
+# Target rules for targets named FalconController
+
+# Build rule for target.
+FalconController: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 FalconController
+.PHONY : FalconController
+
+# fast build rule for target.
+FalconController/fast:
+	$(MAKE) -f CMakeFiles/FalconController.dir/build.make CMakeFiles/FalconController.dir/build
+.PHONY : FalconController/fast
+
+#=============================================================================
+# Target rules for targets named JoyStickController
+
+# Build rule for target.
+JoyStickController: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 JoyStickController
+.PHONY : JoyStickController
+
+# fast build rule for target.
+JoyStickController/fast:
+	$(MAKE) -f CMakeFiles/JoyStickController.dir/build.make CMakeFiles/JoyStickController.dir/build
+.PHONY : JoyStickController/fast
+
+#=============================================================================
+# Target rules for targets named KeyBoardController
+
+# Build rule for target.
+KeyBoardController: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 KeyBoardController
+.PHONY : KeyBoardController
+
+# fast build rule for target.
+KeyBoardController/fast:
+	$(MAKE) -f CMakeFiles/KeyBoardController.dir/build.make CMakeFiles/KeyBoardController.dir/build
+.PHONY : KeyBoardController/fast
 
 #=============================================================================
 # Target rules for targets named ROSBUILD_genmsg_cpp
@@ -319,89 +358,50 @@ tests/fast:
 	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
 .PHONY : tests/fast
 
-#=============================================================================
-# Target rules for targets named theo_falcon
-
-# Build rule for target.
-theo_falcon: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 theo_falcon
-.PHONY : theo_falcon
-
-# fast build rule for target.
-theo_falcon/fast:
-	$(MAKE) -f CMakeFiles/theo_falcon.dir/build.make CMakeFiles/theo_falcon.dir/build
-.PHONY : theo_falcon/fast
-
-#=============================================================================
-# Target rules for targets named theo_joy
-
-# Build rule for target.
-theo_joy: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 theo_joy
-.PHONY : theo_joy
-
-# fast build rule for target.
-theo_joy/fast:
-	$(MAKE) -f CMakeFiles/theo_joy.dir/build.make CMakeFiles/theo_joy.dir/build
-.PHONY : theo_joy/fast
-
-#=============================================================================
-# Target rules for targets named theo_key
-
-# Build rule for target.
-theo_key: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 theo_key
-.PHONY : theo_key
-
-# fast build rule for target.
-theo_key/fast:
-	$(MAKE) -f CMakeFiles/theo_key.dir/build.make CMakeFiles/theo_key.dir/build
-.PHONY : theo_key/fast
-
 # target to build an object file
-src/theo_falcon.o:
-	$(MAKE) -f CMakeFiles/theo_falcon.dir/build.make CMakeFiles/theo_falcon.dir/src/theo_falcon.o
-.PHONY : src/theo_falcon.o
+src/FalconController.o:
+	$(MAKE) -f CMakeFiles/FalconController.dir/build.make CMakeFiles/FalconController.dir/src/FalconController.o
+.PHONY : src/FalconController.o
 
 # target to preprocess a source file
-src/theo_falcon.i:
-	$(MAKE) -f CMakeFiles/theo_falcon.dir/build.make CMakeFiles/theo_falcon.dir/src/theo_falcon.i
-.PHONY : src/theo_falcon.i
+src/FalconController.i:
+	$(MAKE) -f CMakeFiles/FalconController.dir/build.make CMakeFiles/FalconController.dir/src/FalconController.i
+.PHONY : src/FalconController.i
 
 # target to generate assembly for a file
-src/theo_falcon.s:
-	$(MAKE) -f CMakeFiles/theo_falcon.dir/build.make CMakeFiles/theo_falcon.dir/src/theo_falcon.s
-.PHONY : src/theo_falcon.s
+src/FalconController.s:
+	$(MAKE) -f CMakeFiles/FalconController.dir/build.make CMakeFiles/FalconController.dir/src/FalconController.s
+.PHONY : src/FalconController.s
 
 # target to build an object file
-src/theo_joy.o:
-	$(MAKE) -f CMakeFiles/theo_joy.dir/build.make CMakeFiles/theo_joy.dir/src/theo_joy.o
-.PHONY : src/theo_joy.o
+src/JoyStickController.o:
+	$(MAKE) -f CMakeFiles/JoyStickController.dir/build.make CMakeFiles/JoyStickController.dir/src/JoyStickController.o
+.PHONY : src/JoyStickController.o
 
 # target to preprocess a source file
-src/theo_joy.i:
-	$(MAKE) -f CMakeFiles/theo_joy.dir/build.make CMakeFiles/theo_joy.dir/src/theo_joy.i
-.PHONY : src/theo_joy.i
+src/JoyStickController.i:
+	$(MAKE) -f CMakeFiles/JoyStickController.dir/build.make CMakeFiles/JoyStickController.dir/src/JoyStickController.i
+.PHONY : src/JoyStickController.i
 
 # target to generate assembly for a file
-src/theo_joy.s:
-	$(MAKE) -f CMakeFiles/theo_joy.dir/build.make CMakeFiles/theo_joy.dir/src/theo_joy.s
-.PHONY : src/theo_joy.s
+src/JoyStickController.s:
+	$(MAKE) -f CMakeFiles/JoyStickController.dir/build.make CMakeFiles/JoyStickController.dir/src/JoyStickController.s
+.PHONY : src/JoyStickController.s
 
 # target to build an object file
-src/theo_key.o:
-	$(MAKE) -f CMakeFiles/theo_key.dir/build.make CMakeFiles/theo_key.dir/src/theo_key.o
-.PHONY : src/theo_key.o
+src/KeyBoardController.o:
+	$(MAKE) -f CMakeFiles/KeyBoardController.dir/build.make CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o
+.PHONY : src/KeyBoardController.o
 
 # target to preprocess a source file
-src/theo_key.i:
-	$(MAKE) -f CMakeFiles/theo_key.dir/build.make CMakeFiles/theo_key.dir/src/theo_key.i
-.PHONY : src/theo_key.i
+src/KeyBoardController.i:
+	$(MAKE) -f CMakeFiles/KeyBoardController.dir/build.make CMakeFiles/KeyBoardController.dir/src/KeyBoardController.i
+.PHONY : src/KeyBoardController.i
 
 # target to generate assembly for a file
-src/theo_key.s:
-	$(MAKE) -f CMakeFiles/theo_key.dir/build.make CMakeFiles/theo_key.dir/src/theo_key.s
-.PHONY : src/theo_key.s
+src/KeyBoardController.s:
+	$(MAKE) -f CMakeFiles/KeyBoardController.dir/build.make CMakeFiles/KeyBoardController.dir/src/KeyBoardController.s
+.PHONY : src/KeyBoardController.s
 
 # Help Target
 help:
@@ -409,6 +409,9 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... FalconController"
+	@echo "... JoyStickController"
+	@echo "... KeyBoardController"
 	@echo "... ROSBUILD_genmsg_cpp"
 	@echo "... ROSBUILD_genmsg_lisp"
 	@echo "... ROSBUILD_gensrv_cpp"
@@ -428,18 +431,15 @@ help:
 	@echo "... test-results"
 	@echo "... test-results-run"
 	@echo "... tests"
-	@echo "... theo_falcon"
-	@echo "... theo_joy"
-	@echo "... theo_key"
-	@echo "... src/theo_falcon.o"
-	@echo "... src/theo_falcon.i"
-	@echo "... src/theo_falcon.s"
-	@echo "... src/theo_joy.o"
-	@echo "... src/theo_joy.i"
-	@echo "... src/theo_joy.s"
-	@echo "... src/theo_key.o"
-	@echo "... src/theo_key.i"
-	@echo "... src/theo_key.s"
+	@echo "... src/FalconController.o"
+	@echo "... src/FalconController.i"
+	@echo "... src/FalconController.s"
+	@echo "... src/JoyStickController.o"
+	@echo "... src/JoyStickController.i"
+	@echo "... src/JoyStickController.s"
+	@echo "... src/KeyBoardController.o"
+	@echo "... src/KeyBoardController.i"
+	@echo "... src/KeyBoardController.s"
 .PHONY : help
 
 

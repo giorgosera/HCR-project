@@ -53,6 +53,9 @@ SET(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 SET(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/FalconController.dir/DependInfo.cmake"
+  "CMakeFiles/JoyStickController.dir/DependInfo.cmake"
+  "CMakeFiles/KeyBoardController.dir/DependInfo.cmake"
   "CMakeFiles/ROSBUILD_genmsg_cpp.dir/DependInfo.cmake"
   "CMakeFiles/ROSBUILD_genmsg_lisp.dir/DependInfo.cmake"
   "CMakeFiles/ROSBUILD_gensrv_cpp.dir/DependInfo.cmake"
@@ -70,7 +73,4 @@ SET(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/test-results.dir/DependInfo.cmake"
   "CMakeFiles/test-results-run.dir/DependInfo.cmake"
   "CMakeFiles/tests.dir/DependInfo.cmake"
-  "CMakeFiles/theo_falcon.dir/DependInfo.cmake"
-  "CMakeFiles/theo_joy.dir/DependInfo.cmake"
-  "CMakeFiles/theo_key.dir/DependInfo.cmake"
   )
