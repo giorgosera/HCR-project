@@ -68,16 +68,12 @@ cout<<"ala3e"<< vel.linear.x<< "   palio"<< previous.linear.x<<endl;
 	if (!ok){
 		STOP();
 	}
-	checkDistance(previous.linear.x);
-	else if((vel.linear.x == 0) && (ok == true)){
-		vel.linear.x = previous.linear.x;		
-
-	}
-	//elseif((vel.linear.x !=0) 
-	//{
+	//else if(ok){
 		
+		//vel.linear.x = previous.linear.x;
 	//}
-
+	checkDistance(previous.linear.x);
+	else if(vel.linear.x > 0)
 	
 		
 	vel_pub_.publish(vel);
@@ -113,7 +109,7 @@ float angular = 10 * joy->axes[angular_];
 
 //checkDistance(linear);
 
-//previous.linear.x=vel.linear.x;
+previous.linear.x=vel.linear.x;
 
 //if(ok){ 
 	vel.angular.z = angular;
