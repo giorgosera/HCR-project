@@ -4,18 +4,20 @@ import struct
 
 
 class sonar_vip(roslib.message.Message):
-  _md5sum = "43494b77c31808bb5fe0752c080e064e"
+  _md5sum = "88e0f89c92fb21e7f26144ddd9a139a3"
   _type = "hcr_vip/sonar_vip"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """float64 distance_front
 int32 angle_front
 float64 distance_back
 int32 angle_back
+float64 turn_left
+float64 turn_right
 
 
 """
-  __slots__ = ['distance_front','angle_front','distance_back','angle_back']
-  _slot_types = ['float64','int32','float64','int32']
+  __slots__ = ['distance_front','angle_front','distance_back','angle_back','turn_left','turn_right']
+  _slot_types = ['float64','int32','float64','int32','float64','float64']
 
   def __init__(self, *args, **kwds):
     """
@@ -25,7 +27,7 @@ int32 angle_back
     changes.  You cannot mix in-order arguments and keyword arguments.
     
     The available fields are:
-       distance_front,angle_front,distance_back,angle_back
+       distance_front,angle_front,distance_back,angle_back,turn_left,turn_right
     
     @param args: complete set of field values, in .msg order
     @param kwds: use keyword arguments corresponding to message field names
@@ -42,11 +44,17 @@ int32 angle_back
         self.distance_back = 0.
       if self.angle_back is None:
         self.angle_back = 0
+      if self.turn_left is None:
+        self.turn_left = 0.
+      if self.turn_right is None:
+        self.turn_right = 0.
     else:
       self.distance_front = 0.
       self.angle_front = 0
       self.distance_back = 0.
       self.angle_back = 0
+      self.turn_left = 0.
+      self.turn_right = 0.
 
   def _get_types(self):
     """
@@ -62,7 +70,7 @@ int32 angle_back
     """
     try:
       _x = self
-      buff.write(_struct_didi.pack(_x.distance_front, _x.angle_front, _x.distance_back, _x.angle_back))
+      buff.write(_struct_didi2d.pack(_x.distance_front, _x.angle_front, _x.distance_back, _x.angle_back, _x.turn_left, _x.turn_right))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -76,8 +84,8 @@ int32 angle_back
       end = 0
       _x = self
       start = end
-      end += 24
-      (_x.distance_front, _x.angle_front, _x.distance_back, _x.angle_back,) = _struct_didi.unpack(str[start:end])
+      end += 40
+      (_x.distance_front, _x.angle_front, _x.distance_back, _x.angle_back, _x.turn_left, _x.turn_right,) = _struct_didi2d.unpack(str[start:end])
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
@@ -93,7 +101,7 @@ int32 angle_back
     """
     try:
       _x = self
-      buff.write(_struct_didi.pack(_x.distance_front, _x.angle_front, _x.distance_back, _x.angle_back))
+      buff.write(_struct_didi2d.pack(_x.distance_front, _x.angle_front, _x.distance_back, _x.angle_back, _x.turn_left, _x.turn_right))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -109,11 +117,11 @@ int32 angle_back
       end = 0
       _x = self
       start = end
-      end += 24
-      (_x.distance_front, _x.angle_front, _x.distance_back, _x.angle_back,) = _struct_didi.unpack(str[start:end])
+      end += 40
+      (_x.distance_front, _x.angle_front, _x.distance_back, _x.angle_back, _x.turn_left, _x.turn_right,) = _struct_didi2d.unpack(str[start:end])
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = roslib.message.struct_I
-_struct_didi = struct.Struct("<didi")
+_struct_didi2d = struct.Struct("<didi2d")

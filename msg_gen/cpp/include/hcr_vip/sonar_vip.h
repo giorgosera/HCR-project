@@ -26,6 +26,8 @@ struct sonar_vip_ {
   , angle_front(0)
   , distance_back(0.0)
   , angle_back(0)
+  , turn_left(0.0)
+  , turn_right(0.0)
   {
   }
 
@@ -34,6 +36,8 @@ struct sonar_vip_ {
   , angle_front(0)
   , distance_back(0.0)
   , angle_back(0)
+  , turn_left(0.0)
+  , turn_right(0.0)
   {
   }
 
@@ -49,6 +53,12 @@ struct sonar_vip_ {
   typedef int32_t _angle_back_type;
   int32_t angle_back;
 
+  typedef double _turn_left_type;
+  double turn_left;
+
+  typedef double _turn_right_type;
+  double turn_right;
+
 
 private:
   static const char* __s_getDataType_() { return "hcr_vip/sonar_vip"; }
@@ -58,7 +68,7 @@ public:
   ROS_DEPRECATED const std::string __getDataType() const { return __s_getDataType_(); }
 
 private:
-  static const char* __s_getMD5Sum_() { return "43494b77c31808bb5fe0752c080e064e"; }
+  static const char* __s_getMD5Sum_() { return "88e0f89c92fb21e7f26144ddd9a139a3"; }
 public:
   ROS_DEPRECATED static const std::string __s_getMD5Sum() { return __s_getMD5Sum_(); }
 
@@ -69,6 +79,8 @@ private:
 int32 angle_front\n\
 float64 distance_back\n\
 int32 angle_back\n\
+float64 turn_left\n\
+float64 turn_right\n\
 \n\
 \n\
 "; }
@@ -84,6 +96,8 @@ public:
     ros::serialization::serialize(stream, angle_front);
     ros::serialization::serialize(stream, distance_back);
     ros::serialization::serialize(stream, angle_back);
+    ros::serialization::serialize(stream, turn_left);
+    ros::serialization::serialize(stream, turn_right);
     return stream.getData();
   }
 
@@ -94,6 +108,8 @@ public:
     ros::serialization::deserialize(stream, angle_front);
     ros::serialization::deserialize(stream, distance_back);
     ros::serialization::deserialize(stream, angle_back);
+    ros::serialization::deserialize(stream, turn_left);
+    ros::serialization::deserialize(stream, turn_right);
     return stream.getData();
   }
 
@@ -104,6 +120,8 @@ public:
     size += ros::serialization::serializationLength(angle_front);
     size += ros::serialization::serializationLength(distance_back);
     size += ros::serialization::serializationLength(angle_back);
+    size += ros::serialization::serializationLength(turn_left);
+    size += ros::serialization::serializationLength(turn_right);
     return size;
   }
 
@@ -135,12 +153,12 @@ template<class ContainerAllocator>
 struct MD5Sum< ::hcr_vip::sonar_vip_<ContainerAllocator> > {
   static const char* value() 
   {
-    return "43494b77c31808bb5fe0752c080e064e";
+    return "88e0f89c92fb21e7f26144ddd9a139a3";
   }
 
   static const char* value(const  ::hcr_vip::sonar_vip_<ContainerAllocator> &) { return value(); } 
-  static const uint64_t static_value1 = 0x43494b77c31808bbULL;
-  static const uint64_t static_value2 = 0x5fe0752c080e064eULL;
+  static const uint64_t static_value1 = 0x88e0f89c92fb21e7ULL;
+  static const uint64_t static_value2 = 0xf26144ddd9a139a3ULL;
 };
 
 template<class ContainerAllocator>
@@ -161,6 +179,8 @@ struct Definition< ::hcr_vip::sonar_vip_<ContainerAllocator> > {
 int32 angle_front\n\
 float64 distance_back\n\
 int32 angle_back\n\
+float64 turn_left\n\
+float64 turn_right\n\
 \n\
 \n\
 ";
@@ -186,6 +206,8 @@ template<class ContainerAllocator> struct Serializer< ::hcr_vip::sonar_vip_<Cont
     stream.next(m.angle_front);
     stream.next(m.distance_back);
     stream.next(m.angle_back);
+    stream.next(m.turn_left);
+    stream.next(m.turn_right);
   }
 
   ROS_DECLARE_ALLINONE_SERIALIZER;
@@ -211,6 +233,10 @@ struct Printer< ::hcr_vip::sonar_vip_<ContainerAllocator> >
     Printer<double>::stream(s, indent + "  ", v.distance_back);
     s << indent << "angle_back: ";
     Printer<int32_t>::stream(s, indent + "  ", v.angle_back);
+    s << indent << "turn_left: ";
+    Printer<double>::stream(s, indent + "  ", v.turn_left);
+    s << indent << "turn_right: ";
+    Printer<double>::stream(s, indent + "  ", v.turn_right);
   }
 };
 

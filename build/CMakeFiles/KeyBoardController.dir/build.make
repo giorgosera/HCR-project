@@ -94,8 +94,6 @@ CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o: /opt/ros/electric/st
 CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o: /opt/ros/electric/stacks/diagnostics/diagnostic_updater/manifest.xml
 CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o: /home/robofriend/ros_workspace/teleop/joy/joy/manifest.xml
 CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o: /opt/ros/electric/stacks/amor-ros-pkg/ROSARIA/manifest.xml
-CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/manifest.xml
-CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o: /opt/ros/electric/stacks/ros_tutorials/turtlesim/manifest.xml
 CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
@@ -112,9 +110,6 @@ CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o: /opt/ros/electric/st
 CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/srv_gen/generated
 CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o: /home/robofriend/ros_workspace/teleop/joy/joy/msg_gen/generated
 CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o: /opt/ros/electric/stacks/amor-ros-pkg/ROSARIA/msg_gen/generated
-CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/generated
-CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o: /opt/ros/electric/stacks/ros_tutorials/turtlesim/msg_gen/generated
-CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o: /opt/ros/electric/stacks/ros_tutorials/turtlesim/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -fPIC -DBT_USE_DOUBLE_PRECISION -DBT_EULER_DEFAULT_ZYX -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o -c /home/robofriend/ros_workspace/hcr_vip/src/KeyBoardController.cpp

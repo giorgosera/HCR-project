@@ -5,6 +5,10 @@
 #include <termios.h>
 #include <math.h>
 
+#define MIN_DISP 0.099  
+#define MIN_ANGLE 2.5
+#define PI 3.1415
+
 using geometry_msgs::Twist;
 using namespace std;
 
@@ -37,32 +41,33 @@ FalconController::FalconController():
     nh_.param("scale_linear", l_scale_, l_scale_);
 
     //For normal operation please uncomment the line below and comment the next one.
-    vel_pub_ = nh_.advertise<Twist>("/RosAria/cmd_vel", 1);
-    //vel_pub_ = nh_.advertise<Twist>("test_topic", 1);
+    //vel_pub_ = nh_.advertise<Twist>("/RosAria/cmd_vel", 1);
+    vel_pub_ = nh_.advertise<Twist>("test_topic", 1);
     joy_sub_ = nh_.subscribe<joy::Joy>("falconJoy", 10, &FalconController::joyCallback, this);
 }
 
 void FalconController::joyCallback(const joy::Joy::ConstPtr& joy)
 {
+    //Note that x corresponds to horizontal movement of Falcon's grip
+    //          y corresponds to vertical movement 
+    //          z corresponds to back and forward movement of the grip
+    // This is convention is chosen to match human intuition. Therefore 
+    // z coord of Falcon maps to forward or backward movement of the robot 
+    // (i.e vel.linear.x)
     x = joy->axes[0];
     y = joy->axes[1];
     z = joy->axes[2];
-    
-    if (z > 0.102)
-    {    
-       vel.angular.z = 10*abs(x);
-       vel.linear.x = -20*z;
-    }
-    else if (z < 0.094)  
-    {
-       vel.angular.z = 10*abs(x);
-       vel.linear.x = 20*z;
-    }
-    else
-    {
-       vel.angular.z = 0;
-       vel.linear.x = 0;
-    }
+
+    float magnitude = sqrt(x*x + y*y + z*z);
+    float angle = acos(z/magnitude)*180/PI;
+
+    magnitude = magnitude > MIN_DISP ? magnitude : 0.0f;
+    angle = angle > MIN_ANGLE ? angle : 0.0f;	
+
+    //The robot will move if the use has moved the grip for 
+    // a movement larger than the threshold. Otherwise the robot stays still.
+    vel.angular.z = angle;
+    vel.linear.x = magnitude;
 
     cout << "Angular z = " << vel.angular.z << endl;
     cout << "Linear x = " << vel.linear.x << endl; 

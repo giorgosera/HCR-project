@@ -7,4 +7,8 @@
           DISTANCE_BACK
           ANGLE_BACK-VAL
           ANGLE_BACK
+          TURN_LEFT-VAL
+          TURN_LEFT
+          TURN_RIGHT-VAL
+          TURN_RIGHT
 ))

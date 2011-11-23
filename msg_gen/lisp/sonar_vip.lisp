@@ -26,7 +26,17 @@
     :reader angle_back
     :initarg :angle_back
     :type cl:integer
-    :initform 0))
+    :initform 0)
+   (turn_left
+    :reader turn_left
+    :initarg :turn_left
+    :type cl:float
+    :initform 0.0)
+   (turn_right
+    :reader turn_right
+    :initarg :turn_right
+    :type cl:float
+    :initform 0.0))
 )
 
 (cl:defclass sonar_vip (<sonar_vip>)
@@ -56,6 +66,16 @@
 (cl:defmethod angle_back-val ((m <sonar_vip>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader hcr_vip-msg:angle_back-val is deprecated.  Use hcr_vip-msg:angle_back instead.")
   (angle_back m))
+
+(cl:ensure-generic-function 'turn_left-val :lambda-list '(m))
+(cl:defmethod turn_left-val ((m <sonar_vip>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader hcr_vip-msg:turn_left-val is deprecated.  Use hcr_vip-msg:turn_left instead.")
+  (turn_left m))
+
+(cl:ensure-generic-function 'turn_right-val :lambda-list '(m))
+(cl:defmethod turn_right-val ((m <sonar_vip>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader hcr_vip-msg:turn_right-val is deprecated.  Use hcr_vip-msg:turn_right instead.")
+  (turn_right m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <sonar_vip>) ostream)
   "Serializes a message object of type '<sonar_vip>"
   (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'distance_front))))
@@ -88,6 +108,24 @@
     (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
     )
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'turn_left))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'turn_right))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <sonar_vip>) istream)
   "Deserializes a message object of type '<sonar_vip>"
@@ -123,6 +161,26 @@
       (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
       (cl:setf (cl:slot-value msg 'angle_back) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296))))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'turn_left) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'turn_right) (roslisp-utils:decode-double-float-bits bits)))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<sonar_vip>)))
@@ -133,22 +191,24 @@
   "hcr_vip/sonar_vip")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<sonar_vip>)))
   "Returns md5sum for a message object of type '<sonar_vip>"
-  "43494b77c31808bb5fe0752c080e064e")
+  "88e0f89c92fb21e7f26144ddd9a139a3")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'sonar_vip)))
   "Returns md5sum for a message object of type 'sonar_vip"
-  "43494b77c31808bb5fe0752c080e064e")
+  "88e0f89c92fb21e7f26144ddd9a139a3")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<sonar_vip>)))
   "Returns full string definition for message of type '<sonar_vip>"
-  (cl:format cl:nil "float64 distance_front~%int32 angle_front~%float64 distance_back~%int32 angle_back~%~%~%~%"))
+  (cl:format cl:nil "float64 distance_front~%int32 angle_front~%float64 distance_back~%int32 angle_back~%float64 turn_left~%float64 turn_right~%~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'sonar_vip)))
   "Returns full string definition for message of type 'sonar_vip"
-  (cl:format cl:nil "float64 distance_front~%int32 angle_front~%float64 distance_back~%int32 angle_back~%~%~%~%"))
+  (cl:format cl:nil "float64 distance_front~%int32 angle_front~%float64 distance_back~%int32 angle_back~%float64 turn_left~%float64 turn_right~%~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <sonar_vip>))
   (cl:+ 0
      8
      4
      8
      4
+     8
+     8
 ))
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <sonar_vip>))
   "Converts a ROS message object to a list"
@@ -157,4 +217,6 @@
     (cl:cons ':angle_front (angle_front msg))
     (cl:cons ':distance_back (distance_back msg))
     (cl:cons ':angle_back (angle_back msg))
+    (cl:cons ':turn_left (turn_left msg))
+    (cl:cons ':turn_right (turn_right msg))
 ))

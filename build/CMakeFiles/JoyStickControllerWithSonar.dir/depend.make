@@ -3,8 +3,15 @@
 
 CMakeFiles/JoyStickControllerWithSonar.dir/src/JoyStickControllerWithSonar.o: ../msg_gen/cpp/include/hcr_vip/sonar_vip.h
 CMakeFiles/JoyStickControllerWithSonar.dir/src/JoyStickControllerWithSonar.o: ../src/JoyStickControllerWithSonar.cpp
+CMakeFiles/JoyStickControllerWithSonar.dir/src/JoyStickControllerWithSonar.o: ../src/JoyStickControllerWithSonar.h
+CMakeFiles/JoyStickControllerWithSonar.dir/src/JoyStickControllerWithSonar.o: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/cpp/include/geometry_msgs/Point.h
+CMakeFiles/JoyStickControllerWithSonar.dir/src/JoyStickControllerWithSonar.o: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/cpp/include/geometry_msgs/Pose.h
+CMakeFiles/JoyStickControllerWithSonar.dir/src/JoyStickControllerWithSonar.o: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/cpp/include/geometry_msgs/PoseWithCovariance.h
+CMakeFiles/JoyStickControllerWithSonar.dir/src/JoyStickControllerWithSonar.o: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/cpp/include/geometry_msgs/Quaternion.h
 CMakeFiles/JoyStickControllerWithSonar.dir/src/JoyStickControllerWithSonar.o: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/cpp/include/geometry_msgs/Twist.h
+CMakeFiles/JoyStickControllerWithSonar.dir/src/JoyStickControllerWithSonar.o: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/cpp/include/geometry_msgs/TwistWithCovariance.h
 CMakeFiles/JoyStickControllerWithSonar.dir/src/JoyStickControllerWithSonar.o: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/cpp/include/geometry_msgs/Vector3.h
+CMakeFiles/JoyStickControllerWithSonar.dir/src/JoyStickControllerWithSonar.o: /opt/ros/electric/stacks/common_msgs/nav_msgs/msg_gen/cpp/include/nav_msgs/Odometry.h
 CMakeFiles/JoyStickControllerWithSonar.dir/src/JoyStickControllerWithSonar.o: /opt/ros/electric/stacks/common_msgs/sensor_msgs/msg_gen/cpp/include/sensor_msgs/Joy.h
 CMakeFiles/JoyStickControllerWithSonar.dir/src/JoyStickControllerWithSonar.o: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/include/ros/advertise_options.h
 CMakeFiles/JoyStickControllerWithSonar.dir/src/JoyStickControllerWithSonar.o: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/include/ros/advertise_service_options.h

@@ -90,8 +90,6 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/hcr_vip/sonar_vip.h
 ../msg_gen/cpp/include/hcr_vip/sonar_vip.h: /opt/ros/electric/stacks/diagnostics/diagnostic_updater/manifest.xml
 ../msg_gen/cpp/include/hcr_vip/sonar_vip.h: /home/robofriend/ros_workspace/teleop/joy/joy/manifest.xml
 ../msg_gen/cpp/include/hcr_vip/sonar_vip.h: /opt/ros/electric/stacks/amor-ros-pkg/ROSARIA/manifest.xml
-../msg_gen/cpp/include/hcr_vip/sonar_vip.h: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/manifest.xml
-../msg_gen/cpp/include/hcr_vip/sonar_vip.h: /opt/ros/electric/stacks/ros_tutorials/turtlesim/manifest.xml
 ../msg_gen/cpp/include/hcr_vip/sonar_vip.h: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../msg_gen/cpp/include/hcr_vip/sonar_vip.h: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../msg_gen/cpp/include/hcr_vip/sonar_vip.h: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
@@ -108,9 +106,6 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/hcr_vip/sonar_vip.h
 ../msg_gen/cpp/include/hcr_vip/sonar_vip.h: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/srv_gen/generated
 ../msg_gen/cpp/include/hcr_vip/sonar_vip.h: /home/robofriend/ros_workspace/teleop/joy/joy/msg_gen/generated
 ../msg_gen/cpp/include/hcr_vip/sonar_vip.h: /opt/ros/electric/stacks/amor-ros-pkg/ROSARIA/msg_gen/generated
-../msg_gen/cpp/include/hcr_vip/sonar_vip.h: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/generated
-../msg_gen/cpp/include/hcr_vip/sonar_vip.h: /opt/ros/electric/stacks/ros_tutorials/turtlesim/msg_gen/generated
-../msg_gen/cpp/include/hcr_vip/sonar_vip.h: /opt/ros/electric/stacks/ros_tutorials/turtlesim/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/hcr_vip/sonar_vip.h"
 	/opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/scripts/genmsg_cpp.py /home/robofriend/ros_workspace/hcr_vip/msg/sonar_vip.msg

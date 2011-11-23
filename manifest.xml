@@ -16,7 +16,7 @@
   <depend package="nav_msgs"/>
   <depend package="geometry_msgs"/>
   <depend package="sensor_msgs"/>
-  <depend package="turtlesim"/>
+  <depend package="nav_msgs"/>
 </package>
 
 

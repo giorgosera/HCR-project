@@ -95,8 +95,6 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/hcr_vip/msg/__init__.py
 ../src/hcr_vip/msg/_sonar_vip.py: /opt/ros/electric/stacks/diagnostics/diagnostic_updater/manifest.xml
 ../src/hcr_vip/msg/_sonar_vip.py: /home/robofriend/ros_workspace/teleop/joy/joy/manifest.xml
 ../src/hcr_vip/msg/_sonar_vip.py: /opt/ros/electric/stacks/amor-ros-pkg/ROSARIA/manifest.xml
-../src/hcr_vip/msg/_sonar_vip.py: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/manifest.xml
-../src/hcr_vip/msg/_sonar_vip.py: /opt/ros/electric/stacks/ros_tutorials/turtlesim/manifest.xml
 ../src/hcr_vip/msg/_sonar_vip.py: /opt/ros/electric/stacks/ros_comm/messages/std_msgs/msg_gen/generated
 ../src/hcr_vip/msg/_sonar_vip.py: /opt/ros/electric/stacks/ros_comm/messages/rosgraph_msgs/msg_gen/generated
 ../src/hcr_vip/msg/_sonar_vip.py: /opt/ros/electric/stacks/ros_comm/clients/cpp/roscpp/msg_gen/generated
@@ -113,9 +111,6 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/hcr_vip/msg/__init__.py
 ../src/hcr_vip/msg/_sonar_vip.py: /opt/ros/electric/stacks/common_msgs/diagnostic_msgs/srv_gen/generated
 ../src/hcr_vip/msg/_sonar_vip.py: /home/robofriend/ros_workspace/teleop/joy/joy/msg_gen/generated
 ../src/hcr_vip/msg/_sonar_vip.py: /opt/ros/electric/stacks/amor-ros-pkg/ROSARIA/msg_gen/generated
-../src/hcr_vip/msg/_sonar_vip.py: /opt/ros/electric/stacks/ros_comm/messages/std_srvs/srv_gen/generated
-../src/hcr_vip/msg/_sonar_vip.py: /opt/ros/electric/stacks/ros_tutorials/turtlesim/msg_gen/generated
-../src/hcr_vip/msg/_sonar_vip.py: /opt/ros/electric/stacks/ros_tutorials/turtlesim/srv_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/hcr_vip/msg/_sonar_vip.py"
 	/opt/ros/electric/stacks/ros_comm/clients/rospy/scripts/genmsg_py.py --noinitpy /home/robofriend/ros_workspace/hcr_vip/msg/sonar_vip.msg
