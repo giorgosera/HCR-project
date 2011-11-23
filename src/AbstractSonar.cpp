@@ -1,4 +1,4 @@
-#include "JoyStickControllerWithSonar.h"
+#include "AbstractSonar.h"
 
 /*
 void quit(int sig)
@@ -23,9 +23,9 @@ JoysticSonar::JoysticSonar():
 
   vel_pub_ = nh_.advertise<Twist>("/RosAria/cmd_vel", 1);
 
-  joy_sub_ = nh_.subscribe<Twist>("joy", 1, &JoysticSonar::joyCallback, this);
+  joy_sub_ = nh_.subscribe<Twist>("Sonar_Falcon", 1, &JoysticSonar::joyCallback, this);
 
-  speed_sub_=speed_.subscribe<Odometry>("RosAria/pose",10, &JoysticSonar::speedCallback,this);
+  speed_sub_=speed_.subscribe<Odometry>("RosAria/pose",1, &JoysticSonar::speedCallback,this);
 
   sonar_sub_ = sonar_.subscribe<hcr_vip::sonar_vip>("sonar_vip",1, &JoysticSonar::sonarCallback,this); 	
 //signal(SIGINT,quit);
@@ -33,17 +33,17 @@ JoysticSonar::JoysticSonar():
 }
 
 void JoysticSonar::speedCallback(const Odometry::ConstPtr& speed){
-if ((speed->twist.twist.linear.x >= 0.2) && (speed->twist.twist.linear.x <= -0.2)){
-	front_threshold = 0.6;
+if ((speed->twist.twist.linear.x >= 0.2) || (speed->twist.twist.linear.x <= -0.2)){
+	front_threshold = 0.60;
 }else{
-	front_threshold = 0.4;
+	front_threshold = 0.40;
 }
 
 
-if ((speed->twist.twist.angular.x >= 0.2) && (speed->twist.twist.angular.z <= -0.2)){
-	front_threshold = 0.6;
+if ((speed->twist.twist.angular.x >= 0.2) || (speed->twist.twist.angular.z <= -0.2)){
+	front_threshold = 0.60;
 }else{
-	front_threshold = 0.4;
+	front_threshold = 0.40;
 }
 
 }
@@ -57,27 +57,15 @@ sonar_values.distance_back = sonar->distance_back;
 sonar_values.angle_back = sonar->angle_back;
 sonar_values.turn_right = sonar->turn_right;
 sonar_values.turn_left = sonar->turn_left;
-//cout<<"ala3e"<< vel.linear.x<<endl;
+
 	checkDistance(vel.linear.x, vel.angular.z);
 	if (!ok){
 		STOP();
 	}
-	//checkDistance(previous.linear.x);
-	//if((vel.linear.x == 0) && (ok == true)){
-	//	vel.linear.x = previous.linear.x;		
-
-	//}
-	//elseif((vel.linear.x !=0) 
-	//{
-		
-	//}
-
-	
 	else if(ok){	
-	//errorMsg(10);
-	vel_pub_.publish(vel);
+		vel_pub_.publish(vel);
 	}
-	ok = false;
+ok = false;
 }
 
 void JoysticSonar::errorMsg(int error){
@@ -166,7 +154,6 @@ void JoysticSonar::turn_Left(){
 }
 
 void JoysticSonar::STOP(){
-	//previous.linear.x = vel.linear.x;
 	vel.angular.z = 0.0;
 	vel.linear.x = 0.0;
 	vel_pub_.publish(vel);
@@ -174,14 +161,12 @@ void JoysticSonar::STOP(){
 
 void JoysticSonar::joyCallback(const Twist::ConstPtr& joy)
 {
-//float linear = 10 * joy->axes[linear_];
-//float angular = 10 * joy->axes[angular_];
+//float linear = 1 * joy->axes[linear_];
+//float angular = 1 * joy->axes[angular_];
 
-//	vel.angular.z = angular;
-//	vel.linear.x = linear;
+	vel.angular.z = joy->angular.z;//(joy->buttons[7] == 1) ? angular : angular*0.4;
+	vel.linear.x = joy->linear.x;//(joy->buttons[7] == 1) ? linear: linear*0.4;
 
-	vel.angular.z = angular.z;
-	vel.linear.x = joy.linear.x;
 }
 
 

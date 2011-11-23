@@ -1,3 +1,4 @@
+/home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/AbstractSonar.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/FalconController.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/JoyStickController.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/JoyStickControllerWithSonar.dir

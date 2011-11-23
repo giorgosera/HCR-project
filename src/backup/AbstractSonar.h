@@ -16,7 +16,7 @@ public:
 
 private:
 	void STOP();
-	void joyCallback(const Twist::ConstPtr& joy);
+	void joyCallback(const sensor_msgs::Joy::ConstPtr& joy);
 	void sonarCallback(const hcr_vip::sonar_vip::ConstPtr& sonar);
 	void speedCallback(const Odometry::ConstPtr& speed);
 	void checkDistance(float linear, float angular);

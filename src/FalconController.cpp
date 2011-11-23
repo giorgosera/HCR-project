@@ -5,8 +5,9 @@
 #include <termios.h>
 #include <math.h>
 
-#define MIN_DISP 0.099  
-#define MIN_ANGLE 2.5
+#define MIN_DISP 0.7  
+#define MIN_ANGLE 1.5
+#define NORM_FACTOR 1.0f/6.25f
 #define PI 3.1415
 
 using geometry_msgs::Twist;
@@ -42,7 +43,8 @@ FalconController::FalconController():
 
     //For normal operation please uncomment the line below and comment the next one.
     //vel_pub_ = nh_.advertise<Twist>("/RosAria/cmd_vel", 1);
-    vel_pub_ = nh_.advertise<Twist>("test_topic", 1);
+    vel_pub_ = nh_.advertise<Twist>("Sonar_Falcon", 1);
+    //vel_pub_ = nh_.advertise<Twist>("test_topic", 1);
     joy_sub_ = nh_.subscribe<joy::Joy>("falconJoy", 10, &FalconController::joyCallback, this);
 }
 
@@ -54,20 +56,18 @@ void FalconController::joyCallback(const joy::Joy::ConstPtr& joy)
     // This is convention is chosen to match human intuition. Therefore 
     // z coord of Falcon maps to forward or backward movement of the robot 
     // (i.e vel.linear.x)
-    x = joy->axes[0];
-    y = joy->axes[1];
-    z = joy->axes[2];
-
+    x = 100*joy->axes[0];
+    y = 100*joy->axes[1];
+    z = 100*(0.1f - joy->axes[2]);
     float magnitude = sqrt(x*x + y*y + z*z);
-    float angle = acos(z/magnitude)*180/PI;
-
-    magnitude = magnitude > MIN_DISP ? magnitude : 0.0f;
-    angle = angle > MIN_ANGLE ? angle : 0.0f;	
+    float angle = acos(z/magnitude);
+    cout << z << endl;
+    angle = angle > MIN_ANGLE ? angle : 0.0f;
 
     //The robot will move if the use has moved the grip for 
     // a movement larger than the threshold. Otherwise the robot stays still.
     vel.angular.z = angle;
-    vel.linear.x = magnitude;
+    vel.linear.x = abs(z) > MIN_DISP ? z*NORM_FACTOR : 0.0f;
 
     cout << "Angular z = " << vel.angular.z << endl;
     cout << "Linear x = " << vel.linear.x << endl; 
@@ -77,7 +77,7 @@ void FalconController::joyCallback(const joy::Joy::ConstPtr& joy)
 
 
 int main(int argc, char** argv)
-{	
+{
   ros::init(argc, argv, "FalconController");
   FalconController falconController;
 

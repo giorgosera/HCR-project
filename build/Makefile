@@ -99,6 +99,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named AbstractSonar
+
+# Build rule for target.
+AbstractSonar: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 AbstractSonar
+.PHONY : AbstractSonar
+
+# fast build rule for target.
+AbstractSonar/fast:
+	$(MAKE) -f CMakeFiles/AbstractSonar.dir/build.make CMakeFiles/AbstractSonar.dir/build
+.PHONY : AbstractSonar/fast
+
+#=============================================================================
 # Target rules for targets named FalconController
 
 # Build rule for target.
@@ -398,6 +411,21 @@ tests/fast:
 .PHONY : tests/fast
 
 # target to build an object file
+src/AbstractSonar.o:
+	$(MAKE) -f CMakeFiles/AbstractSonar.dir/build.make CMakeFiles/AbstractSonar.dir/src/AbstractSonar.o
+.PHONY : src/AbstractSonar.o
+
+# target to preprocess a source file
+src/AbstractSonar.i:
+	$(MAKE) -f CMakeFiles/AbstractSonar.dir/build.make CMakeFiles/AbstractSonar.dir/src/AbstractSonar.i
+.PHONY : src/AbstractSonar.i
+
+# target to generate assembly for a file
+src/AbstractSonar.s:
+	$(MAKE) -f CMakeFiles/AbstractSonar.dir/build.make CMakeFiles/AbstractSonar.dir/src/AbstractSonar.s
+.PHONY : src/AbstractSonar.s
+
+# target to build an object file
 src/FalconController.o:
 	$(MAKE) -f CMakeFiles/FalconController.dir/build.make CMakeFiles/FalconController.dir/src/FalconController.o
 .PHONY : src/FalconController.o
@@ -478,6 +506,7 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... AbstractSonar"
 	@echo "... FalconController"
 	@echo "... JoyStickController"
 	@echo "... JoyStickControllerWithSonar"
@@ -503,6 +532,9 @@ help:
 	@echo "... test-results"
 	@echo "... test-results-run"
 	@echo "... tests"
+	@echo "... src/AbstractSonar.o"
+	@echo "... src/AbstractSonar.i"
+	@echo "... src/AbstractSonar.s"
 	@echo "... src/FalconController.o"
 	@echo "... src/FalconController.i"
 	@echo "... src/FalconController.s"

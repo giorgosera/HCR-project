@@ -53,6 +53,7 @@ SET(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 SET(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/AbstractSonar.dir/DependInfo.cmake"
   "CMakeFiles/FalconController.dir/DependInfo.cmake"
   "CMakeFiles/JoyStickController.dir/DependInfo.cmake"
   "CMakeFiles/JoyStickControllerWithSonar.dir/DependInfo.cmake"

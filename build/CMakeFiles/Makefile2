@@ -53,13 +53,48 @@ CMAKE_SOURCE_DIR = /home/robofriend/ros_workspace/hcr_vip
 CMAKE_BINARY_DIR = /home/robofriend/ros_workspace/hcr_vip/build
 
 #=============================================================================
+# Target rules for target CMakeFiles/AbstractSonar.dir
+
+# All Build rule for target.
+CMakeFiles/AbstractSonar.dir/all: CMakeFiles/rosbuild_precompile.dir/all
+	$(MAKE) -f CMakeFiles/AbstractSonar.dir/build.make CMakeFiles/AbstractSonar.dir/depend
+	$(MAKE) -f CMakeFiles/AbstractSonar.dir/build.make CMakeFiles/AbstractSonar.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  1
+	@echo "Built target AbstractSonar"
+.PHONY : CMakeFiles/AbstractSonar.dir/all
+
+# Include target in all.
+all: CMakeFiles/AbstractSonar.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/AbstractSonar.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles 5
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/AbstractSonar.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles 0
+.PHONY : CMakeFiles/AbstractSonar.dir/rule
+
+# Convenience name for target.
+AbstractSonar: CMakeFiles/AbstractSonar.dir/rule
+.PHONY : AbstractSonar
+
+# clean rule for target.
+CMakeFiles/AbstractSonar.dir/clean:
+	$(MAKE) -f CMakeFiles/AbstractSonar.dir/build.make CMakeFiles/AbstractSonar.dir/clean
+.PHONY : CMakeFiles/AbstractSonar.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/AbstractSonar.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/FalconController.dir
 
 # All Build rule for target.
 CMakeFiles/FalconController.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/FalconController.dir/build.make CMakeFiles/FalconController.dir/depend
 	$(MAKE) -f CMakeFiles/FalconController.dir/build.make CMakeFiles/FalconController.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  2
 	@echo "Built target FalconController"
 .PHONY : CMakeFiles/FalconController.dir/all
 
@@ -94,7 +129,7 @@ clean: CMakeFiles/FalconController.dir/clean
 CMakeFiles/JoyStickController.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/JoyStickController.dir/build.make CMakeFiles/JoyStickController.dir/depend
 	$(MAKE) -f CMakeFiles/JoyStickController.dir/build.make CMakeFiles/JoyStickController.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  2
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  3
 	@echo "Built target JoyStickController"
 .PHONY : CMakeFiles/JoyStickController.dir/all
 
@@ -129,7 +164,7 @@ clean: CMakeFiles/JoyStickController.dir/clean
 CMakeFiles/JoyStickControllerWithSonar.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/JoyStickControllerWithSonar.dir/build.make CMakeFiles/JoyStickControllerWithSonar.dir/depend
 	$(MAKE) -f CMakeFiles/JoyStickControllerWithSonar.dir/build.make CMakeFiles/JoyStickControllerWithSonar.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  3
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  4
 	@echo "Built target JoyStickControllerWithSonar"
 .PHONY : CMakeFiles/JoyStickControllerWithSonar.dir/all
 
@@ -164,7 +199,7 @@ clean: CMakeFiles/JoyStickControllerWithSonar.dir/clean
 CMakeFiles/KeyBoardController.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/KeyBoardController.dir/build.make CMakeFiles/KeyBoardController.dir/depend
 	$(MAKE) -f CMakeFiles/KeyBoardController.dir/build.make CMakeFiles/KeyBoardController.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  4
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  5
 	@echo "Built target KeyBoardController"
 .PHONY : CMakeFiles/KeyBoardController.dir/all
 
@@ -199,7 +234,7 @@ clean: CMakeFiles/KeyBoardController.dir/clean
 CMakeFiles/ROSBUILD_genmsg_cpp.dir/all: CMakeFiles/rosbuild_premsgsrvgen.dir/all
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_cpp.dir/build.make CMakeFiles/ROSBUILD_genmsg_cpp.dir/depend
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_cpp.dir/build.make CMakeFiles/ROSBUILD_genmsg_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  5
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  6
 	@echo "Built target ROSBUILD_genmsg_cpp"
 .PHONY : CMakeFiles/ROSBUILD_genmsg_cpp.dir/all
 
@@ -230,7 +265,7 @@ clean: CMakeFiles/ROSBUILD_genmsg_cpp.dir/clean
 CMakeFiles/ROSBUILD_genmsg_lisp.dir/all: CMakeFiles/rosbuild_premsgsrvgen.dir/all
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_lisp.dir/build.make CMakeFiles/ROSBUILD_genmsg_lisp.dir/depend
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_lisp.dir/build.make CMakeFiles/ROSBUILD_genmsg_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  6
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  7
 	@echo "Built target ROSBUILD_genmsg_lisp"
 .PHONY : CMakeFiles/ROSBUILD_genmsg_lisp.dir/all
 
@@ -261,7 +296,7 @@ clean: CMakeFiles/ROSBUILD_genmsg_lisp.dir/clean
 CMakeFiles/ROSBUILD_genmsg_py.dir/all: CMakeFiles/rosbuild_premsgsrvgen.dir/all
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_py.dir/build.make CMakeFiles/ROSBUILD_genmsg_py.dir/depend
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_py.dir/build.make CMakeFiles/ROSBUILD_genmsg_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  7 8
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  8 9
 	@echo "Built target ROSBUILD_genmsg_py"
 .PHONY : CMakeFiles/ROSBUILD_genmsg_py.dir/all
 
@@ -354,7 +389,7 @@ clean: CMakeFiles/ROSBUILD_gensrv_lisp.dir/clean
 CMakeFiles/Sonar.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/Sonar.dir/build.make CMakeFiles/Sonar.dir/depend
 	$(MAKE) -f CMakeFiles/Sonar.dir/build.make CMakeFiles/Sonar.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  9
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  10
 	@echo "Built target Sonar"
 .PHONY : CMakeFiles/Sonar.dir/all
 

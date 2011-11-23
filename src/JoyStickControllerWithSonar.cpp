@@ -33,17 +33,17 @@ JoysticSonar::JoysticSonar():
 }
 
 void JoysticSonar::speedCallback(const Odometry::ConstPtr& speed){
-if ((speed->twist.twist.linear.x >= 0.2) && (speed->twist.twist.linear.x <= -0.2)){
-	front_threshold = 0.6;
+if ((speed->twist.twist.linear.x >= 0.2) || (speed->twist.twist.linear.x <= -0.2)){
+	front_threshold = 0.60;
 }else{
-	front_threshold = 0.4;
+	front_threshold = 0.40;
 }
 
 
-if ((speed->twist.twist.angular.x >= 0.2) && (speed->twist.twist.angular.z <= -0.2)){
-	front_threshold = 0.6;
+if ((speed->twist.twist.angular.x >= 0.2) || (speed->twist.twist.angular.z <= -0.2)){
+	front_threshold = 0.60;
 }else{
-	front_threshold = 0.4;
+	front_threshold = 0.40;
 }
 
 }
@@ -65,7 +65,7 @@ sonar_values.turn_left = sonar->turn_left;
 	else if(ok){	
 		vel_pub_.publish(vel);
 	}
-	ok = false;
+ok = false;
 }
 
 void JoysticSonar::errorMsg(int error){
@@ -161,11 +161,11 @@ void JoysticSonar::STOP(){
 
 void JoysticSonar::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
 {
-float linear = 10 * joy->axes[linear_];
-float angular = 10 * joy->axes[angular_];
+float linear = 1 * joy->axes[linear_];
+float angular = 1 * joy->axes[angular_];
 
-	vel.angular.z = angular;
-	vel.linear.x = linear;
+	vel.angular.z = (joy->buttons[7] == 1) ? angular : angular*0.4;
+	vel.linear.x = (joy->buttons[7] == 1) ? linear: linear*0.4;
 
 }
 

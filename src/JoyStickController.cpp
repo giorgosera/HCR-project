@@ -61,14 +61,26 @@ void TeleopThe0::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
   //vel.angular.z = a_scale_*joy->axes[angular_];
   //vel.linear.x = l_scale_*joy->axes[linear_];
 
-//if (joy->buttons[2] == 1){
-vel.angular.z = 10 * joy->axes[0];
-vel.linear.x = 10 * joy->axes[1];
-//}
-//else{
-//vel.angular.z = joy->axes[0];
-//vel.linear.x = joy->axes[1];
-//}
+if (joy->buttons[4] == 1){
+vel.angular.z = 0.9 * joy->axes[0];
+vel.linear.x = 0.9 * joy->axes[1];
+}
+else if (joy->buttons[5] == 1){
+vel.angular.z = 0.7 * joy->axes[0];
+vel.linear.x = 0.7 * joy->axes[1];
+}
+else if (joy->buttons[6] == 1){
+vel.angular.z = 0.3 * joy->axes[0];
+vel.linear.x = 0.3 * joy->axes[1];
+}
+else if (joy->buttons[7] == 1){
+vel.angular.z = 0.6 * joy->axes[0];
+vel.linear.x = 0.6 * joy->axes[1];
+}
+else{
+vel.angular.z = 0.5 * joy->axes[0];
+vel.linear.x = 0.5 * joy->axes[1];
+}
 	
 
 
