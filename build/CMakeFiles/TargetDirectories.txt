@@ -10,6 +10,7 @@
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/ROSBUILD_gensrv_lisp.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/Sonar.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/clean-test-results.dir
+/home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/laser.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/rosbuild_precompile.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/rosbuild_premsgsrvgen.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/rospack_genmsg.dir

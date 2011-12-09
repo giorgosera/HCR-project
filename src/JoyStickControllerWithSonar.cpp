@@ -108,7 +108,8 @@ void JoysticSonar::checkDistance(float linear, float angular){
 		errorMsg(1);
 		return ;
 	}
-	else if (angular < 0){
+	
+	if (angular < 0){
 		turn_Right();
 		errorMsg(2);
 		return ;

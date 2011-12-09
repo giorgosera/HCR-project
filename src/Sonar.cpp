@@ -6,6 +6,7 @@
 #include <termios.h>
 #include "sensor_msgs/PointCloud.h"
 #include "math.h"
+#include "string.h"
 
 #define PI 3.14159265
 using geometry_msgs::Twist;
@@ -68,6 +69,8 @@ double min_left =100;
 double min_right = 100;
 int index_front;
 int index_back;
+string turn_left_sensor;
+string turn_right_sensor;
 
 
 for(int i=1; i<7; i++){
@@ -115,9 +118,11 @@ temp[1]=  pow(pointCloud->points[8].x,2) + pow(pointCloud->points[8].y,2);
  
 if (temp[0] > temp[1]){
 min_left = temp[1];
+turn_left_sensor = "right";
 }
 else{
 min_left = temp[0];
+turn_left_sensor = "left";
 }
 
 temp[0]=  pow(pointCloud->points[7].x,2) + pow(pointCloud->points[7].y,2);
@@ -125,9 +130,11 @@ temp[1]=  pow(pointCloud->points[15].x,2) + pow(pointCloud->points[15].y,2);
  
 if (temp[0] > temp[1]){
 min_right = temp[1];
+turn_right_sensor = "left";
 }
 else{
 min_right = temp[0];
+turn_right_sensor = "right";
 }
 
 
@@ -140,11 +147,15 @@ sonar_values.distance_back = min_back;
 sonar_values.angle_back = angle_back;
 sonar_values.turn_left = min_left;
 sonar_values.turn_right = min_right;
-
+sonar_values.turn_left_sensor = turn_left_sensor;
+sonar_values.turn_right_sensor = turn_right_sensor ;
 cout<<"Sensors: "<<sensors<<endl;
 cout<<"Front obstacle at: "<<min_front<< "  "<<angle_front<<endl;
 cout<<"Back obstacle at: "<<min_back<< "  "<<angle_back<<endl;
-cout<< "Left obstacle at: "<<min_left<<"   Right obstacle at: "<<min_right<<endl;
+cout<< "Left obstacle at: "<<min_left<<"  sensor: "<<turn_left_sensor<<endl;   
+cout<< "Right obstacle at: "<<min_right<< "  sesnor: "<<turn_right_sensor<<endl;
+
+
 /*
 for(int i=0; i<sensors; i++){
 

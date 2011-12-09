@@ -20,7 +20,7 @@ termios.h
 math.h
 -
 
-/home/robofriend/ros_workspace/teleop/joy/joy/msg_gen/cpp/include/joy/Joy.h
+/home/robofriend/ros_workspace/trunk/joy/msg_gen/cpp/include/joy/Joy.h
 string
 -
 vector
@@ -30,17 +30,17 @@ map
 ostream
 -
 ros/serialization.h
-/home/robofriend/ros_workspace/teleop/joy/joy/msg_gen/cpp/include/joy/ros/serialization.h
+/home/robofriend/ros_workspace/trunk/joy/msg_gen/cpp/include/joy/ros/serialization.h
 ros/builtin_message_traits.h
-/home/robofriend/ros_workspace/teleop/joy/joy/msg_gen/cpp/include/joy/ros/builtin_message_traits.h
+/home/robofriend/ros_workspace/trunk/joy/msg_gen/cpp/include/joy/ros/builtin_message_traits.h
 ros/message_operations.h
-/home/robofriend/ros_workspace/teleop/joy/joy/msg_gen/cpp/include/joy/ros/message_operations.h
+/home/robofriend/ros_workspace/trunk/joy/msg_gen/cpp/include/joy/ros/message_operations.h
 ros/time.h
-/home/robofriend/ros_workspace/teleop/joy/joy/msg_gen/cpp/include/joy/ros/time.h
+/home/robofriend/ros_workspace/trunk/joy/msg_gen/cpp/include/joy/ros/time.h
 ros/macros.h
-/home/robofriend/ros_workspace/teleop/joy/joy/msg_gen/cpp/include/joy/ros/macros.h
+/home/robofriend/ros_workspace/trunk/joy/msg_gen/cpp/include/joy/ros/macros.h
 ros/assert.h
-/home/robofriend/ros_workspace/teleop/joy/joy/msg_gen/cpp/include/joy/ros/assert.h
+/home/robofriend/ros_workspace/trunk/joy/msg_gen/cpp/include/joy/ros/assert.h
 
 /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/cpp/include/geometry_msgs/Twist.h
 string

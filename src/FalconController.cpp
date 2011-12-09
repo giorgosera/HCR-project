@@ -6,7 +6,7 @@
 #include <math.h>
 
 #define MIN_DISP 0.7  
-#define MIN_ANGLE 1.5
+#define MIN_ANGLE 0.5
 #define NORM_FACTOR 1.0f/6.25f
 #define PI 3.1415
 
@@ -22,13 +22,14 @@ public:
 private:
     void joyCallback(const joy::Joy::ConstPtr& joy);
     ros::NodeHandle nh_;
+    ros::NodeHandle nh2_;
 
     int linear_, angular_;
     double l_scale_, a_scale_;
-    ros::Publisher vel_pub_;
+    ros::Publisher vel_pub_, force_pub_;
     ros::Subscriber joy_sub_;
     Twist vel;
-    double x,y,z;  
+    double x,y,z;
 };
 
 FalconController::FalconController():
@@ -43,8 +44,8 @@ FalconController::FalconController():
 
     //For normal operation please uncomment the line below and comment the next one.
     //vel_pub_ = nh_.advertise<Twist>("/RosAria/cmd_vel", 1);
-    vel_pub_ = nh_.advertise<Twist>("Sonar_Falcon", 1);
-    //vel_pub_ = nh_.advertise<Twist>("test_topic", 1);
+    //vel_pub_ = nh_.advertise<Twist>("Sonar_Falcon", 1);
+    vel_pub_ = nh_.advertise<Twist>("test_topic", 1);
     joy_sub_ = nh_.subscribe<joy::Joy>("falconJoy", 10, &FalconController::joyCallback, this);
 }
 
@@ -56,22 +57,23 @@ void FalconController::joyCallback(const joy::Joy::ConstPtr& joy)
     // This is convention is chosen to match human intuition. Therefore 
     // z coord of Falcon maps to forward or backward movement of the robot 
     // (i.e vel.linear.x)
-    x = 100*joy->axes[0];
-    y = 100*joy->axes[1];
-    z = 100*(0.1f - joy->axes[2]);
-    float magnitude = sqrt(x*x + y*y + z*z);
-    float angle = acos(z/magnitude);
-    cout << z << endl;
-    angle = angle > MIN_ANGLE ? angle : 0.0f;
+    x = joy->axes[0];
+    y = joy->axes[1];
+    z = (0.1f- joy->axes[2]);
+
+    //float zoffset = (joy->axes[2] - 0.074);
+    float zoffset = (joy->axes[2] + 1.074);
+
+    float angle = atan(x/(zoffset))*180/PI;
 
     //The robot will move if the use has moved the grip for 
     // a movement larger than the threshold. Otherwise the robot stays still.
-    vel.angular.z = angle;
-    vel.linear.x = abs(z) > MIN_DISP ? z*NORM_FACTOR : 0.0f;
+    vel.angular.z = abs(angle) > MIN_ANGLE ? -angle : 0.0f;
+    vel.linear.x = 100*abs(z) > MIN_DISP ? 100*z*NORM_FACTOR : 0.0f;
 
     cout << "Angular z = " << vel.angular.z << endl;
     cout << "Linear x = " << vel.linear.x << endl; 
-
+    
     vel_pub_.publish(vel);
 }
 

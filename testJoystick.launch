@@ -1,0 +1,9 @@
+<launch>
+  <group>
+ <node name="RosAria" pkg="ROSARIA" type="RosAria" />
+	 <param name="port" value="/dev/ttyUSB0" />
+   <node name="Sonar" pkg="hcr_vip" type="Sonar" />
+   <node name="JoystickController" pkg="hcr_vip" type="JoyStickControllerWithSonar" />
+  </group>
+
+</launch>

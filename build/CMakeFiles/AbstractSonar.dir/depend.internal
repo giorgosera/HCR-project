@@ -4,7 +4,7 @@
 CMakeFiles/AbstractSonar.dir/src/AbstractSonar.o
  ../msg_gen/cpp/include/hcr_vip/sonar_vip.h
  /home/robofriend/ros_workspace/hcr_vip/src/AbstractSonar.cpp
- /home/robofriend/ros_workspace/hcr_vip/src/JoyStickControllerWithSonar.h
+ /home/robofriend/ros_workspace/hcr_vip/src/AbstractSonar.h
  /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/cpp/include/geometry_msgs/Point.h
  /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/cpp/include/geometry_msgs/Pose.h
  /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/cpp/include/geometry_msgs/PoseWithCovariance.h

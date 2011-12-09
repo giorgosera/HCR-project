@@ -45,6 +45,8 @@ sensor_msgs/PointCloud.h
 /home/robofriend/ros_workspace/hcr_vip/src/sensor_msgs/PointCloud.h
 math.h
 /home/robofriend/ros_workspace/hcr_vip/src/math.h
+string.h
+/home/robofriend/ros_workspace/hcr_vip/src/string.h
 
 /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/cpp/include/geometry_msgs/Point32.h
 string

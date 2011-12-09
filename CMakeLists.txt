@@ -33,7 +33,7 @@ rosbuild_add_executable(JoyStickController src/JoyStickController.cpp)
 rosbuild_add_executable(JoyStickControllerWithSonar src/JoyStickControllerWithSonar.cpp)
 rosbuild_add_executable(FalconController src/FalconController.cpp)
 rosbuild_add_executable(Sonar src/Sonar.cpp)
-
+rosbuild_add_executable(laser src/laser.cpp)
 rosbuild_add_executable(AbstractSonar src/AbstractSonar.cpp)
 
 

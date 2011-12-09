@@ -255,6 +255,19 @@ clean-test-results/fast:
 .PHONY : clean-test-results/fast
 
 #=============================================================================
+# Target rules for targets named laser
+
+# Build rule for target.
+laser: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 laser
+.PHONY : laser
+
+# fast build rule for target.
+laser/fast:
+	$(MAKE) -f CMakeFiles/laser.dir/build.make CMakeFiles/laser.dir/build
+.PHONY : laser/fast
+
+#=============================================================================
 # Target rules for targets named rosbuild_precompile
 
 # Build rule for target.
@@ -500,6 +513,21 @@ src/Sonar.s:
 	$(MAKE) -f CMakeFiles/Sonar.dir/build.make CMakeFiles/Sonar.dir/src/Sonar.s
 .PHONY : src/Sonar.s
 
+# target to build an object file
+src/laser.o:
+	$(MAKE) -f CMakeFiles/laser.dir/build.make CMakeFiles/laser.dir/src/laser.o
+.PHONY : src/laser.o
+
+# target to preprocess a source file
+src/laser.i:
+	$(MAKE) -f CMakeFiles/laser.dir/build.make CMakeFiles/laser.dir/src/laser.i
+.PHONY : src/laser.i
+
+# target to generate assembly for a file
+src/laser.s:
+	$(MAKE) -f CMakeFiles/laser.dir/build.make CMakeFiles/laser.dir/src/laser.s
+.PHONY : src/laser.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -519,6 +547,7 @@ help:
 	@echo "... Sonar"
 	@echo "... clean-test-results"
 	@echo "... edit_cache"
+	@echo "... laser"
 	@echo "... rebuild_cache"
 	@echo "... rosbuild_precompile"
 	@echo "... rosbuild_premsgsrvgen"
@@ -550,6 +579,9 @@ help:
 	@echo "... src/Sonar.o"
 	@echo "... src/Sonar.i"
 	@echo "... src/Sonar.s"
+	@echo "... src/laser.o"
+	@echo "... src/laser.i"
+	@echo "... src/laser.s"
 .PHONY : help
 
 

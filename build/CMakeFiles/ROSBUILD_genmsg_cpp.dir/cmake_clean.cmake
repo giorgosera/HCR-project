@@ -3,6 +3,7 @@ FILE(REMOVE_RECURSE
   "../msg_gen"
   "../msg_gen"
   "CMakeFiles/ROSBUILD_genmsg_cpp"
+  "../msg_gen/cpp/include/hcr_vip/laser_vip.h"
   "../msg_gen/cpp/include/hcr_vip/sonar_vip.h"
 )
 

@@ -29,10 +29,10 @@ ros/assert.h
 ../msg_gen/cpp/include/hcr_vip/ros/assert.h
 
 /home/robofriend/ros_workspace/hcr_vip/src/AbstractSonar.cpp
-JoyStickControllerWithSonar.h
-/home/robofriend/ros_workspace/hcr_vip/src/JoyStickControllerWithSonar.h
+AbstractSonar.h
+/home/robofriend/ros_workspace/hcr_vip/src/AbstractSonar.h
 
-/home/robofriend/ros_workspace/hcr_vip/src/JoyStickControllerWithSonar.h
+/home/robofriend/ros_workspace/hcr_vip/src/AbstractSonar.h
 ros/ros.h
 -
 sensor_msgs/Joy.h

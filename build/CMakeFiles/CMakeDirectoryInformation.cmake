@@ -18,7 +18,7 @@ SET(CMAKE_C_INCLUDE_PATH
   "/opt/ros/electric/stacks/geometry/tf/include"
   "/opt/ros/electric/stacks/geometry/tf/msg_gen/cpp/include"
   "/opt/ros/electric/stacks/geometry/tf/srv_gen/cpp/include"
-  "/home/robofriend/ros_workspace/teleop/joy/joy/msg_gen/cpp/include"
+  "/home/robofriend/ros_workspace/trunk/joy/msg_gen/cpp/include"
   "/opt/ros/electric/stacks/diagnostics/diagnostic_updater/include"
   "/opt/ros/electric/stacks/common_msgs/diagnostic_msgs/msg_gen/cpp/include"
   "/opt/ros/electric/stacks/common_msgs/diagnostic_msgs/srv_gen/cpp/include"

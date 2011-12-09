@@ -3,7 +3,7 @@
 
 CMakeFiles/AbstractSonar.dir/src/AbstractSonar.o: ../msg_gen/cpp/include/hcr_vip/sonar_vip.h
 CMakeFiles/AbstractSonar.dir/src/AbstractSonar.o: ../src/AbstractSonar.cpp
-CMakeFiles/AbstractSonar.dir/src/AbstractSonar.o: ../src/JoyStickControllerWithSonar.h
+CMakeFiles/AbstractSonar.dir/src/AbstractSonar.o: ../src/AbstractSonar.h
 CMakeFiles/AbstractSonar.dir/src/AbstractSonar.o: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/cpp/include/geometry_msgs/Point.h
 CMakeFiles/AbstractSonar.dir/src/AbstractSonar.o: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/cpp/include/geometry_msgs/Pose.h
 CMakeFiles/AbstractSonar.dir/src/AbstractSonar.o: /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/cpp/include/geometry_msgs/PoseWithCovariance.h

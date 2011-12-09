@@ -1,0 +1,8 @@
+<launch>
+  <group>
+ <node name="sicklms" pkg="sicktoolbox_wrapper" type="sicklms"/>
+	<param name="_port" value= "/dev/ttyUSB1"/>
+	<param name="_baud" value="38400" />
+ <node name ="laser" pkg ="hcr_vip" type="laser" />
+  </group>
+</launch>

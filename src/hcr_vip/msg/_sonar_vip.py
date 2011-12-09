@@ -4,7 +4,7 @@ import struct
 
 
 class sonar_vip(roslib.message.Message):
-  _md5sum = "88e0f89c92fb21e7f26144ddd9a139a3"
+  _md5sum = "ee8100ffc8e6dc1410f852f63a502f01"
   _type = "hcr_vip/sonar_vip"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """float64 distance_front
@@ -12,12 +12,14 @@ int32 angle_front
 float64 distance_back
 int32 angle_back
 float64 turn_left
+string turn_left_sensor
 float64 turn_right
+string turn_right_sensor
 
 
 """
-  __slots__ = ['distance_front','angle_front','distance_back','angle_back','turn_left','turn_right']
-  _slot_types = ['float64','int32','float64','int32','float64','float64']
+  __slots__ = ['distance_front','angle_front','distance_back','angle_back','turn_left','turn_left_sensor','turn_right','turn_right_sensor']
+  _slot_types = ['float64','int32','float64','int32','float64','string','float64','string']
 
   def __init__(self, *args, **kwds):
     """
@@ -27,7 +29,7 @@ float64 turn_right
     changes.  You cannot mix in-order arguments and keyword arguments.
     
     The available fields are:
-       distance_front,angle_front,distance_back,angle_back,turn_left,turn_right
+       distance_front,angle_front,distance_back,angle_back,turn_left,turn_left_sensor,turn_right,turn_right_sensor
     
     @param args: complete set of field values, in .msg order
     @param kwds: use keyword arguments corresponding to message field names
@@ -46,15 +48,21 @@ float64 turn_right
         self.angle_back = 0
       if self.turn_left is None:
         self.turn_left = 0.
+      if self.turn_left_sensor is None:
+        self.turn_left_sensor = ''
       if self.turn_right is None:
         self.turn_right = 0.
+      if self.turn_right_sensor is None:
+        self.turn_right_sensor = ''
     else:
       self.distance_front = 0.
       self.angle_front = 0
       self.distance_back = 0.
       self.angle_back = 0
       self.turn_left = 0.
+      self.turn_left_sensor = ''
       self.turn_right = 0.
+      self.turn_right_sensor = ''
 
   def _get_types(self):
     """
@@ -70,7 +78,14 @@ float64 turn_right
     """
     try:
       _x = self
-      buff.write(_struct_didi2d.pack(_x.distance_front, _x.angle_front, _x.distance_back, _x.angle_back, _x.turn_left, _x.turn_right))
+      buff.write(_struct_didid.pack(_x.distance_front, _x.angle_front, _x.distance_back, _x.angle_back, _x.turn_left))
+      _x = self.turn_left_sensor
+      length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      buff.write(_struct_d.pack(self.turn_right))
+      _x = self.turn_right_sensor
+      length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -84,8 +99,23 @@ float64 turn_right
       end = 0
       _x = self
       start = end
-      end += 40
-      (_x.distance_front, _x.angle_front, _x.distance_back, _x.angle_back, _x.turn_left, _x.turn_right,) = _struct_didi2d.unpack(str[start:end])
+      end += 32
+      (_x.distance_front, _x.angle_front, _x.distance_back, _x.angle_back, _x.turn_left,) = _struct_didid.unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      self.turn_left_sensor = str[start:end]
+      start = end
+      end += 8
+      (self.turn_right,) = _struct_d.unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      self.turn_right_sensor = str[start:end]
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
@@ -101,7 +131,14 @@ float64 turn_right
     """
     try:
       _x = self
-      buff.write(_struct_didi2d.pack(_x.distance_front, _x.angle_front, _x.distance_back, _x.angle_back, _x.turn_left, _x.turn_right))
+      buff.write(_struct_didid.pack(_x.distance_front, _x.angle_front, _x.distance_back, _x.angle_back, _x.turn_left))
+      _x = self.turn_left_sensor
+      length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      buff.write(_struct_d.pack(self.turn_right))
+      _x = self.turn_right_sensor
+      length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
     except struct.error as se: self._check_types(se)
     except TypeError as te: self._check_types(te)
 
@@ -117,11 +154,27 @@ float64 turn_right
       end = 0
       _x = self
       start = end
-      end += 40
-      (_x.distance_front, _x.angle_front, _x.distance_back, _x.angle_back, _x.turn_left, _x.turn_right,) = _struct_didi2d.unpack(str[start:end])
+      end += 32
+      (_x.distance_front, _x.angle_front, _x.distance_back, _x.angle_back, _x.turn_left,) = _struct_didid.unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      self.turn_left_sensor = str[start:end]
+      start = end
+      end += 8
+      (self.turn_right,) = _struct_d.unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      self.turn_right_sensor = str[start:end]
       return self
     except struct.error as e:
       raise roslib.message.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = roslib.message.struct_I
-_struct_didi2d = struct.Struct("<didi2d")
+_struct_didid = struct.Struct("<didid")
+_struct_d = struct.Struct("<d")

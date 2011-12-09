@@ -4,6 +4,7 @@ FILE(REMOVE_RECURSE
   "../msg_gen"
   "CMakeFiles/ROSBUILD_genmsg_py"
   "../src/hcr_vip/msg/__init__.py"
+  "../src/hcr_vip/msg/_laser_vip.py"
   "../src/hcr_vip/msg/_sonar_vip.py"
 )
 
