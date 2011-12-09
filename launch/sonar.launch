@@ -1,0 +1,5 @@
+<launch>
+  <group>
+   <node name="Sonar" pkg="hcr_vip" type="Sonar" />
+  </group>
+</launch>

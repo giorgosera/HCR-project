@@ -164,6 +164,19 @@ KeyBoardController/fast:
 .PHONY : KeyBoardController/fast
 
 #=============================================================================
+# Target rules for targets named Master
+
+# Build rule for target.
+Master: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Master
+.PHONY : Master
+
+# fast build rule for target.
+Master/fast:
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/build
+.PHONY : Master/fast
+
+#=============================================================================
 # Target rules for targets named ROSBUILD_genmsg_cpp
 
 # Build rule for target.
@@ -499,6 +512,21 @@ src/KeyBoardController.s:
 .PHONY : src/KeyBoardController.s
 
 # target to build an object file
+src/Master.o:
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/src/Master.o
+.PHONY : src/Master.o
+
+# target to preprocess a source file
+src/Master.i:
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/src/Master.i
+.PHONY : src/Master.i
+
+# target to generate assembly for a file
+src/Master.s:
+	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/src/Master.s
+.PHONY : src/Master.s
+
+# target to build an object file
 src/Sonar.o:
 	$(MAKE) -f CMakeFiles/Sonar.dir/build.make CMakeFiles/Sonar.dir/src/Sonar.o
 .PHONY : src/Sonar.o
@@ -539,6 +567,7 @@ help:
 	@echo "... JoyStickController"
 	@echo "... JoyStickControllerWithSonar"
 	@echo "... KeyBoardController"
+	@echo "... Master"
 	@echo "... ROSBUILD_genmsg_cpp"
 	@echo "... ROSBUILD_genmsg_lisp"
 	@echo "... ROSBUILD_genmsg_py"
@@ -576,6 +605,9 @@ help:
 	@echo "... src/KeyBoardController.o"
 	@echo "... src/KeyBoardController.i"
 	@echo "... src/KeyBoardController.s"
+	@echo "... src/Master.o"
+	@echo "... src/Master.i"
+	@echo "... src/Master.s"
 	@echo "... src/Sonar.o"
 	@echo "... src/Sonar.i"
 	@echo "... src/Sonar.s"

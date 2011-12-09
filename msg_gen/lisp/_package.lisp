@@ -5,5 +5,7 @@
    "LASER_VIP"
    "<SONAR_VIP>"
    "SONAR_VIP"
+   "<SENSORMSG>"
+   "SENSORMSG"
   ))
 

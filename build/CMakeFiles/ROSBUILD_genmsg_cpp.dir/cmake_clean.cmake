@@ -5,6 +5,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/ROSBUILD_genmsg_cpp"
   "../msg_gen/cpp/include/hcr_vip/laser_vip.h"
   "../msg_gen/cpp/include/hcr_vip/sonar_vip.h"
+  "../msg_gen/cpp/include/hcr_vip/sensorMsg.h"
 )
 
 # Per-language clean rules from dependency scanning.

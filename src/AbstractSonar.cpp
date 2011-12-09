@@ -15,10 +15,10 @@ JoysticSonar::JoysticSonar():
  front_threshold = 0.5;
  side_threshold = 0.3;
 	
-  nh_.param("axis_linear", linear_, linear_);
-  nh_.param("axis_angular", angular_, angular_);
-  nh_.param("scale_angular", a_scale_, a_scale_);
-  nh_.param("scale_linear", l_scale_, l_scale_);
+  //nh_.param("axis_linear", linear_, linear_);
+  //nh_.param("axis_angular", angular_, angular_);
+  //nh_.param("scale_angular", a_scale_, a_scale_);
+  //nh_.param("scale_linear", l_scale_, l_scale_);
 
 
   vel_pub_ = nh_.advertise<Twist>("/RosAria/cmd_vel", 1);
@@ -175,6 +175,7 @@ void JoysticSonar::joyCallback(const Twist::ConstPtr& joy)
 int main(int argc, char** argv)
 {	
   ros::init(argc, argv, "JoysticSonar");
+
   JoysticSonar joysticSonar;
 
   ros::spin();

@@ -7,6 +7,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
 SET(CMAKE_MULTIPLE_OUTPUT_PAIRS
   "/home/robofriend/ros_workspace/hcr_vip/msg_gen/lisp/_package.lisp" "/home/robofriend/ros_workspace/hcr_vip/msg_gen/lisp/laser_vip.lisp"
   "/home/robofriend/ros_workspace/hcr_vip/msg_gen/lisp/_package_laser_vip.lisp" "/home/robofriend/ros_workspace/hcr_vip/msg_gen/lisp/laser_vip.lisp"
+  "/home/robofriend/ros_workspace/hcr_vip/msg_gen/lisp/_package_sensorMsg.lisp" "/home/robofriend/ros_workspace/hcr_vip/msg_gen/lisp/sensorMsg.lisp"
   "/home/robofriend/ros_workspace/hcr_vip/msg_gen/lisp/_package_sonar_vip.lisp" "/home/robofriend/ros_workspace/hcr_vip/msg_gen/lisp/sonar_vip.lisp"
   )
 

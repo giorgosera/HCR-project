@@ -9,6 +9,9 @@ FILE(REMOVE_RECURSE
   "../msg_gen/lisp/sonar_vip.lisp"
   "../msg_gen/lisp/_package.lisp"
   "../msg_gen/lisp/_package_sonar_vip.lisp"
+  "../msg_gen/lisp/sensorMsg.lisp"
+  "../msg_gen/lisp/_package.lisp"
+  "../msg_gen/lisp/_package_sensorMsg.lisp"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -3,6 +3,7 @@
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/JoyStickController.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/JoyStickControllerWithSonar.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/KeyBoardController.dir
+/home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/Master.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/ROSBUILD_genmsg_cpp.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/ROSBUILD_genmsg_lisp.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/ROSBUILD_genmsg_py.dir

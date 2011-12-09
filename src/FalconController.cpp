@@ -44,8 +44,8 @@ FalconController::FalconController():
 
     //For normal operation please uncomment the line below and comment the next one.
     //vel_pub_ = nh_.advertise<Twist>("/RosAria/cmd_vel", 1);
-    //vel_pub_ = nh_.advertise<Twist>("Sonar_Falcon", 1);
-    vel_pub_ = nh_.advertise<Twist>("test_topic", 1);
+    vel_pub_ = nh_.advertise<Twist>("Sonar_Falcon", 1);
+    //vel_pub_ = nh_.advertise<Twist>("test_topic", 1);
     joy_sub_ = nh_.subscribe<joy::Joy>("falconJoy", 10, &FalconController::joyCallback, this);
 }
 

@@ -1,10 +1,13 @@
 # Hashes of file build rules.
 291a87373996e4a25944d1f492495cb9 ../msg_gen/cpp/include/hcr_vip/laser_vip.h
+6b588cade0dc9d7c9c4e87befa15fa76 ../msg_gen/cpp/include/hcr_vip/sensorMsg.h
 c3fb83ac6e6ff7fb4a2d375c4d27a4f5 ../msg_gen/cpp/include/hcr_vip/sonar_vip.h
 9706dda44beb80d63ae0feef09db6552 ../msg_gen/lisp/laser_vip.lisp
+7e32ddc3ea18585e3f1840d5749983c4 ../msg_gen/lisp/sensorMsg.lisp
 a3c9bc11542d863eda05034285161613 ../msg_gen/lisp/sonar_vip.lisp
-69adf1e0c11ad56c37882d3a6f58d2ae ../src/hcr_vip/msg/__init__.py
+36c0755c5d185520e2de853d25f4834c ../src/hcr_vip/msg/__init__.py
 9772517c88076a651c46ae7fe28ecc4e ../src/hcr_vip/msg/_laser_vip.py
+72c9a063a4296b0904b2ac81aa43e51d ../src/hcr_vip/msg/_sensorMsg.py
 d5fdd0f34e12541af50a7d020c9c0918 ../src/hcr_vip/msg/_sonar_vip.py
 7b4126531638afb0f89dbd6b69bce7a0 CMakeFiles/ROSBUILD_genmsg_cpp
 7b4126531638afb0f89dbd6b69bce7a0 CMakeFiles/ROSBUILD_genmsg_lisp

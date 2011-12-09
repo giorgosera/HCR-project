@@ -6,6 +6,7 @@ FILE(REMOVE_RECURSE
   "../src/hcr_vip/msg/__init__.py"
   "../src/hcr_vip/msg/_laser_vip.py"
   "../src/hcr_vip/msg/_sonar_vip.py"
+  "../src/hcr_vip/msg/_sensorMsg.py"
 )
 
 # Per-language clean rules from dependency scanning.

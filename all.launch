@@ -1,0 +1,12 @@
+<launch>
+  <group>
+ <node name="RosAria" pkg="ROSARIA" type="RosAria" />
+	 <param name="port" value="/dev/ttyUSB0" />
+ <node name="sicklms" pkg="sicktoolbox_wrapper" type="sicklms"/>
+	<param name="_port" value= "/dev/ttyUSB1"/>
+	<param name="_baud" value="38400" />
+ <node name ="laser" pkg ="hcr_vip" type="laser" />
+   <node name="Sonar" pkg="hcr_vip" type="Sonar" />
+
+  </group>
+</launch>
