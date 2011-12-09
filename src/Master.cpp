@@ -109,26 +109,27 @@ if(!ok){
 	switch(error){
 		case 0 : {
 			cout<<"Obstacle at Front " <<sonar_values.distance_front<< "  "<<sonar_values.angle_front<<endl;
-			sensorMsg.range = sonar_values.distance_front;
-			sensorMsg.angle = sonar_values.angle_front;
+
+sensorMsg_pub_.publish(sensorMsg);
 			break;
 		}
 		case 1 : {
 			cout<<"Obstacle at Back "<<sonar_values.distance_back<< "  "<<sonar_values.angle_back<<endl;
-			sensorMsg.range = sonar_values.distance_back;
-			sensorMsg.angle = sonar_values.angle_back;
+
+sensorMsg_pub_.publish(sensorMsg);
 			break;
 		}
 		case 2 : {
 			cout<<"Obstacle at Right "<<sonar_values.turn_right<<endl;
-			sensorMsg.range = sonar_values.turn_right;
-			sensorMsg.angle = sonar_values.angle_front;
+
+sensorMsg_pub_.publish(sensorMsg);
 			break;
 		}
 		case 3 : {
 			cout<<"Obstacle at Left "<<sonar_values.turn_left<<endl;
-			sensorMsg.range = sonar_values.turn_left;
-			sensorMsg.angle = sonar_values.angle_front;
+
+
+sensorMsg_pub_.publish(sensorMsg);
 			break;
 		}
 		default : {
@@ -137,7 +138,7 @@ if(!ok){
 		}
 		
 	}
-	sensorMsg_pub_.publish(sensorMsg);
+	
 }	
 }
 
@@ -175,6 +176,10 @@ void JoysticSonar::backward(){
 		(sonarPtr->distance_back > front_threshold) 
 	){
 		ok = true;
+	}
+	else{
+		sensorMsg.range = sonarPtr->distance_back;
+		sensorMsg.angle = sonarPtr->angle_back;
 	}	
 
 }
@@ -183,11 +188,15 @@ void JoysticSonar::forward(){
 	if  ( 
 		(sonarPtr->distance_front < front_threshold)
 	){
+		sensorMsg.range = sonarPtr->distance_front;
+		sensorMsg.angle = sonarPtr->angle_front;
 		ok = false;
 	}
 	else if  ( 
 		(laserPtr->straight < front_threshold)
 	){
+		sensorMsg.range = laserPtr->straight;
+		sensorMsg.angle = laserPtr->angle_straight;
 		ok = false;
 	}
 	else{
@@ -198,10 +207,14 @@ void JoysticSonar::forward(){
 void JoysticSonar::turn_Right(){
 	if ( sonarPtr->turn_right < side_threshold){
 		ok = false;
+		sensorMsg.range = sonarPtr->turn_right;
+		sensorMsg.angle = sonarPtr->turn_right_sensor == "left" ? 270 : 0;
 	}
 	else if  ( 
 		(laserPtr->right < side_threshold)
 	){
+		sensorMsg.range = laserPtr->right;
+		sensorMsg.angle = laserPtr->angle_right;
 		ok = false;
 	}
 	else{
@@ -212,11 +225,15 @@ void JoysticSonar::turn_Right(){
 
 void JoysticSonar::turn_Left(){
 	if (sonarPtr->turn_left < side_threshold){
+		sensorMsg.range = sonarPtr->turn_left;
+		sensorMsg.angle = sonarPtr->turn_left_sensor == "left" ? 180 : 360;
 		ok= false;
 	}
 	else if  ( 
 		(laserPtr->left < side_threshold)
 	){
+		sensorMsg.range = laserPtr->left;
+		sensorMsg.angle = laserPtr->angle_left;
 		ok = false;
 	}
 	else{

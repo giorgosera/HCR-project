@@ -6,7 +6,7 @@
 
 import roslib; roslib.load_manifest('hcr_vip')
 import rospy
-from hcr_vip.msg import laser_vip
+from hcr_vip.msg import sensorMsg
 
 from sound_play.libsoundplay import SoundClient
 
@@ -25,7 +25,7 @@ class TalkBack:
         # Subscribe to the recognizer output
         try:
 	    rospy.loginfo("Subsribing  to the topic...")	
-    	    rospy.Subscriber("laser_vip", laser_vip, self.talkback)
+    	    rospy.Subscriber("SensorMsg", sensorMsg, self.talkback)
         except Exception, e:
 	    print e
         rospy.loginfo("Subscribed  to the topic...")
@@ -33,7 +33,7 @@ class TalkBack:
     def talkback(self, msg):
         # Print the recognized words on the screen
         rospy.loginfo("Processing messages...")
-	msg = msg.angle_min
+	msg = msg.range
 	#rospy.sleep(2)
 	self.rate.sleep()
 	self.soundhandle.say(str(msg), self.voice)
