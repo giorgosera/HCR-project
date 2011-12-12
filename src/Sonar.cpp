@@ -13,6 +13,8 @@ using geometry_msgs::Twist;
 
 using namespace std;
 
+
+
 class Sonar
 {
 public:
@@ -20,7 +22,7 @@ public:
 
 private:
   void sonarCallback(const sensor_msgs::PointCloud::ConstPtr& sonar);
-  
+
   ros::NodeHandle nh_;
 
   int linear_, angular_;
@@ -30,6 +32,7 @@ private:
   Twist vel;
   int sensors; 	
   hcr_vip::sonar_vip sonar_values;
+
 
   
 };
@@ -83,7 +86,7 @@ arg[i] = atan(pointCloud->points[i].x / pointCloud->points[i].y)* 180 / PI;
 }
 int angle_front;
 if (index_front < 5){
-angle_front = -90 + index_front * 22.5;
+angle_front = 270 + index_front * 22.5;
 }
 else if(index_front > 4){
 angle_front = 22.5 + (index_front-4) * 22.5;
@@ -106,7 +109,7 @@ arg[i] = atan(pointCloud->points[i].x / pointCloud->points[i].y)* 180 / PI;
 
 int angle_back;
 if (index_back > 11){
-angle_back = -90 + (index_back - 15) * 22.5;
+angle_back = 180 + (-index_back + 15) * 22.5;
 }
 else if(index_back < 12){
 angle_back = 22.5 + (index_back - 5) * 22.5 ;
@@ -184,15 +187,18 @@ arg[i] = atan(pointCloud->points[i].x / pointCloud->points[i].y)* 180 / PI;
 
 //ROS_DEBUG("YES");
 //puts("GET");
-vel_pub_.publish(sonar_values);
 
+//ros::Rate loop_rate(1);
+vel_pub_.publish(sonar_values);
+//loop_rate.sleep();
 }
 
 
 int main(int argc, char** argv)
 {
   ros::init(argc, argv, "sonar");
+  //ros::Rate loop_rate(1);	
   Sonar sonar;
-
+	
   ros::spin();
 }

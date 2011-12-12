@@ -183,7 +183,7 @@ TOOLCHAINCONFIG:FILEPATH=TOOLCHAINCONFIG-NOTFOUND
 USERCONFIG:FILEPATH=USERCONFIG-NOTFOUND
 
 //Path to a file.
-_file_name:FILEPATH=/home/robofriend/ros_workspace/hcr_vip/src/Master.cpp
+_file_name:FILEPATH=//home/robofriend/ros_workspace/hcr_vip/src/KeyBoardController.cpp
 
 //Value Computed by CMake
 hcr_vip_BINARY_DIR:STATIC=/home/robofriend/ros_workspace/hcr_vip/build

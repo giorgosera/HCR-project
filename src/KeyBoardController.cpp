@@ -56,7 +56,7 @@ int main(int argc, char** argv)
 {
   ros::init(argc, argv, "theo_key");
   ros::NodeHandle n;
-   chatter_pub = n.advertise<Twist>("/RosAria/cmd_vel", 1);  
+   chatter_pub = n.advertise<Twist>("/Sonar_Falcon", 1);  
    signal(SIGINT,quit);
    char c;
    bool dirty=false;//Point to be NOTED

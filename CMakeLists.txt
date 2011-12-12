@@ -36,4 +36,6 @@ rosbuild_add_executable(Sonar src/Sonar.cpp)
 rosbuild_add_executable(laser src/laser.cpp)
 rosbuild_add_executable(AbstractSonar src/AbstractSonar.cpp)
 rosbuild_add_executable(Master src/Master.cpp)
-
+rosbuild_add_executable(JoysticToMaster src/JoysticToMaster.cpp)
+rosbuild_add_executable(MockMaster src/MockMasterPublisher.cpp)
+rosbuild_add_executable(KeyBoardController src/KeyBoardController.cpp)

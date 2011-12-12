@@ -193,13 +193,48 @@ clean: CMakeFiles/JoyStickControllerWithSonar.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/JoysticToMaster.dir
+
+# All Build rule for target.
+CMakeFiles/JoysticToMaster.dir/all: CMakeFiles/rosbuild_precompile.dir/all
+	$(MAKE) -f CMakeFiles/JoysticToMaster.dir/build.make CMakeFiles/JoysticToMaster.dir/depend
+	$(MAKE) -f CMakeFiles/JoysticToMaster.dir/build.make CMakeFiles/JoysticToMaster.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  5
+	@echo "Built target JoysticToMaster"
+.PHONY : CMakeFiles/JoysticToMaster.dir/all
+
+# Include target in all.
+all: CMakeFiles/JoysticToMaster.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/JoysticToMaster.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles 11
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/JoysticToMaster.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles 0
+.PHONY : CMakeFiles/JoysticToMaster.dir/rule
+
+# Convenience name for target.
+JoysticToMaster: CMakeFiles/JoysticToMaster.dir/rule
+.PHONY : JoysticToMaster
+
+# clean rule for target.
+CMakeFiles/JoysticToMaster.dir/clean:
+	$(MAKE) -f CMakeFiles/JoysticToMaster.dir/build.make CMakeFiles/JoysticToMaster.dir/clean
+.PHONY : CMakeFiles/JoysticToMaster.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/JoysticToMaster.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/KeyBoardController.dir
 
 # All Build rule for target.
 CMakeFiles/KeyBoardController.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/KeyBoardController.dir/build.make CMakeFiles/KeyBoardController.dir/depend
 	$(MAKE) -f CMakeFiles/KeyBoardController.dir/build.make CMakeFiles/KeyBoardController.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  5
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  6
 	@echo "Built target KeyBoardController"
 .PHONY : CMakeFiles/KeyBoardController.dir/all
 
@@ -234,7 +269,7 @@ clean: CMakeFiles/KeyBoardController.dir/clean
 CMakeFiles/Master.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/depend
 	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  6
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  7
 	@echo "Built target Master"
 .PHONY : CMakeFiles/Master.dir/all
 
@@ -263,13 +298,48 @@ clean: CMakeFiles/Master.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/MockMaster.dir
+
+# All Build rule for target.
+CMakeFiles/MockMaster.dir/all: CMakeFiles/rosbuild_precompile.dir/all
+	$(MAKE) -f CMakeFiles/MockMaster.dir/build.make CMakeFiles/MockMaster.dir/depend
+	$(MAKE) -f CMakeFiles/MockMaster.dir/build.make CMakeFiles/MockMaster.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  8
+	@echo "Built target MockMaster"
+.PHONY : CMakeFiles/MockMaster.dir/all
+
+# Include target in all.
+all: CMakeFiles/MockMaster.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/MockMaster.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles 11
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/MockMaster.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles 0
+.PHONY : CMakeFiles/MockMaster.dir/rule
+
+# Convenience name for target.
+MockMaster: CMakeFiles/MockMaster.dir/rule
+.PHONY : MockMaster
+
+# clean rule for target.
+CMakeFiles/MockMaster.dir/clean:
+	$(MAKE) -f CMakeFiles/MockMaster.dir/build.make CMakeFiles/MockMaster.dir/clean
+.PHONY : CMakeFiles/MockMaster.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/MockMaster.dir/clean
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/ROSBUILD_genmsg_cpp.dir
 
 # All Build rule for target.
 CMakeFiles/ROSBUILD_genmsg_cpp.dir/all: CMakeFiles/rosbuild_premsgsrvgen.dir/all
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_cpp.dir/build.make CMakeFiles/ROSBUILD_genmsg_cpp.dir/depend
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_cpp.dir/build.make CMakeFiles/ROSBUILD_genmsg_cpp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  7 8 9
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  9 10 11
 	@echo "Built target ROSBUILD_genmsg_cpp"
 .PHONY : CMakeFiles/ROSBUILD_genmsg_cpp.dir/all
 
@@ -300,7 +370,7 @@ clean: CMakeFiles/ROSBUILD_genmsg_cpp.dir/clean
 CMakeFiles/ROSBUILD_genmsg_lisp.dir/all: CMakeFiles/rosbuild_premsgsrvgen.dir/all
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_lisp.dir/build.make CMakeFiles/ROSBUILD_genmsg_lisp.dir/depend
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_lisp.dir/build.make CMakeFiles/ROSBUILD_genmsg_lisp.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  10 11 12
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  12 13 14
 	@echo "Built target ROSBUILD_genmsg_lisp"
 .PHONY : CMakeFiles/ROSBUILD_genmsg_lisp.dir/all
 
@@ -331,7 +401,7 @@ clean: CMakeFiles/ROSBUILD_genmsg_lisp.dir/clean
 CMakeFiles/ROSBUILD_genmsg_py.dir/all: CMakeFiles/rosbuild_premsgsrvgen.dir/all
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_py.dir/build.make CMakeFiles/ROSBUILD_genmsg_py.dir/depend
 	$(MAKE) -f CMakeFiles/ROSBUILD_genmsg_py.dir/build.make CMakeFiles/ROSBUILD_genmsg_py.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  13 14 15 16
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  15 16 17 18
 	@echo "Built target ROSBUILD_genmsg_py"
 .PHONY : CMakeFiles/ROSBUILD_genmsg_py.dir/all
 
@@ -424,7 +494,7 @@ clean: CMakeFiles/ROSBUILD_gensrv_lisp.dir/clean
 CMakeFiles/Sonar.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/Sonar.dir/build.make CMakeFiles/Sonar.dir/depend
 	$(MAKE) -f CMakeFiles/Sonar.dir/build.make CMakeFiles/Sonar.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  17
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  19
 	@echo "Built target Sonar"
 .PHONY : CMakeFiles/Sonar.dir/all
 
@@ -490,7 +560,7 @@ clean: CMakeFiles/clean-test-results.dir/clean
 CMakeFiles/laser.dir/all: CMakeFiles/rosbuild_precompile.dir/all
 	$(MAKE) -f CMakeFiles/laser.dir/build.make CMakeFiles/laser.dir/depend
 	$(MAKE) -f CMakeFiles/laser.dir/build.make CMakeFiles/laser.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  18
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles  20
 	@echo "Built target laser"
 .PHONY : CMakeFiles/laser.dir/all
 
@@ -523,8 +593,8 @@ clean: CMakeFiles/laser.dir/clean
 
 # All Build rule for target.
 CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_genmsg_libexe.dir/all
-CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_gensrv.dir/all
 CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_genmsg.dir/all
+CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_gensrv.dir/all
 	$(MAKE) -f CMakeFiles/rosbuild_precompile.dir/build.make CMakeFiles/rosbuild_precompile.dir/depend
 	$(MAKE) -f CMakeFiles/rosbuild_precompile.dir/build.make CMakeFiles/rosbuild_precompile.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles 

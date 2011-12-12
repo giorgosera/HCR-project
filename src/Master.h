@@ -5,7 +5,7 @@
 #include "hcr_vip/laser_vip.h"
 #include "hcr_vip/sensorMsg.h"
 
-#include <signal.h>
+#include <signal.h>	
 #include <termios.h>
 #include "nav_msgs/Odometry.h"
 
@@ -13,10 +13,10 @@ using geometry_msgs::Twist;
 using nav_msgs::Odometry;
 using namespace std;
 
-class JoysticSonar
+class Master
 {
 public:
-  JoysticSonar();
+  Master();
 
 private:
 	void STOP();
@@ -25,7 +25,8 @@ private:
 	void speedCallback(const Odometry::ConstPtr& speed);
 	void checkDistance(float linear, float angular);
 	void laserCallback(const hcr_vip::laser_vip::ConstPtr& laser);
-
+	void distanceInform(float linear, float angular);
+	void reAdjustSpeed();
 	void checkOK();
 	void turn_Left();
 	void turn_Right();
@@ -44,6 +45,6 @@ private:
   hcr_vip::sonar_vip::ConstPtr sonarPtr;
   hcr_vip::laser_vip::ConstPtr laserPtr;
   bool ok;
-  double side_threshold,front_threshold;	
+  double side_threshold,front_threshold, inform_threshold;	
   
 };

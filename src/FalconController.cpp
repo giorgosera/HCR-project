@@ -64,7 +64,7 @@ void FalconController::joyCallback(const joy::Joy::ConstPtr& joy)
     //float zoffset = (joy->axes[2] - 0.074);
     float zoffset = (joy->axes[2] + 1.074);
 
-    float angle = atan(x/(zoffset))*180/PI;
+    float angle = atan(x/(zoffset))*90/PI;           //multiply by 90 in order to use a smaller number (not the actual degrees)
 
     //The robot will move if the use has moved the grip for 
     // a movement larger than the threshold. Otherwise the robot stays still.

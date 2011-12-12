@@ -114,15 +114,15 @@ CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o: /opt/ros/electric/st
 CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o: /home/robofriend/ros_workspace/audio_common/sound_play/msg_gen/generated
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -fPIC -DBT_USE_DOUBLE_PRECISION -DBT_EULER_DEFAULT_ZYX -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o -c /home/robofriend/ros_workspace/hcr_vip/src/KeyBoardController.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -fPIC -DBT_USE_DOUBLE_PRECISION -DBT_EULER_DEFAULT_ZYX -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -fPIC -DBT_USE_DOUBLE_PRECISION -DBT_EULER_DEFAULT_ZYX -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o -c /home/robofriend/ros_workspace/hcr_vip/src/KeyBoardController.cpp
 
 CMakeFiles/KeyBoardController.dir/src/KeyBoardController.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/KeyBoardController.dir/src/KeyBoardController.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -fPIC -DBT_USE_DOUBLE_PRECISION -DBT_EULER_DEFAULT_ZYX -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/robofriend/ros_workspace/hcr_vip/src/KeyBoardController.cpp > CMakeFiles/KeyBoardController.dir/src/KeyBoardController.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -fPIC -DBT_USE_DOUBLE_PRECISION -DBT_EULER_DEFAULT_ZYX -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -fPIC -DBT_USE_DOUBLE_PRECISION -DBT_EULER_DEFAULT_ZYX -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/robofriend/ros_workspace/hcr_vip/src/KeyBoardController.cpp > CMakeFiles/KeyBoardController.dir/src/KeyBoardController.i
 
 CMakeFiles/KeyBoardController.dir/src/KeyBoardController.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/KeyBoardController.dir/src/KeyBoardController.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -fPIC -DBT_USE_DOUBLE_PRECISION -DBT_EULER_DEFAULT_ZYX -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/robofriend/ros_workspace/hcr_vip/src/KeyBoardController.cpp -o CMakeFiles/KeyBoardController.dir/src/KeyBoardController.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -fPIC -DBT_USE_DOUBLE_PRECISION -DBT_EULER_DEFAULT_ZYX -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -fPIC -DBT_USE_DOUBLE_PRECISION -DBT_EULER_DEFAULT_ZYX -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/robofriend/ros_workspace/hcr_vip/src/KeyBoardController.cpp -o CMakeFiles/KeyBoardController.dir/src/KeyBoardController.s
 
 CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o.requires:
 .PHONY : CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o.requires

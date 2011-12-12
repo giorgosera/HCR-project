@@ -1,0 +1,7 @@
+<launch>
+
+  <group>
+ <node name="JoyStick" pkg="hcr_vip" type="JoyStickController" />
+  </group>
+<include file="$(find hcr_vip)/launch/joynode.launch"/>
+</launch>

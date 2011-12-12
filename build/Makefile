@@ -151,6 +151,19 @@ JoyStickControllerWithSonar/fast:
 .PHONY : JoyStickControllerWithSonar/fast
 
 #=============================================================================
+# Target rules for targets named JoysticToMaster
+
+# Build rule for target.
+JoysticToMaster: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 JoysticToMaster
+.PHONY : JoysticToMaster
+
+# fast build rule for target.
+JoysticToMaster/fast:
+	$(MAKE) -f CMakeFiles/JoysticToMaster.dir/build.make CMakeFiles/JoysticToMaster.dir/build
+.PHONY : JoysticToMaster/fast
+
+#=============================================================================
 # Target rules for targets named KeyBoardController
 
 # Build rule for target.
@@ -175,6 +188,19 @@ Master: cmake_check_build_system
 Master/fast:
 	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/build
 .PHONY : Master/fast
+
+#=============================================================================
+# Target rules for targets named MockMaster
+
+# Build rule for target.
+MockMaster: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 MockMaster
+.PHONY : MockMaster
+
+# fast build rule for target.
+MockMaster/fast:
+	$(MAKE) -f CMakeFiles/MockMaster.dir/build.make CMakeFiles/MockMaster.dir/build
+.PHONY : MockMaster/fast
 
 #=============================================================================
 # Target rules for targets named ROSBUILD_genmsg_cpp
@@ -497,6 +523,21 @@ src/JoyStickControllerWithSonar.s:
 .PHONY : src/JoyStickControllerWithSonar.s
 
 # target to build an object file
+src/JoysticToMaster.o:
+	$(MAKE) -f CMakeFiles/JoysticToMaster.dir/build.make CMakeFiles/JoysticToMaster.dir/src/JoysticToMaster.o
+.PHONY : src/JoysticToMaster.o
+
+# target to preprocess a source file
+src/JoysticToMaster.i:
+	$(MAKE) -f CMakeFiles/JoysticToMaster.dir/build.make CMakeFiles/JoysticToMaster.dir/src/JoysticToMaster.i
+.PHONY : src/JoysticToMaster.i
+
+# target to generate assembly for a file
+src/JoysticToMaster.s:
+	$(MAKE) -f CMakeFiles/JoysticToMaster.dir/build.make CMakeFiles/JoysticToMaster.dir/src/JoysticToMaster.s
+.PHONY : src/JoysticToMaster.s
+
+# target to build an object file
 src/KeyBoardController.o:
 	$(MAKE) -f CMakeFiles/KeyBoardController.dir/build.make CMakeFiles/KeyBoardController.dir/src/KeyBoardController.o
 .PHONY : src/KeyBoardController.o
@@ -525,6 +566,21 @@ src/Master.i:
 src/Master.s:
 	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/src/Master.s
 .PHONY : src/Master.s
+
+# target to build an object file
+src/MockMasterPublisher.o:
+	$(MAKE) -f CMakeFiles/MockMaster.dir/build.make CMakeFiles/MockMaster.dir/src/MockMasterPublisher.o
+.PHONY : src/MockMasterPublisher.o
+
+# target to preprocess a source file
+src/MockMasterPublisher.i:
+	$(MAKE) -f CMakeFiles/MockMaster.dir/build.make CMakeFiles/MockMaster.dir/src/MockMasterPublisher.i
+.PHONY : src/MockMasterPublisher.i
+
+# target to generate assembly for a file
+src/MockMasterPublisher.s:
+	$(MAKE) -f CMakeFiles/MockMaster.dir/build.make CMakeFiles/MockMaster.dir/src/MockMasterPublisher.s
+.PHONY : src/MockMasterPublisher.s
 
 # target to build an object file
 src/Sonar.o:
@@ -566,8 +622,10 @@ help:
 	@echo "... FalconController"
 	@echo "... JoyStickController"
 	@echo "... JoyStickControllerWithSonar"
+	@echo "... JoysticToMaster"
 	@echo "... KeyBoardController"
 	@echo "... Master"
+	@echo "... MockMaster"
 	@echo "... ROSBUILD_genmsg_cpp"
 	@echo "... ROSBUILD_genmsg_lisp"
 	@echo "... ROSBUILD_genmsg_py"
@@ -602,12 +660,18 @@ help:
 	@echo "... src/JoyStickControllerWithSonar.o"
 	@echo "... src/JoyStickControllerWithSonar.i"
 	@echo "... src/JoyStickControllerWithSonar.s"
+	@echo "... src/JoysticToMaster.o"
+	@echo "... src/JoysticToMaster.i"
+	@echo "... src/JoysticToMaster.s"
 	@echo "... src/KeyBoardController.o"
 	@echo "... src/KeyBoardController.i"
 	@echo "... src/KeyBoardController.s"
 	@echo "... src/Master.o"
 	@echo "... src/Master.i"
 	@echo "... src/Master.s"
+	@echo "... src/MockMasterPublisher.o"
+	@echo "... src/MockMasterPublisher.i"
+	@echo "... src/MockMasterPublisher.s"
 	@echo "... src/Sonar.o"
 	@echo "... src/Sonar.i"
 	@echo "... src/Sonar.s"

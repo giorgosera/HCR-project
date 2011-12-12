@@ -6,5 +6,5 @@ CXX_FLAGS = -O2 -g -I/home/robofriend/ros_workspace/hcr_vip/include -I/opt/ros/e
 
 CXX_DEFINES = 
 
-# TARGET_FLAGS = -fPIC -DBT_USE_DOUBLE_PRECISION -DBT_EULER_DEFAULT_ZYX -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread
+# TARGET_FLAGS = -fPIC -DBT_USE_DOUBLE_PRECISION -DBT_EULER_DEFAULT_ZYX -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -fPIC -DBT_USE_DOUBLE_PRECISION -DBT_EULER_DEFAULT_ZYX -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread
 

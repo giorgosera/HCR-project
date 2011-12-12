@@ -15,6 +15,7 @@ using geometry_msgs::Twist;
 
 using namespace std;
 
+
 class Laser
 {
 public:
@@ -40,6 +41,7 @@ private:
 Laser::Laser():
   linear_(1),
   angular_(0)
+  
 {
 
   nh_.param("axis_linear", linear_, linear_);
@@ -49,12 +51,11 @@ Laser::Laser():
 
 
   vel_pub_ = nh_.advertise<hcr_vip::laser_vip>("/laser_vip", 10);
-
+ 
 
   //joy_sub_ = nh_.subscribe<sensor_msgs::LaserScan>("/scan", 10, &Laser::sonarCallback, this);
     joy_sub_ = nh_.subscribe<sensor_msgs::LaserScan>("/scan",10,&Laser::laserCallback,this);
 //signal(SIGINT,quit);
-
 }
 
 void Laser::laserCallback(const sensor_msgs::LaserScan::ConstPtr& pointCloud){
@@ -73,7 +74,7 @@ double index;
 for(int i=30; i<pointCloud->ranges.size(); i++){
    if (pointCloud->ranges[i] < range){
 	range = pointCloud->ranges[i];
-	index = i;
+	index = i > 90 ? 360 - (i - 90) : 90 - i;
 	}
 }
 cout<<"Danger min: "<<index<<" Degrees     Distance: "<<range<<endl;
@@ -84,7 +85,7 @@ double index1;
 for(int i=30; i<151; i++){
    if (pointCloud->ranges[i] < range1){
 	range1 = pointCloud->ranges[i];
-	index1 = i;
+	index1 = i > 90 ? 360 - (i - 90) : 90 - i;
 	}
 }
 cout<<"Danger Straight: "<<index1<<" Degrees     Distance: "<<range1<<endl;
@@ -97,7 +98,7 @@ double index2;
 for(int i=0; i<100; i++){
    if (pointCloud->ranges[i] < range2){
 	range2 = pointCloud->ranges[i];
-	index2 = i;
+	index2 = i > 90 ? 360 - (i - 90) : 90 - i;
 	}
 }
 cout<<"Danger Right: "<<index2<<" Degrees     Distance: "<<range2<<endl;
@@ -110,7 +111,7 @@ double index3;
 for(int i=80; i<pointCloud->ranges.size(); i++){
    if (pointCloud->ranges[i] < range3){
 	range3 = pointCloud->ranges[i];
-	index3 = i;
+	index3 = i > 90 ? 360 - (i - 90) : 90 - i;
 	}
 }
 cout<<"Danger Left: "<<index3<<"Degrees     Distance: "<<range3<<endl;
@@ -128,8 +129,9 @@ laser_values.angle_left = index3;
 laser_values.min = range;
 laser_values.angle_min = index;
 
-
+ // ros::Rate loop_rate(1);
 vel_pub_.publish(laser_values);
+//loop_rate.sleep();
 }
 
 void Laser::sonarCallback(const sensor_msgs::PointCloud::ConstPtr& pointCloud)
@@ -263,14 +265,16 @@ arg[i] = atan(pointCloud->points[i].x / pointCloud->points[i].y)* 180 / PI;
 
 //ROS_DEBUG("YES");
 //puts("GET");
+  ros::Rate loop_rate(10);
 vel_pub_.publish(sonar_values);
-
+loop_rate.sleep();
 }
 
 
 int main(int argc, char** argv)
 {
   ros::init(argc, argv, "laser");
+ //ros::Rate loop_rate(1);
   Laser laser;
 
   ros::spin();
