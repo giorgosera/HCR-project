@@ -21,18 +21,18 @@ Master::Master():
   //nh_.param("scale_angular", a_scale_, a_scale_);
   //nh_.param("scale_linear", l_scale_, l_scale_);
 
-  vel_pub_ = nh_.advertise<Twist>("/RosAria/cmd_vel", 10);
+  vel_pub_ = nh_.advertise<Twist>("/RosAria/cmd_vel", 1);
   
-  joy_sub_ = nh_.subscribe<Twist>("Sonar_Falcon", 10, &Master::joyCallback, this);
+  joy_sub_ = nh_.subscribe<Twist>("Sonar_Falcon", 1, &Master::joyCallback, this);
    
-  sensorMsg_pub_ = speed_.advertise<hcr_vip::sensorMsg>("/SensorMsg", 10);
+  sensorMsg_pub_ = speed_.advertise<hcr_vip::sensorMsg>("/SensorMsg", 1);
 
-  speed_sub_= speed_.subscribe<Odometry>("RosAria/pose",10, &Master::speedCallback,this);
+  speed_sub_= speed_.subscribe<Odometry>("RosAria/pose",1, &Master::speedCallback,this);
 
-  sonar_sub_ = sonar_.subscribe<hcr_vip::sonar_vip>("sonar_vip",10, &Master::sonarCallback,this); 
+  sonar_sub_ = sonar_.subscribe<hcr_vip::sonar_vip>("sonar_vip",1, &Master::sonarCallback,this); 
 
  
-  laser_sub_ = laser_.subscribe<hcr_vip::laser_vip>("laser_vip",10, &Master::laserCallback,this);	
+  laser_sub_ = laser_.subscribe<hcr_vip::laser_vip>("laser_vip",1, &Master::laserCallback,this);	
 //signal(SIGINT,quit);
 
 }
@@ -126,34 +126,35 @@ void Master::errorMsg(int error){
 }
 
 void Master::distanceInform(float linear, float angular){
-	if ((sonarPtr->distance_back < inform_threshold) && (linear <= 0)){	
-		sensorMsg.range = sonarPtr->distance_back;
-		sensorMsg.angle = sonarPtr->angle_back;
-		reAdjustSpeed();
-		sensorMsg_pub_.publish(sensorMsg);
-	}
-	else if ((laserPtr->min < inform_threshold) && (linear >= 0)){
+	if ((laserPtr->min < inform_threshold) && (linear >= 0)){
 		sensorMsg.range = laserPtr->min;
 		sensorMsg.angle = laserPtr->angle_min;
-		reAdjustSpeed();
+		//reAdjustSpeed();
+		sensorMsg_pub_.publish(sensorMsg);
+	}
+
+	else if ((sonarPtr->distance_back < inform_threshold) && (linear <= 0)){	
+		sensorMsg.range = sonarPtr->distance_back;
+		sensorMsg.angle = sonarPtr->angle_back;
+		//reAdjustSpeed();
 		sensorMsg_pub_.publish(sensorMsg);
 	}
 	else if ((sonarPtr->distance_front < inform_threshold) && (linear >= 0)){
 		sensorMsg.range = sonarPtr->distance_front;
 		sensorMsg.angle = sonarPtr->angle_front;
-		reAdjustSpeed();
+		//reAdjustSpeed();
 		sensorMsg_pub_.publish(sensorMsg);
 	}
 	else if ((sonarPtr->turn_right < inform_threshold) && (angular <= 0)){
 		sensorMsg.range = sonarPtr->turn_right;
 		sensorMsg.angle = sonarPtr->turn_right_sensor == "left" ? 270 : 0;
-		reAdjustSpeed();
+		//reAdjustSpeed();
 		sensorMsg_pub_.publish(sensorMsg);
 	}
 	else if ((sonarPtr->turn_left < inform_threshold)&& (angular >= 0)){
 		sensorMsg.range = sonarPtr->turn_left;
 		sensorMsg.angle = sonarPtr->turn_left_sensor == "left" ? 180 : 360;
-		reAdjustSpeed();
+		//reAdjustSpeed();
 		sensorMsg_pub_.publish(sensorMsg);
 	}
 }

@@ -56,7 +56,7 @@ int main(int argc, char** argv)
 {
   ros::init(argc, argv, "theo_key");
   ros::NodeHandle n;
-   chatter_pub = n.advertise<Twist>("/Sonar_Falcon", 1);  
+   chatter_pub = n.advertise<Twist>("/RosAria/cmd_vel", 1);  
    signal(SIGINT,quit);
    char c;
    bool dirty=false;//Point to be NOTED
@@ -83,14 +83,14 @@ int main(int argc, char** argv)
          case KEYCODE_L:
            ROS_DEBUG("LEFT");//Point to be NOTED</p><p>
       puts("TURN LEFT");
-           vel.angular.z  = 0.5;//Point to be NOTED
+           vel.angular.z  = 0.6;//Point to be NOTED
            dirty = true;
            break;
 
          case KEYCODE_R:
             ROS_DEBUG("RIGHT");
       puts("TURN RIGHT");
-          vel.angular.z  = -0.5;
+          vel.angular.z  = -0.6;
            dirty = true;
            break;
 

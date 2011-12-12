@@ -11,9 +11,6 @@
 <!--Takes info from any sonar+laser and exorts error msg + move robot-->
    <node name="Master" pkg="hcr_vip" type="Master" output="screen"/>
   </group>
-<include file="$(find hcr_vip)/launch/joystic_sonar.launch"/>
 
+<include file="$(find hcr_vip)/launch/falcon.launch"/>
 </launch>
-
-
-
