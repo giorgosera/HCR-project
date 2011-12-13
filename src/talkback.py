@@ -8,8 +8,20 @@ import roslib; roslib.load_manifest('hcr_vip')
 import rospy
 import sys
 from hcr_vip.msg import sensorMsg
+from string import Template 
 
 from sound_play.libsoundplay import SoundClient
+
+################################################
+# GLOBALS
+###############################################
+
+type_danger = {"warning": {"speech":"Warning. Distance %5s angle %5s", 
+			   "non-speech":"/sssmalert.wav"}, 
+	       "danger": {"speech":"Danger. Distance %5s angle %5s",
+			  "non-speech":"/BEEP2.WAV"}, 
+	       "immediate danger": {"speech":"Immediate danger. Distance %5s angle %5s",
+				    "non-speech":"/BEEP2.WAV"}}
 
 class TalkBack:
     def __init__(self, mode):
@@ -17,8 +29,8 @@ class TalkBack:
 	rospy.loginfo("Initialising node...")
           
         self.voice = "voice_cmu_us_clb_arctic_clunits"
-	self.rate = rospy.Rate(0.5)        
-	self.wavepath = "/home/robofriend/ros_workspace/hcr_vip/sounds/sssmalert.wav"
+	#self.rate = rospy.Rate(0.5)        
+	self.wavepath = "/home/robofriend/ros_workspace/hcr_vip/sounds"
 	self.mode = mode
 
 	# Create the sound client object
@@ -38,24 +50,37 @@ class TalkBack:
 
     def talkback(self, msg):
         # Print the recognized words on the screen
+	rospy.loginfo("-----------------------")
 	rospy.loginfo("Processing messages...")
-	msg = msg.range
-	rospy.sleep(0.001)
-	#self.rate.sleep()	
+	distance = str(msg.range)
+	angle = str(msg.angle)
+	
+	rospy.loginfo("Distance:"+distance)
+	rospy.loginfo("Angle:"+angle)
+	
+	if distance > 5.0:
+	    print "warn"
+	    msg = type_danger["warning"]
+	elif distance > 1.0:
+       	    msg = type_danger["danger"]
+	else:
+	    msg = type_danger["immediate danger"]
+
 	try:
    	    if self.mode == "speech":
-	        self.soundhandle.say(str(msg), self.voice)
+                rospy.sleep(3) 
+	        self.soundhandle.say(msg["speech"]%(distance,angle), self.voice)
 	    else:
 		rospy.sleep(1)
-   	        self.soundhandle.playWave(self.wavepath)
+		self.soundhandle.playWave(self.wavepath + msg["non-speech"])
 		rospy.sleep(1)
 	except Exception, e:
 	    print e
-
-	rospy.loginfo(msg)
+	
         self.soundhandle.stopAll()	
 
     def cleanup(self):
+	self.soundhandle.stopAll()
         rospy.loginfo("Shutting down talkback node...")
 
 if __name__=="__main__":

@@ -4,13 +4,14 @@
 <!--Activates Sonar scans/-->
 <include file="$(find hcr_vip)/launch/sonar.launch"/>
 
+
   <group>
+   <node name="Master" pkg="hcr_vip" type="Master"/>
 	<!--Activate Rosaria-->
  <node name="RosAria" pkg="ROSARIA" type="RosAria" />
 	 <param name="port" value="/dev/ttyUSB0" />
 <!--Takes info from any sonar+laser and exorts error msg + move robot-->
-   <node name="Master" pkg="hcr_vip" type="Master"/>
-   <node name="Keyboard" pkg="hcr_vip" type="KeyBoardController" output="screen"/>
+   <node name="Keyboard" pkg="hcr_vip" type="KeyboardSonar" output="screen"/>
   </group>
 
 </launch>

@@ -1,5 +1,13 @@
 #include "Master.h"
 
+/*
+void quit(int sig)
+   {
+     tcsetattr(kfd, TCSANOW, &cooked);
+     ros::shutdown();
+     exit(0);
+   } 
+*/
 Master::Master():
   linear_(1),
   angular_(0)
@@ -8,6 +16,11 @@ Master::Master():
  side_threshold = 0.3;
  inform_threshold = 1.5;
 	
+  //nh_.param("axis_linear", linear_, linear_);
+  //nh_.param("axis_angular", angular_, angular_);
+  //nh_.param("scale_angular", a_scale_, a_scale_);
+  //nh_.param("scale_linear", l_scale_, l_scale_);
+
   vel_pub_ = nh_.advertise<Twist>("/RosAria/cmd_vel", 1);
   
   joy_sub_ = nh_.subscribe<Twist>("Sonar_Falcon", 1, &Master::joyCallback, this);
@@ -19,6 +32,7 @@ Master::Master():
   sonar_sub_ = sonar_.subscribe<hcr_vip::sonar_vip>("sonar_vip",1, &Master::sonarCallback,this); 
  
   laser_sub_ = laser_.subscribe<hcr_vip::laser_vip>("laser_vip",1, &Master::laserCallback,this);	
+//signal(SIGINT,quit);
 
 }
 
@@ -50,20 +64,16 @@ void Master::sonarCallback(const hcr_vip::sonar_vip::ConstPtr& sonar){
 }
 
 void Master::reAdjustSpeed(){
-	if(vel.linear.x > 0.2){
-		vel.linear.x = 0.2;
-	}
-	else if(vel.linear.x < -0.2){
-		vel.linear.x = -0.2;
-	}
+if(vel.linear.x > 0.2){
+	vel.linear.x = 0.2;
+}
 
-	if(vel.angular.z > 0.2){
-		vel.angular.z = 0.2;
-	}
-	else if(vel.angular.z < -0.2){
-		vel.angular.z = -0.2;
-	}
-	vel_pub_.publish(vel);
+if(vel.angular.z > 0.2){
+	vel.angular.z = 0.2;
+}
+
+//checkOK();
+
 }
 
 void Master::checkOK(){
@@ -71,6 +81,9 @@ void Master::checkOK(){
 	distanceInform(vel.linear.x, vel.angular.z); 
 	checkDistance(vel.linear.x, vel.angular.z);
 	if (!ok){
+		//if ((vel.linear.x != 0.2) || (vel.angular.x != 0.2) || ((vel.linear.x != 0.0) && (vel.angular.x != 0.0)) ){	
+			//reAdjustSpeed();
+		//}
 		STOP();
 	}
 	else if(ok){	
@@ -115,32 +128,32 @@ void Master::distanceInform(float linear, float angular){
 	if ((laserPtr->min < inform_threshold) && (linear >= 0)){
 		sensorMsg.range = laserPtr->min;
 		sensorMsg.angle = laserPtr->angle_min;
-		reAdjustSpeed();
+		//reAdjustSpeed();
 		sensorMsg_pub_.publish(sensorMsg);
 	}
 
 	else if ((sonarPtr->distance_back < inform_threshold) && (linear <= 0)){	
 		sensorMsg.range = sonarPtr->distance_back;
 		sensorMsg.angle = sonarPtr->angle_back;
-		reAdjustSpeed();
+		//reAdjustSpeed();
 		sensorMsg_pub_.publish(sensorMsg);
 	}
 	else if ((sonarPtr->distance_front < inform_threshold) && (linear >= 0)){
 		sensorMsg.range = sonarPtr->distance_front;
 		sensorMsg.angle = sonarPtr->angle_front;
-		reAdjustSpeed();
+		//reAdjustSpeed();
 		sensorMsg_pub_.publish(sensorMsg);
 	}
 	else if ((sonarPtr->turn_right < inform_threshold) && (angular <= 0)){
 		sensorMsg.range = sonarPtr->turn_right;
 		sensorMsg.angle = sonarPtr->turn_right_sensor == "left" ? 270 : 0;
-		reAdjustSpeed();
+		//reAdjustSpeed();
 		sensorMsg_pub_.publish(sensorMsg);
 	}
 	else if ((sonarPtr->turn_left < inform_threshold)&& (angular >= 0)){
 		sensorMsg.range = sonarPtr->turn_left;
 		sensorMsg.angle = sonarPtr->turn_left_sensor == "left" ? 180 : 360;
-		reAdjustSpeed();
+		//reAdjustSpeed();
 		sensorMsg_pub_.publish(sensorMsg);
 	}
 }
@@ -255,7 +268,7 @@ void Master::joyCallback(const Twist::ConstPtr& joy){
 	vel.linear.x = joy->linear.x; 
 }
 
-int main(int argc, char** argv){
+int main(int argc, char** argv){	
   ros::init(argc, argv, "Master");
   Master master;
   ros::spin();

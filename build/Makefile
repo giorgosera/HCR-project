@@ -177,6 +177,19 @@ KeyBoardController/fast:
 .PHONY : KeyBoardController/fast
 
 #=============================================================================
+# Target rules for targets named KeyboardSonar
+
+# Build rule for target.
+KeyboardSonar: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 KeyboardSonar
+.PHONY : KeyboardSonar
+
+# fast build rule for target.
+KeyboardSonar/fast:
+	$(MAKE) -f CMakeFiles/KeyboardSonar.dir/build.make CMakeFiles/KeyboardSonar.dir/build
+.PHONY : KeyboardSonar/fast
+
+#=============================================================================
 # Target rules for targets named Master
 
 # Build rule for target.
@@ -553,6 +566,21 @@ src/KeyBoardController.s:
 .PHONY : src/KeyBoardController.s
 
 # target to build an object file
+src/KeyboardSonar.o:
+	$(MAKE) -f CMakeFiles/KeyboardSonar.dir/build.make CMakeFiles/KeyboardSonar.dir/src/KeyboardSonar.o
+.PHONY : src/KeyboardSonar.o
+
+# target to preprocess a source file
+src/KeyboardSonar.i:
+	$(MAKE) -f CMakeFiles/KeyboardSonar.dir/build.make CMakeFiles/KeyboardSonar.dir/src/KeyboardSonar.i
+.PHONY : src/KeyboardSonar.i
+
+# target to generate assembly for a file
+src/KeyboardSonar.s:
+	$(MAKE) -f CMakeFiles/KeyboardSonar.dir/build.make CMakeFiles/KeyboardSonar.dir/src/KeyboardSonar.s
+.PHONY : src/KeyboardSonar.s
+
+# target to build an object file
 src/Master.o:
 	$(MAKE) -f CMakeFiles/Master.dir/build.make CMakeFiles/Master.dir/src/Master.o
 .PHONY : src/Master.o
@@ -624,6 +652,7 @@ help:
 	@echo "... JoyStickControllerWithSonar"
 	@echo "... JoysticToMaster"
 	@echo "... KeyBoardController"
+	@echo "... KeyboardSonar"
 	@echo "... Master"
 	@echo "... MockMaster"
 	@echo "... ROSBUILD_genmsg_cpp"
@@ -666,6 +695,9 @@ help:
 	@echo "... src/KeyBoardController.o"
 	@echo "... src/KeyBoardController.i"
 	@echo "... src/KeyBoardController.s"
+	@echo "... src/KeyboardSonar.o"
+	@echo "... src/KeyboardSonar.i"
+	@echo "... src/KeyboardSonar.s"
 	@echo "... src/Master.o"
 	@echo "... src/Master.i"
 	@echo "... src/Master.s"

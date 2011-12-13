@@ -59,6 +59,7 @@ SET(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/JoyStickControllerWithSonar.dir/DependInfo.cmake"
   "CMakeFiles/JoysticToMaster.dir/DependInfo.cmake"
   "CMakeFiles/KeyBoardController.dir/DependInfo.cmake"
+  "CMakeFiles/KeyboardSonar.dir/DependInfo.cmake"
   "CMakeFiles/Master.dir/DependInfo.cmake"
   "CMakeFiles/MockMaster.dir/DependInfo.cmake"
   "CMakeFiles/ROSBUILD_genmsg_cpp.dir/DependInfo.cmake"

@@ -26,7 +26,7 @@ private:
   hcr_vip::sonar_vip sonar_values;  
 };
 
-Sonar::Sonar()
+Sonar::Sonar():
 {
   vel_pub_ = nh_.advertise<hcr_vip::sonar_vip>("/sonar_vip", 1);
   joy_sub_ = nh_.subscribe<sensor_msgs::PointCloud>("/RosAria/sonar", 1, &Sonar::sonarCallback, this);

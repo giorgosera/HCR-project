@@ -22,21 +22,50 @@ public:
   Laser();
 
 private:
+  void sonarCallback(const sensor_msgs::PointCloud::ConstPtr& sonar);
   void laserCallback(const sensor_msgs::LaserScan::ConstPtr& pointCloud);
   ros::NodeHandle nh_;
+
+  int linear_, angular_;
   double l_scale_, a_scale_;
   ros::Publisher vel_pub_;
   ros::Subscriber joy_sub_;
-  hcr_vip::laser_vip laser_values;  
-};
+  Twist vel;
+  int sensors; 	
 
-Laser::Laser()
+  hcr_vip::sonar_vip sonar_values; 
+  hcr_vip::laser_vip laser_values;
+
+  
+};
+Laser::Laser():
+  linear_(1),
+  angular_(0)
+  
 {
-  vel_pub_ = nh_.advertise<hcr_vip::laser_vip>("/laser_vip", 1);  
-  joy_sub_ = nh_.subscribe<sensor_msgs::LaserScan>("/scan",1,&Laser::laserCallback,this);
+
+  nh_.param("axis_linear", linear_, linear_);
+  nh_.param("axis_angular", angular_, angular_);
+  nh_.param("scale_angular", a_scale_, a_scale_);
+  nh_.param("scale_linear", l_scale_, l_scale_);
+
+
+  vel_pub_ = nh_.advertise<hcr_vip::laser_vip>("/laser_vip", 10);
+ 
+    joy_sub_ = nh_.subscribe<sensor_msgs::LaserScan>("/scan",10,&Laser::laserCallback,this);
+//signal(SIGINT,quit);
 }
 
 void Laser::laserCallback(const sensor_msgs::LaserScan::ConstPtr& pointCloud){
+/*
+cout<<"0: ";
+cout<<pointCloud->ranges[0]<<endl;
+cout<<"90: ";
+cout<<pointCloud->ranges[90]<<endl;
+cout<<"180: ";
+cout<<pointCloud->ranges[180]<<endl;
+*/
+
 double range=100;
 double index;
 
@@ -98,14 +127,17 @@ laser_values.angle_left = index3;
 laser_values.min = range;
 laser_values.angle_min = index;
 
- // ros::Rate loop_rate(1);
+ ros::Rate loop_rate(5);
 vel_pub_.publish(laser_values);
-//loop_rate.sleep();
+loop_rate.sleep();
 }
+
 
 int main(int argc, char** argv)
 {
   ros::init(argc, argv, "laser");
+ //ros::Rate loop_rate(1);
   Laser laser;
+
   ros::spin();
 }

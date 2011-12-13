@@ -30,7 +30,7 @@ private:
   hcr_vip::laser_vip laser_values;  
 };
 
-Laser::Laser()
+Laser::Laser(): 
 {
   vel_pub_ = nh_.advertise<hcr_vip::laser_vip>("/laser_vip", 1);  
   joy_sub_ = nh_.subscribe<sensor_msgs::LaserScan>("/scan",1,&Laser::laserCallback,this);

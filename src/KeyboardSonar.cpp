@@ -48,9 +48,7 @@ void quit(int sig)
      tcsetattr(kfd, TCSANOW, &cooked);////Point to be NOTED
      ros::shutdown();
      exit(0);
-   }/*%BR%
-=Path_from_Home/ROSARIA$ rosrun ROSARIA <b>RosAria</b>=
-%BR%*/
+   }
 
 int main(int argc, char** argv)
 {
