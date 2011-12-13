@@ -20,8 +20,8 @@ int main(int argc, char **argv)
   {
     hcr_vip::sensorMsg msg;
 
-    msg.range = rand() % 20;
-    msg.angle = rand() % 180;
+    msg.range = rand() % 3;
+    msg.angle = rand() % 360;
     std::cout << "Publishing mock message:"<<endl;
     std::cout << "------------------------"<<endl;
     std::cout << msg.range << endl;

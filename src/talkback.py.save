@@ -7,7 +7,6 @@
 import roslib; roslib.load_manifest('hcr_vip')
 import rospy
 import sys
-import math
 from hcr_vip.msg import sensorMsg
 from string import Template 
 
@@ -17,7 +16,7 @@ from sound_play.libsoundplay import SoundClient
 # GLOBALS
 ###############################################
 
-type_danger = {"warning": {"speech":"WARNING. %10s meters %10s", 
+type_danger = {"warning": {"speech":"Warning. %10s meters %10s", 
 			   "non-speech":"/sssmalert.wav"}, 
 	       "danger": {"speech":"Danger. %10s meters %10s",
 			  "non-speech":"/DingLing.wav"}, 
@@ -27,7 +26,7 @@ type_danger = {"warning": {"speech":"WARNING. %10s meters %10s",
 config = {"wavepath":"/home/robofriend/ros_workspace/hcr_vip/sounds",
 	  "voice":"voice_cmu_us_clb_arctic_clunits",
 	  "topic": {"name":"mockMasterTopic", "msg_type":sensorMsg}}
-	  #"topic": {"name":"SensorMsg", "msg_type":sensorMsg}}
+	  #Subsribe to SensorMsg for the real sensors
 
 class TalkBack:
     def __init__(self, mode):
@@ -37,7 +36,7 @@ class TalkBack:
         self.voice = config["voice"]  
 	self.wavepath = config["wavepath"]
 	self.mode = mode
-	self.last_obstacle = ("0.0", "0")
+	self.last_obstacle = None
 	# Create the sound client object
         self.soundhandle = SoundClient()	    
         rospy.sleep(1)
@@ -61,27 +60,20 @@ class TalkBack:
 	msg = self._get_danger_message(distance)	
 	direction = self._get_danger_direction(angle)
 	
-	#We calculate the displacement since last message. If within a 
-	# threshold then don't issue a message.
-	distance_diff = float(self.last_obstacle[0]) - float(distance)
-        angle_diff = int(self.last_obstacle[1]) - int(angle)
-
-  	if math.fabs(distance_diff) > 0.1 and  math.fabs(angle_diff) > 5:
-	    try:
-   	    	if self.mode == "speech": 
+	if self.last_obstacle != (distance, angle):		
+  	    try:
+   	    	if self.mode == "speech":
+                    rospy.sleep(3) 
 	            self.soundhandle.say(msg["speech"]%(distance,direction), self.voice)
-		    rospy.sleep(2.5)
 	    	else:
 		    rospy.sleep(1)
 	            self.soundhandle.playWave(self.wavepath + msg["non-speech"])
 		    rospy.sleep(1)
 	    except Exception, e:
 	        print e
-	    
-	    self.last_obstacle = (distance, angle)
 	else:
-	     rospy.loginfo("Skipping message. Nothing really changed since last message.")
-	     self.last_obstacle = (distance, angle)
+	     rospy.loginfo("Skipping message. It's the same as last time. Move!!!!")	
+	     self.last_obstacle = (distance, range)
 	
 	rospy.loginfo("Distance:"+distance)
         rospy.loginfo("Angle:"+angle)
@@ -94,7 +86,7 @@ class TalkBack:
 	Returns the type of danger depending on the distance from the closest obsracle
 	It's supposed to be a private method. Should not be called from outside
 	'''	
-	if float(distance) > 1.5:
+	if float(distance) > 4.0:
             msg = type_danger["warning"]
         elif float(distance) > 1.0:
             msg = type_danger["danger"]

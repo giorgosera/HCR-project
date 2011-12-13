@@ -98,7 +98,7 @@ laser_values.angle_left = index3;
 laser_values.min = range;
 laser_values.angle_min = index;
 
- // ros::Rate loop_rate(1);
+ // ros::Rate loop_rate(5);
 vel_pub_.publish(laser_values);
 //loop_rate.sleep();
 }

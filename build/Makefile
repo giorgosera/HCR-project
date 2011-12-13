@@ -216,6 +216,19 @@ MockMaster/fast:
 .PHONY : MockMaster/fast
 
 #=============================================================================
+# Target rules for targets named Odom
+
+# Build rule for target.
+Odom: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Odom
+.PHONY : Odom
+
+# fast build rule for target.
+Odom/fast:
+	$(MAKE) -f CMakeFiles/Odom.dir/build.make CMakeFiles/Odom.dir/build
+.PHONY : Odom/fast
+
+#=============================================================================
 # Target rules for targets named ROSBUILD_genmsg_cpp
 
 # Build rule for target.
@@ -640,6 +653,21 @@ src/laser.s:
 	$(MAKE) -f CMakeFiles/laser.dir/build.make CMakeFiles/laser.dir/src/laser.s
 .PHONY : src/laser.s
 
+# target to build an object file
+src/odom.o:
+	$(MAKE) -f CMakeFiles/Odom.dir/build.make CMakeFiles/Odom.dir/src/odom.o
+.PHONY : src/odom.o
+
+# target to preprocess a source file
+src/odom.i:
+	$(MAKE) -f CMakeFiles/Odom.dir/build.make CMakeFiles/Odom.dir/src/odom.i
+.PHONY : src/odom.i
+
+# target to generate assembly for a file
+src/odom.s:
+	$(MAKE) -f CMakeFiles/Odom.dir/build.make CMakeFiles/Odom.dir/src/odom.s
+.PHONY : src/odom.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -655,6 +683,7 @@ help:
 	@echo "... KeyboardSonar"
 	@echo "... Master"
 	@echo "... MockMaster"
+	@echo "... Odom"
 	@echo "... ROSBUILD_genmsg_cpp"
 	@echo "... ROSBUILD_genmsg_lisp"
 	@echo "... ROSBUILD_genmsg_py"
@@ -710,6 +739,9 @@ help:
 	@echo "... src/laser.o"
 	@echo "... src/laser.i"
 	@echo "... src/laser.s"
+	@echo "... src/odom.o"
+	@echo "... src/odom.i"
+	@echo "... src/odom.s"
 .PHONY : help
 
 

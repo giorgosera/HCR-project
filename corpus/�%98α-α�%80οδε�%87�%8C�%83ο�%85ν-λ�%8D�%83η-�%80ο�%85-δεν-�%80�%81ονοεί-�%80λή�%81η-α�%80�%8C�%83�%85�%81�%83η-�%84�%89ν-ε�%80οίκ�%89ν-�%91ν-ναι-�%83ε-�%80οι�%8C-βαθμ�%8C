@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]> <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]> <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]> <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="author" content="The Cyprus Problem">
+<meta name="description" content="Online social platform to voice public opinion over the Cyprus issue.">
+<meta name="viewport" content="width=920, initial-scale=auto">
+<meta name="google-site-verification" content="Z7YETl01RC7I5W7WO0E9Ov-heMI5CPd9cBQHCZoXWYw" />
+<title>
+
+The Cyprus Problem
+
+</title>
+<link rel="stylesheet" href="/static/css/base.css?v=d6581" />
+<link href='http://fonts.googleapis.com/css?family=Tienne&v2' rel='stylesheet' type='text/css'>
+
+<!--[if !IE 7]>
+<style type="text/css">
+#wrap {display:table;height:100%}
+</style>
+<![endif]-->
+</head>
+<body>
+<div id="fb-root"></div>
+
+
+<div id="wrap">
+<div id="header">
+<div id="header-in">
+<a href="/home"><img src="/static/imgs/logo.gif"/></a>
+<div id="title">
+
+<a href="/home">The Cyprus Problem</a>
+
+</div>
+<div id="header-actions">
+
+
+<div id="login-please" title="You are viewing this site as a guest and will experience limited functionality.">Δεν είσαι συνδεδεμένος.</div>
+<div id="nav">
+<a href="/home">Αρχική</a>
+<a href="/login">Σύνδεση</a>
+<a href="/register">Εγγραφή</a>
+<a href="/help">Βοήθεια</a>
+</div>
+
+
+</div>
+</div>
+</div>
+
+<div id="main">
+<div id="content" class="clearfix">
+
+<div id="auth-form">
+<div id="login" class="clearfix simple-login">
+
+<h1>Σύνδεση στη σελίδα</h1>
+<h3>
+Μόνο ένα μικρό κομμάτι της σελίδας είναι διαθέσιμο για επισκέπτες. Παρακαλούμε όπως συνδεθείς.
+</h3>
+
+<div style="display:none" id="msg"></div>
+<label>Email</label><br>
+<input type="text" id="lemail" name="email" value=""></input><br>
+<label>Κωδικός Πρόσβασης</label><br>
+<input type="password" id="lpassword" name="password" value=""></input><br>
+
+<a id="getacc" href="/register">Δεν έχεις λογαριασμό; Δημιούργησε τώρα.</a>
+<br><br>
+
+<a class="button" id="login-btn">Σύνδεση</a>
+<br><a href="/u/forgot/pass" id="forgot-password">Έχεις ξεχάσει τoν κωδικό σου?</a>
+<input type="hidden" id="next" value="/p/%CE%98%CE%B1-%CE%B1%CF%80%CE%BF%CE%B4%CE%B5%CF%87%CF%8C%CF%83%CE%BF%CF%85%CE%BD-%CE%BB%CF%8D%CF%83%CE%B7-%CF%80%CE%BF%CF%85-%CE%B4%CE%B5%CE%BD-%CF%80%CF%81%CE%BF%CE%BD%CE%BF%CE%B5%CE%AF-%CF%80%CE%BB%CE%AE%CF%81%CE%B7-%CE%B1%CF%80%CF%8C%CF%83%CF%85%CF%81%CF%83%CE%B7-%CF%84%CF%89%CE%BD-%CE%B5%CF%80%CE%BF%CE%AF%CE%BA%CF%89%CE%BD-%CE%91%CE%BD-%CE%BD%CE%B1%CE%B9-%CF%83%CE%B5-%CF%80%CE%BF%CE%B9%CF%8C-%CE%B2%CE%B1%CE%B8%CE%BC%CF%8C"></input>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+<div style="display:none" tabIndex='1000' id="notifications">
+<h2>Ειδοποιήσεις</h2>
+<div class="loading" id="xhr-target">
+</div>
+<div id="actions">
+<a id="n-clear-btn" style="border-right: 1px solid #ddd">
+Εκκαθάριση λίστας
+
+</a>
+<a href="#!/notifications" id ="n-show-all" style="border-left: 1px solid #ddd">
+Όλες οι ειδοποιήσεις
+</a>
+</div>
+</div>
+
+<div id="footer">
+<div id="footer-in">
+<div style="float:left">
+The Cyprus Problem. Πνευματική Ιδιοκτησία &copy; 2011.
+</div>
+<div id="footer-links">
+<a href="/about" onClick="_gaq.push(['_trackEvent', 'Landing', 'Click-landing', 'About Us - footer']);">Ποιοι Είμαστε</a>
+<a class="dot">&middot;</a>
+<a href="/terms" onClick="_gaq.push(['_trackEvent', 'Landing', 'Click-landing', 'Terms - footer']);">Όροι και Κανονισμοί</a>
+</div>
+</div>
+</div>
+
+<div id="loader">
+<img src="/static/imgs/loader.gif"/>
+</div>
+
+
+
+<!--[if lt IE 7 ]>
+<script src="/static/js/libs/dd_belatedpng.js?v=849d7"></script>
+<script> DD_belatedPNG.fix('img, .png_bg'); </script>
+<![endif]-->
+<input type="hidden" name="_xsrf" value="cddf50d24ddc44b8bfa69d179d4d8e9b"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/static/js/libs/jquery-1.5.1.min.js?v=b04a3"%3E%3C/script%3E'))</script>
+<!--script>!window.jQuery.effect && document.write(unescape('%3Cscript src="/static/js/libs/jquery-ui-1.8.14.custom.min.js?v=563ed"%3E%3C/script%3E'))</script-->
+<script src="/static/js/libs/jquery.i18n.js?v=30026"></script>
+<script src="/static/js/translation.js?v=8212d"></script>
+<script src="/static/js/libs/blurb.min.js?v=37832"></script>
+<script src="/static/js/CYP.js?v=1d0ad"></script>
+
+<script src="/static/js/user.js?v=e32e5"></script>
+
+
+<script id="restricted-template" type="text/x-jquery/tmpl">
+<div class="restricted-overlay">
+<span style='float:left'>Παρακαλώ&nbsp;&nbsp;</span>
+<a class="button" href="/login">Σύνδεση</a> <span style='float:left'>&nbsp;&nbsp;or&nbsp;&nbsp;</span> <a class="button" href="/register">Εγγραφή</a>
+<span style='float:left'>&nbsp;&nbsp;to gain full access.</span>
+</div>
+</script>
+
+<script id="feedback-template" type="text/x-jquery/tmpl">
+<div class="info-popup clearfix">
+<h1>Πες τη γνώμη σου ή ανάφερε ένα πρόβλημα;</h1>
+<label for="topic">Ποιο είναι το πρόβλημα;</label>
+<br><br>
+<select id="type">
+<option value="bug">Σφάλμα/Bug</option>
+<option value="suggestion">Εισήγηση</option>
+<option value="other">Άλλο</option>
+</select>
+<br><br>
+<div id="problem-desc" class="clearfix">
+<label for="topic">Περιέγραψε το πρόβλημα</label>
+<textarea id="description"></textarea>
+</div>
+<br>
+<div class="popup-actions">
+<a class="feedback-btn button" style="width:160px"><span class="icon plus"></span>Αποστολή αναφοράς</a>
+<a class="no-feedback-btn"><b>Ακύρωση</b></a>
+</div>
+</div>
+</script>
+
+
+<script type="text/javascript">
+
+CYP.pageLoad();
+</script>
+<script>
+var _gaq = [['_setAccount', 'UA-25636326-1'], ['_trackPageview']];
+(function(d, t) {
+var g = d.createElement(t),
+s = d.getElementsByTagName(t)[0];
+g.async = true;
+g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+s.parentNode.insertBefore(g, s);
+})(document, 'script');
+</script>
+<script>
+/*Asynchronous facebook loader*/
+window.fbAsyncInit = function() {
+FB.init({appId: '218873084835441',
+status: true,
+cookie: true,
+xfbml: true,
+oauth: true
+});
+console.log("fb loaded")
+};
+(function() {
+var e = document.createElement('script'); e.async = true;
+e.src = document.location.protocol +
+'//connect.facebook.net/en_US/all.js';
+document.getElementById('fb-root').appendChild(e);
+}());
+</script>
+<script>
+function changeLanguage(lang){
+CYP.get(("/user/locale/"+lang), false, false, function(response){
+if (response.s) {location = location;}
+});}
+$("a#lang-en").live("click", function(){changeLanguage("en");});
+$("a#lang-gr").live("click", function(){changeLanguage("gr");});
+</script>
+</body>
+</html>
