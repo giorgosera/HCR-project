@@ -12,4 +12,10 @@ How to run speech synthesis:
 1) rosrun sound_play sound_playnode.py
 2) rosrun hcr_vip talkback.py
 
+***Warning***
+Run soundplay node on the robot's laptop NOT on yours.
+Otherwise sound is not redirected to Jabra Wave
 
+How to run speech recognition:
+-----------------------------
+Coming soon to a theatre near you
