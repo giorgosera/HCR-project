@@ -3,28 +3,41 @@ import roslib; roslib.load_manifest('ChapticBelt')
 import rospy
 import bluetooth
 from bluetooth import *
-from ChapticBelt.msg import data
-
+#from ChapticBelt.msg import data
+from hcr_vip.msg import sensorMsg
 
 addr="00:06:66:42:21:78"
-status=1
+last_btData = "0;0.0"
+status= 1
 
 def callback(data, sock):
+    global last_btData
     angle=data.angle
     dista=data.range
-    valid=ValidObstacle(dista, angle)
-    if (valid==2):
-	rospy.loginfo("VALID")
-	vib=ChooseVibrator(angle)
-	inten=round(CalcIntensity(dista), 7)	
-	btdata = str(vib) + ";" + str(inten)
-	SendBtData(btdata, sock)
-	return 1    
-    else:
-	SendBtData("0", sock)
-	rospy.loginfo("NOT VALID")
+    
+    if dista < 0:
+	btData = last_btData
+	SendBtData(btData, sock)
+	rospy.loginfo(btData)
+	rospy.loginfo("Sending last btData. Nothing has changed.")
 	return 1
-
+    else:	
+    	valid=ValidObstacle(dista, angle)
+    	if (valid==2):
+	    rospy.loginfo("VALID")
+	    vib=ChooseVibrator(angle)
+	    inten=round(CalcIntensity(dista),3)
+	    print inten
+	    print vib
+	   # inten_integer = int (inten)	
+	    btData = str(vib) + ";" + str(inten)
+	    SendBtData(btData, sock)
+	    last_btData = btData 
+	    return 1    
+        else:
+	    SendBtData("0;0.0", sock)
+	    rospy.loginfo("NOT VALID")
+	    return 1
 
 def CheckForDevice():
     found=0
@@ -71,7 +84,7 @@ def ConnectBelt(sock):
     
 
 def CalcIntensity(dista):
-    value=dista*0.1
+    value=dista*0.5
     return value
 
 
@@ -107,7 +120,8 @@ def listener():
     #sock.settimeout(0)
     rospy.init_node('listener', anonymous=True)
     ConnectBelt(sock)
-    rospy.Subscriber("SensorMsg", data, callback, sock)
+    #rospy.Subscriber("SensorMsg", sensorMsg, callback, sock)
+    rospy.Subscriber("mockMasterTopic", sensorMsg, callback, sock)
     rospy.spin()
     
 

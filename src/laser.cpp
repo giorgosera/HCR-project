@@ -51,7 +51,7 @@ cout<<"Danger min: "<<index<<" Degrees     Distance: "<<range<<endl;
 double range1=100;
 double index1;
 
-for(int i=30; i<151; i++){
+for(int i=45; i<135; i++){
    if (pointCloud->ranges[i] < range1){
 	range1 = pointCloud->ranges[i];
 	index1 = i > 90 ? 360 - (i - 90) : 90 - i;

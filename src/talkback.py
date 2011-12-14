@@ -127,10 +127,11 @@ if __name__=="__main__":
 	    mode = sys.argv[1]
             if mode not in ['speech', 'non-speech']:
 		print mode," is not a recognised command line argument. Either use speech or non-speech"
-		raise TypeError("Not recognised command line argument")	
+		raise TypeError("Not recognised command line argument")
 	rospy.init_node('talkback', anonymous=True)
 	TalkBack(mode)
 	rospy.spin()
+	print "After spin"
     except:
         pass
 

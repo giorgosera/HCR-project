@@ -2,7 +2,7 @@
 
   <group>
 
-   <node name="Josystic" pkg="rosfalcon" type="joystick" />
+   <node name="Joystic" pkg="rosfalcon" type="joystick" />
    <node name="FalconController" pkg="hcr_vip" type="FalconController" output="screen"	/>
 
   </group>

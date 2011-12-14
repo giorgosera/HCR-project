@@ -1,7 +1,8 @@
 <launch>
-<!--Activates Laser scans/-->
+
+<!--Activates Laser scans-->
 <include file="$(find hcr_vip)/launch/laser.launch"/>
-<!--Activates Sonar scans/-->
+<!--Activates Sonar scans-->
 <include file="$(find hcr_vip)/launch/sonar.launch"/>
 
   <group>

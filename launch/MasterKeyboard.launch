@@ -6,7 +6,7 @@
 
 
   <group>
-   <node name="Master" pkg="hcr_vip" type="Master"/>
+   <node name="Master" pkg="hcr_vip" type="Master" output="screen"/>
 	<!--Activate Rosaria-->
  <node name="RosAria" pkg="ROSARIA" type="RosAria" />
 	 <param name="port" value="/dev/ttyUSB0" />

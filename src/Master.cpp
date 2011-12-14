@@ -1,9 +1,10 @@
 #include "Master.h"
 
 Master::Master():
-  front_threshold(0.5),
-  side_threshold(0.3),
-  inform_threshold(2.0),
+  front_threshold(0.3),
+  back_threshold(0.4),
+  side_threshold(0.25),
+  inform_threshold(1.5),
   laserBool(false),
   sonarBool(false),
   msgBool(true),
@@ -24,15 +25,17 @@ void Master::joyCallback(const Twist::ConstPtr& joy){
 
 void Master::speedCallback(const Odometry::ConstPtr& speed){
 	if ((speed->twist.twist.linear.x > speed_threshold) || (speed->twist.twist.linear.x < -speed_threshold)){
-		front_threshold = 0.60;
+		front_threshold = 0.70;
+		back_threshold = 0.70;
 	}else{
 		front_threshold = 0.30;
+		back_threshold = 0.3;
 	}
 
-	if ((speed->twist.twist.angular.x > speed_threshold) || (speed->twist.twist.angular.z < -speed_threshold)){
-		side_threshold = 0.60;
+	if ((speed->twist.twist.angular.z > speed_threshold) || (speed->twist.twist.angular.z < -speed_threshold)){
+		side_threshold = 0.40;
 	}else{
-		side_threshold = 0.30;
+		side_threshold = 0.20;
 	}
 }
 
@@ -56,7 +59,7 @@ void Master::reAdjustSpeed(){
 	else if(vel.linear.x < -speed_threshold){
 		vel.linear.x = -speed_threshold;
 	}
-
+	cout<<"Speed reAdjusted to: " << speed_threshold<<endl;
 	/*if(vel.angular.z > speed_threshold){
 		vel.angular.z = speed_threshold;
 	}
@@ -84,22 +87,22 @@ void Master::errorMsg(int error){
 		switch(error){
 				case 0 : {
 					cout<<"Obstacle at Front " <<sensorMsg.range<< "  "<<sensorMsg.angle<<endl;
-					publishSensor();
+					sensorMsg_pub_.publish(sensorMsg);//publishSensor();
 					break;
 				}
 				case 1 : {
 					cout<<"Obstacle at Back "<<sensorMsg.range<< "  "<<sensorMsg.angle<<endl;
-					publishSensor();
+					sensorMsg_pub_.publish(sensorMsg);//publishSensor();
 					break;
 				}
 				case 2 : {
 					cout<<"Obstacle at Right "<<sensorMsg.range<< "  "<<sensorMsg.angle<<endl;
-					publishSensor();
+					sensorMsg_pub_.publish(sensorMsg);//publishSensor();
 					break;
 				}
 				case 3 : {
 					cout<<"Obstacle at Left "<<sensorMsg.range<< "  "<<sensorMsg.angle<<endl;
-					publishSensor();
+					sensorMsg_pub_.publish(sensorMsg);//publishSensor();
 					break;
 				}
 				default : {
@@ -128,20 +131,20 @@ void Master::publishSensor(){
 	static hcr_vip::sensorMsg sonartemp = sensorMsg;
 	
 	if (sensorMsg.angle >= addAngle(+10,sonartemp.angle) ){
-		if (sensorMsg.range >= sonartemp.range + 0.2  ){
+		//if (sensorMsg.range >= sonartemp.range + 0.2  ){
+		//	msgBool = true;
+		//}
+		//else if (sensorMsg.range <= sonartemp.range - 0.2  ){
 			msgBool = true;
-		}
-		else if (sensorMsg.range <= sonartemp.range - 0.2  ){
-			msgBool = true;
-		}
+		//}
 	}
 	else if (sensorMsg.angle <= addAngle(-10,sonartemp.angle)  ){
-		if (sensorMsg.range >= sonartemp.range + 0.2  ){
+		//if (sensorMsg.range >= sonartemp.range + 0.2  ){
+		//	msgBool = true;
+		//}
+		//else if (sensorMsg.range <= sonartemp.range - 0.2  ){
 			msgBool = true;
-		}
-		else if (sensorMsg.range <= sonartemp.range - 0.2  ){
-			msgBool = true;
-		}
+		//}
 	}
 	else
 		msgBool = false;
@@ -149,6 +152,11 @@ void Master::publishSensor(){
 
 	if(msgBool)
 		sensorMsg_pub_.publish(sensorMsg);
+	else{
+		hcr_vip::sensorMsg s;
+		s.range = -100;
+		sensorMsg_pub_.publish(s);
+	}
 	
 	sonartemp = sensorMsg;
 }
