@@ -203,6 +203,19 @@ Master/fast:
 .PHONY : Master/fast
 
 #=============================================================================
+# Target rules for targets named MasterNav
+
+# Build rule for target.
+MasterNav: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 MasterNav
+.PHONY : MasterNav
+
+# fast build rule for target.
+MasterNav/fast:
+	$(MAKE) -f CMakeFiles/MasterNav.dir/build.make CMakeFiles/MasterNav.dir/build
+.PHONY : MasterNav/fast
+
+#=============================================================================
 # Target rules for targets named MockMaster
 
 # Build rule for target.
@@ -333,6 +346,19 @@ laser/fast:
 .PHONY : laser/fast
 
 #=============================================================================
+# Target rules for targets named rosTosonar
+
+# Build rule for target.
+rosTosonar: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rosTosonar
+.PHONY : rosTosonar
+
+# fast build rule for target.
+rosTosonar/fast:
+	$(MAKE) -f CMakeFiles/rosTosonar.dir/build.make CMakeFiles/rosTosonar.dir/build
+.PHONY : rosTosonar/fast
+
+#=============================================================================
 # Target rules for targets named rosbuild_precompile
 
 # Build rule for target.
@@ -422,6 +448,19 @@ rospack_gensrv_all: cmake_check_build_system
 rospack_gensrv_all/fast:
 	$(MAKE) -f CMakeFiles/rospack_gensrv_all.dir/build.make CMakeFiles/rospack_gensrv_all.dir/build
 .PHONY : rospack_gensrv_all/fast
+
+#=============================================================================
+# Target rules for targets named sendMsgs
+
+# Build rule for target.
+sendMsgs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sendMsgs
+.PHONY : sendMsgs
+
+# fast build rule for target.
+sendMsgs/fast:
+	$(MAKE) -f CMakeFiles/sendMsgs.dir/build.make CMakeFiles/sendMsgs.dir/build
+.PHONY : sendMsgs/fast
 
 #=============================================================================
 # Target rules for targets named test
@@ -609,6 +648,21 @@ src/Master.s:
 .PHONY : src/Master.s
 
 # target to build an object file
+src/MasterNav.o:
+	$(MAKE) -f CMakeFiles/MasterNav.dir/build.make CMakeFiles/MasterNav.dir/src/MasterNav.o
+.PHONY : src/MasterNav.o
+
+# target to preprocess a source file
+src/MasterNav.i:
+	$(MAKE) -f CMakeFiles/MasterNav.dir/build.make CMakeFiles/MasterNav.dir/src/MasterNav.i
+.PHONY : src/MasterNav.i
+
+# target to generate assembly for a file
+src/MasterNav.s:
+	$(MAKE) -f CMakeFiles/MasterNav.dir/build.make CMakeFiles/MasterNav.dir/src/MasterNav.s
+.PHONY : src/MasterNav.s
+
+# target to build an object file
 src/MockMasterPublisher.o:
 	$(MAKE) -f CMakeFiles/MockMaster.dir/build.make CMakeFiles/MockMaster.dir/src/MockMasterPublisher.o
 .PHONY : src/MockMasterPublisher.o
@@ -668,6 +722,36 @@ src/odom.s:
 	$(MAKE) -f CMakeFiles/Odom.dir/build.make CMakeFiles/Odom.dir/src/odom.s
 .PHONY : src/odom.s
 
+# target to build an object file
+src/rosTosonar.o:
+	$(MAKE) -f CMakeFiles/rosTosonar.dir/build.make CMakeFiles/rosTosonar.dir/src/rosTosonar.o
+.PHONY : src/rosTosonar.o
+
+# target to preprocess a source file
+src/rosTosonar.i:
+	$(MAKE) -f CMakeFiles/rosTosonar.dir/build.make CMakeFiles/rosTosonar.dir/src/rosTosonar.i
+.PHONY : src/rosTosonar.i
+
+# target to generate assembly for a file
+src/rosTosonar.s:
+	$(MAKE) -f CMakeFiles/rosTosonar.dir/build.make CMakeFiles/rosTosonar.dir/src/rosTosonar.s
+.PHONY : src/rosTosonar.s
+
+# target to build an object file
+src/sendMsgs.o:
+	$(MAKE) -f CMakeFiles/sendMsgs.dir/build.make CMakeFiles/sendMsgs.dir/src/sendMsgs.o
+.PHONY : src/sendMsgs.o
+
+# target to preprocess a source file
+src/sendMsgs.i:
+	$(MAKE) -f CMakeFiles/sendMsgs.dir/build.make CMakeFiles/sendMsgs.dir/src/sendMsgs.i
+.PHONY : src/sendMsgs.i
+
+# target to generate assembly for a file
+src/sendMsgs.s:
+	$(MAKE) -f CMakeFiles/sendMsgs.dir/build.make CMakeFiles/sendMsgs.dir/src/sendMsgs.s
+.PHONY : src/sendMsgs.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -682,6 +766,7 @@ help:
 	@echo "... KeyBoardController"
 	@echo "... KeyboardSonar"
 	@echo "... Master"
+	@echo "... MasterNav"
 	@echo "... MockMaster"
 	@echo "... Odom"
 	@echo "... ROSBUILD_genmsg_cpp"
@@ -694,6 +779,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... laser"
 	@echo "... rebuild_cache"
+	@echo "... rosTosonar"
 	@echo "... rosbuild_precompile"
 	@echo "... rosbuild_premsgsrvgen"
 	@echo "... rospack_genmsg"
@@ -701,6 +787,7 @@ help:
 	@echo "... rospack_genmsg_libexe"
 	@echo "... rospack_gensrv"
 	@echo "... rospack_gensrv_all"
+	@echo "... sendMsgs"
 	@echo "... test"
 	@echo "... test-future"
 	@echo "... test-results"
@@ -730,6 +817,9 @@ help:
 	@echo "... src/Master.o"
 	@echo "... src/Master.i"
 	@echo "... src/Master.s"
+	@echo "... src/MasterNav.o"
+	@echo "... src/MasterNav.i"
+	@echo "... src/MasterNav.s"
 	@echo "... src/MockMasterPublisher.o"
 	@echo "... src/MockMasterPublisher.i"
 	@echo "... src/MockMasterPublisher.s"
@@ -742,6 +832,12 @@ help:
 	@echo "... src/odom.o"
 	@echo "... src/odom.i"
 	@echo "... src/odom.s"
+	@echo "... src/rosTosonar.o"
+	@echo "... src/rosTosonar.i"
+	@echo "... src/rosTosonar.s"
+	@echo "... src/sendMsgs.o"
+	@echo "... src/sendMsgs.i"
+	@echo "... src/sendMsgs.s"
 .PHONY : help
 
 

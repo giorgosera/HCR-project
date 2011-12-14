@@ -11,7 +11,7 @@ Master::Master():
   speed_threshold(0.2)
 {
   vel_pub_ = nh_.advertise<Twist>("/RosAria/cmd_vel", 1); 
-  sensorMsg_pub_ = speed_.advertise<hcr_vip::sensorMsg>("/SensorMsg", 1);
+  sensorMsg_pub_ = speed_.advertise<hcr_vip::sensorMsg>("/SensorMsg", 10);
   joy_sub_ = nh_.subscribe<Twist>("Sonar_Falcon", 1, &Master::joyCallback, this);  
   speed_sub_= speed_.subscribe<Odometry>("RosAria/pose",1, &Master::speedCallback,this);
   sonar_sub_ = sonar_.subscribe<hcr_vip::sonar_vip>("sonar_vip",1, &Master::sonarCallback,this); 
@@ -150,8 +150,10 @@ void Master::publishSensor(){
 		msgBool = false;
 
 
-	if(msgBool)
+	if(msgBool){
 		sensorMsg_pub_.publish(sensorMsg);
+		cout<<sensorMsg.angle<<"  "<<sensorMsg.range<<endl;
+	}
 	else{
 		hcr_vip::sensorMsg s;
 		s.range = -100;
@@ -165,6 +167,7 @@ void Master::publishSensor(){
 void Master::distanceInform(float linear, float angular){
 	float temp1 = laserPtr->min ;
 	int temp2 = laserPtr->angle_min;
+
 	if ((laserPtr->min < inform_threshold) && (linear > 0)){
 		sensorMsg.range = laserPtr->min;
 		sensorMsg.angle = laserPtr->angle_min;
@@ -209,10 +212,12 @@ void Master::distanceInform(float linear, float angular){
 			temp1 = sonarPtr->distance_front;
 			temp2 = sonarPtr->turn_right_sensor == "left" ? 270 : 0; 
 		}
-		else if (sonarPtr->turn_right < temp1){
+		else if (sonarPtr->turn_left < temp1){
 			temp1 = sonarPtr->turn_left;
 			temp2 = sonarPtr->turn_left_sensor == "left" ? 180 : 360; 
 		}
+		sensorMsg.range = temp1;
+		sensorMsg.angle = temp2;
 		publishSensor();
 	}
 }

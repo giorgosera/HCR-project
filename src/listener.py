@@ -9,33 +9,37 @@ from hcr_vip.msg import sensorMsg
 addr="00:06:66:42:21:78"
 last_btData = "0;0.0"
 status= 1
+counter = 0
 
 def callback(data, sock):
-    global last_btData
+    global last_btData, counter
     angle=data.angle
     dista=data.range
     
     if dista < 0:
-	btData = last_btData
-	SendBtData(btData, sock)
-	rospy.loginfo(btData)
-	rospy.loginfo("Sending last btData. Nothing has changed.")
-	return 1
-    else:	
+	if counter < 5:
+	    btData = last_btData
+            SendBtData(btData, sock)
+	    rospy.loginfo(btData)
+	    rospy.loginfo("Sending last btData. Nothing has changed.")
+	    counter = counter + 1
+	    return 1
+        else:
+	    SendBtData("V0I0.0", sock)
+    else:
+	counter = 0	
     	valid=ValidObstacle(dista, angle)
     	if (valid==2):
 	    rospy.loginfo("VALID")
 	    vib=ChooseVibrator(angle)
-	    inten=round(CalcIntensity(dista),3)
-	    print inten
-	    print vib
+	    inten=round(CalcIntensity(dista),1)
 	   # inten_integer = int (inten)	
-	    btData = str(vib) + ";" + str(inten)
+	    btData = "V" + str(vib) + "I" + str(inten)
 	    SendBtData(btData, sock)
 	    last_btData = btData 
 	    return 1    
         else:
-	    SendBtData("0;0.0", sock)
+	    SendBtData("V0I0.0", sock)
 	    rospy.loginfo("NOT VALID")
 	    return 1
 
@@ -84,7 +88,7 @@ def ConnectBelt(sock):
     
 
 def CalcIntensity(dista):
-    value=dista*0.5
+    value= 0.8 - dista*0.5
     return value
 
 
@@ -120,8 +124,8 @@ def listener():
     #sock.settimeout(0)
     rospy.init_node('listener', anonymous=True)
     ConnectBelt(sock)
-    #rospy.Subscriber("SensorMsg", sensorMsg, callback, sock)
-    rospy.Subscriber("mockMasterTopic", sensorMsg, callback, sock)
+    rospy.Subscriber("SensorMsg", sensorMsg, callback, sock)
+   # rospy.Subscriber("mockMasterTopic", sensorMsg, callback, sock)
     rospy.spin()
     
 

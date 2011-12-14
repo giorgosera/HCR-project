@@ -6,6 +6,7 @@
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/KeyBoardController.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/KeyboardSonar.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/Master.dir
+/home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/MasterNav.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/MockMaster.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/Odom.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/ROSBUILD_genmsg_cpp.dir
@@ -16,6 +17,7 @@
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/Sonar.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/clean-test-results.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/laser.dir
+/home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/rosTosonar.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/rosbuild_precompile.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/rosbuild_premsgsrvgen.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/rospack_genmsg.dir
@@ -23,6 +25,7 @@
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/rospack_genmsg_libexe.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/rospack_gensrv.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/rospack_gensrv_all.dir
+/home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/sendMsgs.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/test.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/test-future.dir
 /home/robofriend/ros_workspace/hcr_vip/build/CMakeFiles/test-results.dir

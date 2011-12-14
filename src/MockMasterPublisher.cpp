@@ -13,7 +13,7 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "mock_master_publisher");
   ros::NodeHandle n;
   ros::Publisher mock_pub = n.advertise<hcr_vip::sensorMsg>("mockMasterTopic", 10);
-  ros::Rate loop_rate(6);
+  ros::Rate loop_rate(10);
 
   int count = 0;
   
@@ -21,8 +21,8 @@ int main(int argc, char **argv)
   {
     hcr_vip::sensorMsg msg;
 
-    msg.range = 2;//rand() % 3;
-    msg.angle = 45;//rand() % 360;
+    msg.range = rand() % 4 -1;
+    msg.angle = rand() % 360;
     std::cout << "Publishing mock message:"<<endl;
     std::cout << "------------------------"<<endl;
     std::cout << msg.range << endl;

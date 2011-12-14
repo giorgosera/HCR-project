@@ -1,0 +1,14 @@
+<launch>
+
+
+<!--Activates Sonar scans-->
+<include file="$(find hcr_vip)/launch/sonar.launch"/>
+
+  <group>
+	<!--Activate Rosaria-->
+ <node name ="laser" pkg ="hcr_vip" type="laser" />
+<!--Takes info from any sonar+laser and exorts error msg + move robot-->
+   <node name="MasterNav" pkg="hcr_vip" type="MasterNav" output="screen"/>
+  </group>
+
+</launch>

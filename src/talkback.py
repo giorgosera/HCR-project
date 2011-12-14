@@ -17,17 +17,17 @@ from sound_play.libsoundplay import SoundClient
 # GLOBALS
 ###############################################
 
-type_danger = {"warning": {"speech":"WARNING. %10s meters %10s", 
+type_danger = {"warning": {"speech":"Info. %10s %10s", 
 			   "non-speech":"/sssmalert.wav"}, 
-	       "danger": {"speech":"Danger. %10s meters %10s",
+	       "danger": {"speech":"Warning. %10s %10s",
 			  "non-speech":"/DingLing.wav"}, 
-	       "immediate danger": {"speech":"Immediate danger. %10s meters %10s",
+	       "immediate danger": {"speech":"Danger. %10s",
 				    "non-speech":"/DINGING.WAV"}}
 
 config = {"wavepath":"/home/robofriend/ros_workspace/hcr_vip/sounds",
 	  "voice":"voice_cmu_us_clb_arctic_clunits",
-	  "topic": {"name":"mockMasterTopic", "msg_type":sensorMsg}}
-	  #"topic": {"name":"SensorMsg", "msg_type":sensorMsg}}
+	  #"topic": {"name":"mockMasterTopic", "msg_type":sensorMsg}}
+	  "topic": {"name":"SensorMsg", "msg_type":sensorMsg}}
 
 class TalkBack:
     def __init__(self, mode):
@@ -38,6 +38,8 @@ class TalkBack:
 	self.wavepath = config["wavepath"]
 	self.mode = mode
 	self.last_obstacle = ("0.0", "0")
+	self.last_direction = "unknown"
+
 	# Create the sound client object
         self.soundhandle = SoundClient()	    
         rospy.sleep(1)
@@ -58,33 +60,33 @@ class TalkBack:
 
 	distance = str(round(msg.range, 1))
 	angle = str(msg.angle)
-	msg = self._get_danger_message(distance)	
+	msg, type = self._get_danger_message(distance)	
 	direction = self._get_danger_direction(angle)
 	
-	#We calculate the displacement since last message. If within a 
-	# threshold then don't issue a message.
-	distance_diff = float(self.last_obstacle[0]) - float(distance)
-        angle_diff = int(self.last_obstacle[1]) - int(angle)
-
-  	if math.fabs(distance_diff) > 0.1 and  math.fabs(angle_diff) > 5:
+	
+  	#if math.fabs(distance_diff) > 0.1 and  math.fabs(angle_diff) > 5:
+	if float(distance) >= 0 and direction != "behind" and direction != self.last_direction:
 	    try:
-   	    	if self.mode == "speech": 
-	            self.soundhandle.say(msg["speech"]%(distance,direction), self.voice)
-		    rospy.sleep(2.5)
+   	    	if self.mode == "speech":
+		    if type != "immediate danger": 
+	                self.soundhandle.say(msg["speech"]%(int(float(distance)),direction), self.voice)
+		    else:
+			self.soundhandle.say(msg["speech"]%direction, self.voice)
+ 		    rospy.sleep(2)
 	    	else:
 		    rospy.sleep(1)
 	            self.soundhandle.playWave(self.wavepath + msg["non-speech"])
 		    rospy.sleep(1)
 	    except Exception, e:
 	        print e
-	    
+	    self.last_direction = direction
 	    self.last_obstacle = (distance, angle)
 	else:
-	     rospy.loginfo("Skipping message. Nothing really changed since last message.")
+	     rospy.loginfo("Skipping message. No change or obstacle behind.")
 	     self.last_obstacle = (distance, angle)
 	
-	rospy.loginfo("Distance:"+distance)
-        rospy.loginfo("Angle:"+angle)
+	rospy.loginfo("Distance:" + distance)
+        rospy.loginfo("Angle:" + angle)
         rospy.loginfo("Direction of danger:"+direction)
 
         self.soundhandle.stopAll()	
@@ -96,11 +98,14 @@ class TalkBack:
 	'''	
 	if float(distance) > 1.5:
             msg = type_danger["warning"]
+	    type = "warning"
         elif float(distance) > 1.0:
             msg = type_danger["danger"]
+	    type = "danger"
         else:
             msg = type_danger["immediate danger"]
-	return msg
+	    type = "immediate danger"
+	return msg, type
 
     def _get_danger_direction(self, angle):
 	div_angle = int(angle)/45
@@ -131,7 +136,6 @@ if __name__=="__main__":
 	rospy.init_node('talkback', anonymous=True)
 	TalkBack(mode)
 	rospy.spin()
-	print "After spin"
     except:
         pass
 
