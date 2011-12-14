@@ -6,34 +6,40 @@ Master::Master():
   inform_threshold(2.0),
   laserBool(false),
   sonarBool(false),
-  msgBool(true)
+  msgBool(true),
+  speed_threshold(0.2)
 {
   vel_pub_ = nh_.advertise<Twist>("/RosAria/cmd_vel", 1); 
-  joy_sub_ = nh_.subscribe<Twist>("Sonar_Falcon", 1, &Master::joyCallback, this);  
   sensorMsg_pub_ = speed_.advertise<hcr_vip::sensorMsg>("/SensorMsg", 1);
+  joy_sub_ = nh_.subscribe<Twist>("Sonar_Falcon", 1, &Master::joyCallback, this);  
   speed_sub_= speed_.subscribe<Odometry>("RosAria/pose",1, &Master::speedCallback,this);
   sonar_sub_ = sonar_.subscribe<hcr_vip::sonar_vip>("sonar_vip",1, &Master::sonarCallback,this); 
   laser_sub_ = laser_.subscribe<hcr_vip::laser_vip>("laser_vip",1, &Master::laserCallback,this);	
+}
+
+void Master::joyCallback(const Twist::ConstPtr& joy){
+	vel.angular.z = joy->angular.z;
+	vel.linear.x = joy->linear.x; 
+}
+
+void Master::speedCallback(const Odometry::ConstPtr& speed){
+	if ((speed->twist.twist.linear.x > speed_threshold) || (speed->twist.twist.linear.x < -speed_threshold)){
+		front_threshold = 0.60;
+	}else{
+		front_threshold = 0.30;
+	}
+
+	if ((speed->twist.twist.angular.x > speed_threshold) || (speed->twist.twist.angular.z < -speed_threshold)){
+		side_threshold = 0.60;
+	}else{
+		side_threshold = 0.30;
+	}
 }
 
 void Master::laserCallback(const hcr_vip::laser_vip::ConstPtr& laser){
 	laserPtr = laser;
 	laserBool = true;
 	//checkOK();
-}
-
-void Master::speedCallback(const Odometry::ConstPtr& speed){
-	if ((speed->twist.twist.linear.x > 0.2) || (speed->twist.twist.linear.x < -0.2)){
-		front_threshold = 0.60;
-	}else{
-		front_threshold = 0.30;
-	}
-
-	if ((speed->twist.twist.angular.x > 0.2) || (speed->twist.twist.angular.z < -0.2)){
-		side_threshold = 0.60;
-	}else{
-		side_threshold = 0.30;
-	}
 }
 
 void Master::sonarCallback(const hcr_vip::sonar_vip::ConstPtr& sonar){
@@ -44,19 +50,19 @@ void Master::sonarCallback(const hcr_vip::sonar_vip::ConstPtr& sonar){
 }
 
 void Master::reAdjustSpeed(){
-	if(vel.linear.x > 0.2){
-		vel.linear.x = 0.2;
+	if(vel.linear.x > speed_threshold){
+		vel.linear.x = speed_threshold;
 	}
-	else if(vel.linear.x < -0.2){
-		vel.linear.x = -0.2;
+	else if(vel.linear.x < -speed_threshold){
+		vel.linear.x = -speed_threshold;
 	}
 
-	if(vel.angular.z > 0.2){
-		vel.angular.z = 0.2;
+	/*if(vel.angular.z > speed_threshold){
+		vel.angular.z = speed_threshold;
 	}
-	else if(vel.angular.z < -0.2){
-		vel.angular.z = -0.2;
-	}
+	else if(vel.angular.z < -speed_threshold){
+		vel.angular.z = -speed_threshold;
+	}*/
 	vel_pub_.publish(vel);
 }
 
@@ -149,35 +155,56 @@ void Master::publishSensor(){
 
 
 void Master::distanceInform(float linear, float angular){
-	if ((laserPtr->min < inform_threshold) && (linear >= 0)){
+	float temp1 = laserPtr->min ;
+	int temp2 = laserPtr->angle_min;
+	if ((laserPtr->min < inform_threshold) && (linear > 0)){
 		sensorMsg.range = laserPtr->min;
 		sensorMsg.angle = laserPtr->angle_min;
 		reAdjustSpeed();
 		publishSensor();
 	}
 
-	else if ((sonarPtr->distance_back < inform_threshold) && (linear <= 0)){	
+	else if ((sonarPtr->distance_back < inform_threshold) && (linear < 0)){	
 		sensorMsg.range = sonarPtr->distance_back;
 		sensorMsg.angle = sonarPtr->angle_back;
 		reAdjustSpeed();
 		publishSensor();
 	}
-	else if ((sonarPtr->distance_front < inform_threshold) && (linear >= 0)){
+	else if ((sonarPtr->distance_front < inform_threshold) && (linear > 0)){
 		sensorMsg.range = sonarPtr->distance_front;
 		sensorMsg.angle = sonarPtr->angle_front;
 		reAdjustSpeed();
 		publishSensor();
 	}
-	else if ((sonarPtr->turn_right < inform_threshold) && (angular <= 0)){
+	else if ((sonarPtr->turn_right < inform_threshold) && (angular < 0)){
 		sensorMsg.range = sonarPtr->turn_right;
 		sensorMsg.angle = sonarPtr->turn_right_sensor == "left" ? 270 : 0;
 		reAdjustSpeed();
 		publishSensor();
 	}
-	else if ((sonarPtr->turn_left < inform_threshold)&& (angular >= 0)){
+	else if ((sonarPtr->turn_left < inform_threshold)&& (angular > 0)){
 		sensorMsg.range = sonarPtr->turn_left;
 		sensorMsg.angle = sonarPtr->turn_left_sensor == "left" ? 180 : 360;
 		reAdjustSpeed();
+		publishSensor();
+	}
+	else{
+		if (sonarPtr->distance_back < temp1){
+			temp1 = sonarPtr->distance_back;
+			temp2 = sensorMsg.angle = sonarPtr->angle_back; 
+		}
+		else if (sonarPtr->distance_front < temp1){
+			temp1 = sonarPtr->distance_front;
+			temp2 = sensorMsg.angle = sonarPtr->angle_front; 
+		}
+		else if (sonarPtr->turn_right < temp1){
+			temp1 = sonarPtr->distance_front;
+			temp2 = sonarPtr->turn_right_sensor == "left" ? 270 : 0; 
+		}
+		else if (sonarPtr->turn_right < temp1){
+			temp1 = sonarPtr->turn_left;
+			temp2 = sonarPtr->turn_left_sensor == "left" ? 180 : 360; 
+		}
 		publishSensor();
 	}
 }
@@ -273,11 +300,6 @@ void Master::STOP(){
 	vel.angular.z = 0.0;
 	vel.linear.x = 0.0;
 	vel_pub_.publish(vel);
-}
-
-void Master::joyCallback(const Twist::ConstPtr& joy){
-	vel.angular.z = joy->angular.z;
-	vel.linear.x = joy->linear.x; 
 }
 
 int main(int argc, char** argv){

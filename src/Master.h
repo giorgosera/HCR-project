@@ -42,6 +42,6 @@ private:
 	hcr_vip::sonar_vip::ConstPtr sonarPtr;
 	hcr_vip::laser_vip::ConstPtr laserPtr;
 	bool ok, laserBool,sonarBool, msgBool;
-	double side_threshold,front_threshold, inform_threshold;	
+	double side_threshold,front_threshold, inform_threshold, speed_threshold;	
 
 };
