@@ -4,7 +4,7 @@
 <include file="$(find hcr_vip)/launch/Master.launch"/>
 
   <group>
-<node name="Sound" pkg="hcr_vip" type="talkback.py"  args="non-speech" output="screen"/>
+<node name="Sound" pkg="hcr_vip" type="talkback.py"  args="non-speech" />
 <node name="SoundApi" pkg="sound_play" type="soundplay_node.py" respawn="true"/>
   </group>
 

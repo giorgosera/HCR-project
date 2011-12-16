@@ -104,16 +104,25 @@ class TalkBack:
 	    template_str = (int(float(distance)),direction)
 	else:
 	    template_str = ()	
-
+        
 	if float(distance) > 1.2:
-            msg = type_danger["info"][mode]%template_str
+	    if mode == "speech":
+            	msg = type_danger["info"][mode]%template_str
+	    else:
+	        msg = type_danger["info"][mode]
 	    type = "info"
         elif float(distance) > 1.0:
-            msg = type_danger["warning"][mode]%template_str
+            if mode == "speech":
+                msg = type_danger["warning"][mode]%template_str
+            else:
+                msg = type_danger["warning"][mode]  
 	    type = "warning"
         else:
 	    template_str = direction
-            msg = type_danger["danger"][mode]%template_str
+            if mode == "speech":
+                msg = type_danger["danger"][mode]%template_str
+            else:
+                msg = type_danger["danger"][mode]  
 	    type = "danger"
 	return msg, type
 

@@ -5,7 +5,7 @@
 
   <group>
 
-<node name="Sound" pkg="hcr_vip" type="talkback.py" args="speech" output="screen"/>
+<node name="Sound" pkg="hcr_vip" type="talkback.py" args="speech" />
 <node name="SoundApi" pkg="sound_play" type="soundplay_node.py" respawn="true"/>
 
 <node name="Belt" pkg="hcr_vip" type="listener.py" output="screen"/>
