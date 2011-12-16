@@ -3,7 +3,7 @@
   <group>
 
    <node name="Joystic" pkg="rosfalcon" type="joystick" />
-   <node name="FalconController" pkg="hcr_vip" type="FalconController" output="screen"	/>
+   <node name="FalconController" pkg="hcr_vip" type="FalconController" output="log"	/>
 
   </group>
 </launch>

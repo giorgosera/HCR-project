@@ -12,22 +12,22 @@ from hcr_vip.msg import sensorMsg
 from string import Template 
 
 from sound_play.libsoundplay import SoundClient
-
 ################################################
 # GLOBALS
-###############################################
+################################################
 
-type_danger = {"warning": {"speech":"Info. %10s %10s", 
+type_danger = {"info":    {"speech":"Info. %10s %10s", 
 			   "non-speech":"/sssmalert.wav"}, 
-	       "danger": {"speech":"Warning. %10s %10s",
+	       "warning": {"speech":"Warning. %10s %10s",
 			  "non-speech":"/DingLing.wav"}, 
-	       "immediate danger": {"speech":"Danger. %10s",
-				    "non-speech":"/DINGING.WAV"}}
+	       "danger":  {"speech":"Danger. %10s",
+		           "non-speech":"/DINGING.WAV"}}
 
 config = {"wavepath":"/home/robofriend/ros_workspace/hcr_vip/sounds",
 	  "voice":"voice_cmu_us_clb_arctic_clunits",
 	  #"topic": {"name":"mockMasterTopic", "msg_type":sensorMsg}}
-	  "topic": {"name":"SensorMsg", "msg_type":sensorMsg}}
+	  #"topic": {"name":"SensorMsg", "msg_type":sensorMsg}}
+	  "topic": {"name":"WarningMsg", "msg_type":sensorMsg}}
 
 class TalkBack:
     def __init__(self, mode):
@@ -39,6 +39,7 @@ class TalkBack:
 	self.mode = mode
 	self.last_obstacle = ("0.0", "0")
 	self.last_direction = "unknown"
+	self.msg_count = 0
 
 	# Create the sound client object
         self.soundhandle = SoundClient()	    
@@ -54,57 +55,66 @@ class TalkBack:
         rospy.loginfo("Subscribed  to the topic...")
 
     def talkback(self, msg):
-        #Print the recognized words on the screen
+	#Print the recognized words on the screen
 	rospy.loginfo("-----------------------")
-	rospy.loginfo("Processing messages...")
+	rospy.loginfo("Processing message...")
 
 	distance = str(round(msg.range, 1))
 	angle = str(msg.angle)
-	msg, type = self._get_danger_message(distance)	
-	direction = self._get_danger_direction(angle)
+        direction = self._get_danger_direction(angle)
+	msg, type = self._get_danger_message(distance, direction, mode)	
 	
-	
-  	#if math.fabs(distance_diff) > 0.1 and  math.fabs(angle_diff) > 5:
-	if float(distance) >= 0 and direction != "behind" and direction != self.last_direction:
+	if float(distance) >= 0 and direction != "behind" and self.msg_count >= 20:
 	    try:
+		rospy.loginfo("COMMUNICATING MESSAGE.")
    	    	if self.mode == "speech":
-		    if type != "immediate danger": 
-	                self.soundhandle.say(msg["speech"]%(int(float(distance)),direction), self.voice)
-		    else:
-			self.soundhandle.say(msg["speech"]%direction, self.voice)
- 		    rospy.sleep(2)
+		    self.soundhandle.say(msg, self.voice)
+ 		    rospy.sleep(1)
 	    	else:
-		    rospy.sleep(1)
-	            self.soundhandle.playWave(self.wavepath + msg["non-speech"])
-		    rospy.sleep(1)
+	            self.soundhandle.playWave(self.wavepath + msg)
+		    rospy.sleep(1.5)
 	    except Exception, e:
 	        print e
-	    self.last_direction = direction
-	    self.last_obstacle = (distance, angle)
+	    self.msg_count = 0
 	else:
-	     rospy.loginfo("Skipping message. No change or obstacle behind.")
-	     self.last_obstacle = (distance, angle)
+	     self.msg_count += 1	 
+	     rospy.loginfo("SKIPPING MESSAGE.")
 	
-	rospy.loginfo("Distance:" + distance)
+        self._print_log_info(distance, angle, direction, type)
+        self.soundhandle.stopAll()	
+	
+    def _print_log_info(self, distance, angle, direction, type):
+	'''
+	Reports log information for this iteration. Private method.
+        '''
+        rospy.loginfo("Distance:" + distance)
         rospy.loginfo("Angle:" + angle)
         rospy.loginfo("Direction of danger:"+direction)
+        rospy.loginfo("Type of danger:"+type)
+        rospy.loginfo("Msgs received so far:"+str(self.msg_count))
 
-        self.soundhandle.stopAll()	
-
-    def _get_danger_message(self, distance):
+    def _get_danger_message(self, distance, direction, mode):
 	'''
 	Returns the type of danger depending on the distance from the closest obsracle
 	It's supposed to be a private method. Should not be called from outside
 	'''	
-	if float(distance) > 1.5:
-            msg = type_danger["warning"]
-	    type = "warning"
+	#If it's in speech mode we want to append some variables to
+        #the template string. Otherwise no need to do that 
+	if mode == "speech":	
+	    template_str = (int(float(distance)),direction)
+	else:
+	    template_str = ()	
+
+	if float(distance) > 1.2:
+            msg = type_danger["info"][mode]%template_str
+	    type = "info"
         elif float(distance) > 1.0:
-            msg = type_danger["danger"]
-	    type = "danger"
+            msg = type_danger["warning"][mode]%template_str
+	    type = "warning"
         else:
-            msg = type_danger["immediate danger"]
-	    type = "immediate danger"
+	    template_str = direction
+            msg = type_danger["danger"][mode]%template_str
+	    type = "danger"
 	return msg, type
 
     def _get_danger_direction(self, angle):

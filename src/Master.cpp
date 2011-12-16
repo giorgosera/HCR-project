@@ -1,6 +1,6 @@
 #include "Master.h"
 
-Master::Master():
+Master::Master(string cmd_out):
   front_threshold(0.3),
   back_threshold(0.4),
   side_threshold(0.25),
@@ -8,10 +8,12 @@ Master::Master():
   laserBool(false),
   sonarBool(false),
   msgBool(true),
-  speed_threshold(0.2)
+  warning_threshold(1.0),
+  speed_threshold(0.3)
 {
-  vel_pub_ = nh_.advertise<Twist>("/RosAria/cmd_vel", 1); 
+  vel_pub_ = nh_.advertise<Twist>(cmd_out, 1); 
   sensorMsg_pub_ = speed_.advertise<hcr_vip::sensorMsg>("/SensorMsg", 10);
+  warning_pub_ = sonar_.advertise<hcr_vip::sensorMsg>("/WarningMsg", 10);
   joy_sub_ = nh_.subscribe<Twist>("Sonar_Falcon", 1, &Master::joyCallback, this);  
   speed_sub_= speed_.subscribe<Odometry>("RosAria/pose",1, &Master::speedCallback,this);
   sonar_sub_ = sonar_.subscribe<hcr_vip::sonar_vip>("sonar_vip",1, &Master::sonarCallback,this); 
@@ -72,6 +74,7 @@ void Master::reAdjustSpeed(){
 void Master::checkOK(){
 	ok = false;
 	distanceInform(vel.linear.x, vel.angular.z); 
+	distanceWarning(vel.linear.x, vel.angular.z); 
 	checkDistance(vel.linear.x, vel.angular.z);
 	if (!ok){
 		STOP();
@@ -113,44 +116,16 @@ void Master::errorMsg(int error){
 	}	
 }
 
-int Master::addAngle(int x, int angle){
-	if ((angle>350) && (x>0)){
-		angle = x - (360 - angle);
-	}
-	else if((angle<10) && (x<0)){
-		angle = 360 - (x - angle);
-	}
-	else{
-		angle += x;
-	}
-	return angle;
-}
-
 
 void Master::publishSensor(){
 	static hcr_vip::sensorMsg sonartemp = sensorMsg;
-	
-	if (sensorMsg.angle >= addAngle(+10,sonartemp.angle) ){
-		//if (sensorMsg.range >= sonartemp.range + 0.2  ){
-		//	msgBool = true;
-		//}
-		//else if (sensorMsg.range <= sonartemp.range - 0.2  ){
-			msgBool = true;
-		//}
-	}
-	else if (sensorMsg.angle <= addAngle(-10,sonartemp.angle)  ){
-		//if (sensorMsg.range >= sonartemp.range + 0.2  ){
-		//	msgBool = true;
-		//}
-		//else if (sensorMsg.range <= sonartemp.range - 0.2  ){
-			msgBool = true;
-		//}
-	}
+	int x = 25;
+	if( (abs((sensorMsg.angle % 360) - (sonartemp.angle % 360))) > x)
+		msgBool = true;
 	else
 		msgBool = false;
 
-
-	if(msgBool){
+	if((msgBool) &&(sensorMsg.range != 0.0)){
 		sensorMsg_pub_.publish(sensorMsg);
 		cout<<sensorMsg.angle<<"  "<<sensorMsg.range<<endl;
 	}
@@ -200,13 +175,13 @@ void Master::distanceInform(float linear, float angular){
 		publishSensor();
 	}
 	else{
-		if (sonarPtr->distance_back < temp1){
+		/*	if (sonarPtr->distance_back < temp1){
 			temp1 = sonarPtr->distance_back;
 			temp2 = sensorMsg.angle = sonarPtr->angle_back; 
-		}
-		else if (sonarPtr->distance_front < temp1){
+		}*/ //we dont care what happens at the back when stationary
+		if (sonarPtr->distance_front < temp1){
 			temp1 = sonarPtr->distance_front;
-			temp2 = sensorMsg.angle = sonarPtr->angle_front; 
+			temp2 = sonarPtr->angle_front; 
 		}
 		else if (sonarPtr->turn_right < temp1){
 			temp1 = sonarPtr->distance_front;
@@ -220,6 +195,53 @@ void Master::distanceInform(float linear, float angular){
 		sensorMsg.angle = temp2;
 		publishSensor();
 	}
+}
+
+void Master::publishSensor2(){
+	static hcr_vip::sensorMsg sonartemp2 = sensorMsg2;
+	int x = 25;
+	if( (abs((sensorMsg2.angle % 360) - (sonartemp2.angle % 360))) > x)
+		msgBool = true;
+	else
+		msgBool = false;
+
+	if((msgBool) &&(sensorMsg2.range != 0.0)){
+		warning_pub_.publish(sensorMsg2);
+		cout<<sensorMsg2.angle<<"  "<<sensorMsg2.range<<endl;
+	}
+	else{
+		hcr_vip::sensorMsg s;
+		s.range = -100;
+		warning_pub_.publish(s);
+	}
+	
+	sonartemp2 = sensorMsg2;
+}
+
+void Master::distanceWarning(float linear, float angular){
+	float temp1 = -100 ;
+	int temp2 = 0;
+
+	if (laserPtr->straight > warning_threshold){
+		temp1 = laserPtr->straight;
+		temp2 = laserPtr->angle_straight; 
+	}
+	else if ((laserPtr->right > warning_threshold) && (laserPtr->right < fabs(temp1))){
+		temp1 = laserPtr->right;
+		temp2 = laserPtr->angle_right; 
+	}
+	else if ((laserPtr->left > warning_threshold) && (laserPtr->left < fabs(temp1))){
+		temp1 = laserPtr->left;
+		temp2 = laserPtr->angle_left; 
+	}
+
+	if(temp1 >= warning_threshold){
+		sensorMsg2.range = temp1;
+		sensorMsg2.angle = temp2;
+		publishSensor2();
+	}
+	else
+		publishSensor2();
 }
 
 void Master::checkDistance(float linear, float angular){
@@ -317,7 +339,8 @@ void Master::STOP(){
 
 int main(int argc, char** argv){
   ros::init(argc, argv, "Master");
-  Master master;
+  cout<<"Advertise to: "<<argv[1]<<endl;
+  Master master(argv[1]);
   ros::spin();
 }
 	

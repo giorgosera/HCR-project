@@ -1,0 +1,12 @@
+<launch>
+
+<!--Activate Master -->
+<include file="$(find hcr_vip)/launch/Master.launch"/>
+
+  <group>
+<node name="Sound" pkg="hcr_vip" type="talkback.py"  args="speech" output="screen"/>
+<node name="SoundApi" pkg="sound_play" type="soundplay_node.py" respawn="true"/>
+  </group>
+
+<include file="$(find hcr_vip)/launch/falcon.launch"/>
+</launch>

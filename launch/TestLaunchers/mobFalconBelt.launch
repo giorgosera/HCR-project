@@ -1,0 +1,9 @@
+<launch>
+<include file="$(find hcr_vip)/launch/Master.launch"/>
+  <group>
+
+<node name="Belt" pkg="hcr_vip" type="listener.py" output="screen"/>
+  </group>
+
+<include file="$(find hcr_vip)/launch/falcon.launch"/>
+</launch>

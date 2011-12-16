@@ -1,0 +1,6 @@
+<launch>
+
+  <node name="voice_nav" pkg="hcr_vip" type="voice_nav.py" output="screen">
+    <param name="location" value="unknown" type="string"/>
+  </node>
+</launch>

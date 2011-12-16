@@ -95,6 +95,8 @@ termios.h
 -
 nav_msgs/Odometry.h
 /home/robofriend/ros_workspace/hcr_vip/src/nav_msgs/Odometry.h
+string.h
+-
 
 /opt/ros/electric/stacks/common_msgs/geometry_msgs/msg_gen/cpp/include/geometry_msgs/Point.h
 string

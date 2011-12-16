@@ -7,7 +7,7 @@
 
 #define MIN_DISP 0.7  
 #define MIN_ANGLE 0.5
-#define NORM_FACTOR 1.0f/6.25f
+#define NORM_FACTOR 1.0f/5.25f
 #define PI 3.1415
 
 using geometry_msgs::Twist;
@@ -68,7 +68,7 @@ void FalconController::joyCallback(const joy::Joy::ConstPtr& joy)
 
     //The robot will move if the use has moved the grip for 
     // a movement larger than the threshold. Otherwise the robot stays still.
-    vel.angular.z = abs(angle) > MIN_ANGLE ? -angle : 0.0f;
+    vel.angular.z = abs(angle) > MIN_ANGLE ? angle : 0.0f;
     vel.linear.x = 100*abs(z) > MIN_DISP ? 100*z*NORM_FACTOR : 0.0f;
 
     cout << "Angular z = " << vel.angular.z << endl;

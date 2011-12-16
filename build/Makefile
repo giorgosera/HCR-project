@@ -203,19 +203,6 @@ Master/fast:
 .PHONY : Master/fast
 
 #=============================================================================
-# Target rules for targets named MasterNav
-
-# Build rule for target.
-MasterNav: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 MasterNav
-.PHONY : MasterNav
-
-# fast build rule for target.
-MasterNav/fast:
-	$(MAKE) -f CMakeFiles/MasterNav.dir/build.make CMakeFiles/MasterNav.dir/build
-.PHONY : MasterNav/fast
-
-#=============================================================================
 # Target rules for targets named MockMaster
 
 # Build rule for target.
@@ -648,21 +635,6 @@ src/Master.s:
 .PHONY : src/Master.s
 
 # target to build an object file
-src/MasterNav.o:
-	$(MAKE) -f CMakeFiles/MasterNav.dir/build.make CMakeFiles/MasterNav.dir/src/MasterNav.o
-.PHONY : src/MasterNav.o
-
-# target to preprocess a source file
-src/MasterNav.i:
-	$(MAKE) -f CMakeFiles/MasterNav.dir/build.make CMakeFiles/MasterNav.dir/src/MasterNav.i
-.PHONY : src/MasterNav.i
-
-# target to generate assembly for a file
-src/MasterNav.s:
-	$(MAKE) -f CMakeFiles/MasterNav.dir/build.make CMakeFiles/MasterNav.dir/src/MasterNav.s
-.PHONY : src/MasterNav.s
-
-# target to build an object file
 src/MockMasterPublisher.o:
 	$(MAKE) -f CMakeFiles/MockMaster.dir/build.make CMakeFiles/MockMaster.dir/src/MockMasterPublisher.o
 .PHONY : src/MockMasterPublisher.o
@@ -766,7 +738,6 @@ help:
 	@echo "... KeyBoardController"
 	@echo "... KeyboardSonar"
 	@echo "... Master"
-	@echo "... MasterNav"
 	@echo "... MockMaster"
 	@echo "... Odom"
 	@echo "... ROSBUILD_genmsg_cpp"
@@ -817,9 +788,6 @@ help:
 	@echo "... src/Master.o"
 	@echo "... src/Master.i"
 	@echo "... src/Master.s"
-	@echo "... src/MasterNav.o"
-	@echo "... src/MasterNav.i"
-	@echo "... src/MasterNav.s"
 	@echo "... src/MockMasterPublisher.o"
 	@echo "... src/MockMasterPublisher.i"
 	@echo "... src/MockMasterPublisher.s"
