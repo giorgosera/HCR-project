@@ -18,4 +18,6 @@ Otherwise sound is not redirected to Jabra Wave
 
 How to run speech recognition:
 -----------------------------
-Coming soon to a theatre near you
+1) roslaunch hcr_vip voice_nav_commands.launch
+2) roslaunch hcr_vip location_recogniser.launch 
+

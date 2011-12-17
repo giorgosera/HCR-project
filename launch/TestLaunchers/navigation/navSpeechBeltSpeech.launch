@@ -1,0 +1,13 @@
+<launch>
+
+<!--Activates Navigation + master-->
+<include file="$(find hcr_vip)/launch/TestLaunchers/navigation/navSpeech.launch"/>
+
+  <group>
+<node name="Belt" pkg="hcr_vip" type="listener.py" />
+<node name="Sound" pkg="hcr_vip" type="talkback.py"  args="speech" />
+<node name="SoundApi" pkg="sound_play" type="soundplay_node.py" respawn="true"/>
+  </group>
+
+
+</launch>

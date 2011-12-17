@@ -1,0 +1,14 @@
+
+<launch>
+
+<!--Activates Navigation + master-->
+<include file="$(find hcr_vip)/launch/TestLaunchers/navigation/navSpeech.launch"/>
+
+  <group>
+
+
+<node name="Belt" pkg="hcr_vip" type="listener.py" />
+  </group>
+
+
+</launch>

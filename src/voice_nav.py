@@ -49,8 +49,7 @@ class LocationRecogniser:
         elif command == 'go to duty free':
             self.msg = "duty free"                
         else:
-	    self.msg = "terminal"
-            #return 
+            return 
 	    
 	self.location_pub.publish(self.msg)
 

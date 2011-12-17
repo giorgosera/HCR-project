@@ -1,0 +1,14 @@
+<launch>
+
+<!--Activate Master -->
+<include file="$(find hcr_vip)/launch/Master.launch"/>
+
+  <group>
+   <node name="Keyboard" pkg="hcr_vip" type="KeyboardSonar" output="screen"/>
+   <node name="Joystic" pkg="rosfalcon" type="joystick" />
+  <node name="Belt" pkg="hcr_vip" type="listener.py" output="screen"/>
+<node name="Sound" pkg="hcr_vip" type="talkback.py" args="speech" />
+<node name="SoundApi" pkg="sound_play" type="soundplay_node.py" respawn="true"/>
+  </group>
+
+</launch>

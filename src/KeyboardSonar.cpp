@@ -81,21 +81,21 @@ int main(int argc, char** argv)
          case KEYCODE_L:
            ROS_DEBUG("LEFT");//Point to be NOTED</p><p>
       puts("TURN LEFT");
-           vel.angular.z  = 0.9;//Point to be NOTED
+           vel.angular.z  = 0.7;//Point to be NOTED
            dirty = true;
            break;
 
          case KEYCODE_R:
             ROS_DEBUG("RIGHT");
       puts("TURN RIGHT");
-          vel.angular.z  = -0.9;
+          vel.angular.z  = -0.7;
            dirty = true;
            break;
 
          case KEYCODE_U:
             ROS_DEBUG("UP");
       puts("FORWARD");
-           vel.linear.x = 0.9;
+           vel.linear.x = 0.7;
                 vel.angular.z  = 0;
             dirty = true;
            break;//Point to be NOTED
@@ -103,7 +103,7 @@ int main(int argc, char** argv)
          case KEYCODE_D:
             ROS_DEBUG("DOWN");
                 puts("BACKWARD");
-           vel.linear.x = -0.9;
+           vel.linear.x = -0.7;
                 vel.angular.z  = 0;
                 ROS_DEBUG("LEFT");
            dirty = true;

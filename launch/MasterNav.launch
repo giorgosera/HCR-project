@@ -5,10 +5,9 @@
 <include file="$(find hcr_vip)/launch/sonar.launch"/>
 
   <group>
-	<!--Activate Rosaria-->
  <node name ="laser" pkg ="hcr_vip" type="laser" />
 <!--Takes info from any sonar+laser and exorts error msg + move robot-->
-   <node name="Master" pkg="hcr_vip" type="Master" args="/NO output" respawn="true"  output="screen"/>
+ <node name="Master" pkg="hcr_vip" type="Master" args="/NO output" respawn="true"  output="screen"/>
 
   </group>
 

@@ -31,7 +31,7 @@ void Master::speedCallback(const Odometry::ConstPtr& speed){
 		back_threshold = 0.70;
 	}else{
 		front_threshold = 0.30;
-		back_threshold = 0.3;
+		back_threshold = 0.30;
 	}
 
 	if ((speed->twist.twist.angular.z > speed_threshold) || (speed->twist.twist.angular.z < -speed_threshold)){

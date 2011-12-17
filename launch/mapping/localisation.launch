@@ -1,0 +1,16 @@
+<launch>
+  <include file="$(find amcl)/examples/amcl_diff.launch" />
+  <group>
+
+ <node name="transform" pkg="ROSARIA" type="transform" />
+ <node name="RosAria" pkg="ROSARIA" type="RosAria" args="/RosAria/cmd_vel:=cmd_vel"/>
+ <node name="sicklms" pkg="sicktoolbox_wrapper" type="sicklms" respawn="true"/>
+	<param name="_port" value= "/dev/ttyUSB1"/>
+	<param name="_baud" value="38400" />
+
+<node name="map_server" pkg="map_server" type="map_server" args="$(find hcr_vip)/theo_map.yaml"/>
+
+	<!--node name="rviz" pkg="rviz" type="rviz"/-->
+
+  </group>
+</launch>

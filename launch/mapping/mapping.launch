@@ -1,0 +1,16 @@
+<launch>
+
+  <group>
+
+ <node name="transform" pkg="ROSARIA" type="transform" />
+ <node name="RosAria" pkg="ROSARIA" type="RosAria" args="/RosAria/cmd_vel:=cmd_vel"/>
+ <node name="sicklms" pkg="sicktoolbox_wrapper" type="sicklms" respawn="true"/>
+	<param name="_port" value= "/dev/ttyUSB1"/>
+	<param name="_baud" value="38400" />
+ <node name="slam_gmapping" pkg="gmapping" type="slam_gmapping" />
+
+
+<!--rosrun map_server map_saver -f theo_map/-->
+
+  </group>
+</launch>

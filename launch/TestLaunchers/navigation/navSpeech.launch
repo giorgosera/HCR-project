@@ -1,0 +1,13 @@
+<launch>
+
+<!--Activates Navigation-->
+<include file="$(find pioneer_bot)/launch/navigation_laser.launch"/>
+<include file="$(find hcr_vip)/launch/MasterNav.launch"/>
+<include file="$(find hcr_vip)/launch/voice_nav_commands.launch"/>
+<include file="$(find hcr_vip)/launch/location_recogniser.launch"/>
+
+  <group>
+   <node name="Joystic" pkg="rosfalcon" type="joystick" />
+   <node name="NavListener" pkg="simple_navigation_goals" type="code_navigation" output="screen"/>
+  </group>
+</launch>

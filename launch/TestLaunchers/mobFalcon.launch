@@ -1,7 +1,0 @@
-<launch>
-
-<!--Activate Master -->
-<include file="$(find hcr_vip)/launch/Master.launch"/>
-
-<include file="$(find hcr_vip)/launch/falcon.launch"/>
-</launch>
